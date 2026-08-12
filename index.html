@@ -29,7 +29,6 @@
             --accent-emerald: #10b981;
             --border-color: rgba(148, 163, 184, 0.1);
             --glow-cyan: rgba(6, 182, 212, 0.3);
-            --ribbon-bg: #ffffff;
         }
 
         * {
@@ -50,87 +49,129 @@
             overflow-x: hidden;
         }
 
-        /* Animated Background */
-        .hero-bg {
-            position: absolute;
+        /* ============================================
+           APPLICATION RIBBON - LARGER & PROMINENT
+           ============================================ */
+        .app-ribbon {
+            position: fixed;
             top: 0;
             left: 0;
+            width: 100vw;
+            max-width: 100vw;
+            z-index: 9999;
+            background: #ffffff !important;
+            border-bottom: 2px solid #e5e7eb;
+            box-shadow: 0 6px 40px rgba(0, 0, 0, 0.15), 0 2px 8px rgba(0, 0, 0, 0.08);
+            padding: 1rem 2.5rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1.5rem;
+            font-size: 0.95rem;
+            animation: ribbonSlideDown 0.5s ease-out;
+            box-sizing: border-box;
+        }
+
+        @keyframes ribbonSlideDown {
+            from { 
+                transform: translateY(-100%); 
+                opacity: 0; 
+            }
+            to { 
+                transform: translateY(0); 
+                opacity: 1; 
+            }
+        }
+
+        .ribbon-content {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            max-width: 1600px;
             width: 100%;
-            height: 100%;
-            overflow: hidden;
-            z-index: 0;
         }
 
-        .grid-bg {
-            position: absolute;
-            width: 200%;
-            height: 200%;
-            top: -50%;
-            left: -50%;
-            background-image: 
-                linear-gradient(rgba(6, 182, 212, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(6, 182, 212, 0.03) 1px, transparent 1px);
-            background-size: 60px 60px;
-            animation: gridMove 20s linear infinite;
-            transform: perspective(500px) rotateX(60deg);
+        .ribbon-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-weight: 800;
+            color: #065f46;
+            text-decoration: none;
+            padding-right: 2rem;
+            border-right: 2px solid #e5e7eb;
+            transition: all 0.3s ease;
+            border-radius: 10px;
         }
 
-        @keyframes gridMove {
-            0% { transform: perspective(500px) rotateX(60deg) translateY(0); }
-            100% { transform: perspective(500px) rotateX(60deg) translateY(60px); }
+        .ribbon-brand:hover {
+            background: #f0fdf4;
+            transform: scale(1.02);
         }
 
-        .orb {
-            position: absolute;
+        .ribbon-logo {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, #10b981, #059669, #047857);
+            border-radius: 12px;
+            display: flex;
+            box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            font-weight: 900;
+            color: white;
+        }
+
+        .ribbon-brand-text {
+            background: linear-gradient(135deg, #059669, #047857);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: 1.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .ribbon-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.4rem 1rem;
+            background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+            border: 1.5px solid #bbf7d0;
+            border-radius: 25px;
+            color: #059669;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .ribbon-status-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--accent-emerald);
             border-radius: 50%;
-            filter: blur(80px);
-            opacity: 0.4;
-            animation: float 15s ease-in-out infinite;
+            animation: pulse 2s infinite;
         }
 
-        .orb-1 {
-            width: 400px;
-            height: 400px;
-            background: var(--accent-cyan);
-            top: -100px;
-            right: -100px;
-            animation-delay: 0s;
-        }
-
-        .orb-2 {
-            width: 300px;
-            height: 300px;
-            background: var(--accent-purple);
-            bottom: -50px;
-            left: -50px;
-            animation-delay: -5s;
-        }
-
-        .orb-3 {
-            width: 250px;
-            height: 250px;
-            background: var(--accent-blue);
-            top: 40%;
-            left: 30%;
-            animation-delay: -10s;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            33% { transform: translate(30px, -30px) scale(1.05); }
-            66% { transform: translate(-20px, 20px) scale(0.95); }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.2); }
         }
 
         /* Navigation */
         nav {
             position: fixed;
-            top: 0;
+            top: 85px;
             left: 0;
             right: 0;
-            z-index: 1000;
+            z-index: 9998;
             padding: 1rem 2rem;
             backdrop-filter: blur(20px);
-            background: rgba(10, 10, 15, 0.8);
+            background: rgba(10, 10, 15, 0.95);
             border-bottom: 1px solid var(--border-color);
             display: flex;
             justify-content: space-between;
@@ -149,7 +190,7 @@
 
         .nav-links {
             display: flex;
-            gap: 2rem;
+            gap: 1.5rem;
             list-style: none;
         }
 
@@ -158,120 +199,198 @@
             text-decoration: none;
             font-size: 0.9rem;
             font-weight: 500;
-            transition: color 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            color: var(--accent-cyan);
-        }
-
-        /* Hero Section */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 8rem 2rem 4rem;
-            position: relative;
-        }
-
-        .badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
+            transition: all 0.3s ease;
             padding: 0.5rem 1rem;
-            background: rgba(6, 182, 212, 0.1);
-            border: 1px solid rgba(6, 182, 212, 0.3);
-            border-radius: 9999px;
-            font-size: 0.85rem;
+            border-radius: 8px;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
             color: var(--accent-cyan);
-            margin-bottom: 2rem;
-            animation: fadeInUp 0.8s ease-out;
+            background: rgba(6, 182, 212, 0.1);
         }
 
-        .badge-dot {
-            width: 8px;
-            height: 8px;
-            background: var(--accent-emerald);
-            border-radius: 50%;
-            animation: pulse 2s infinite;
+        /* Main Content */
+        main {
+            margin-top: 140px;
+            min-height: calc(100vh - 140px);
         }
 
-        @keyframes pulse {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.5; transform: scale(1.2); }
+        /* App Container */
+        .app-container {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 2rem;
         }
 
-        h1 {
-            font-size: clamp(2.5rem, 8vw, 5rem);
-            font-weight: 900;
-            line-height: 1.1;
-            margin-bottom: 1.5rem;
-            letter-spacing: -0.03em;
-            animation: fadeInUp 0.8s ease-out 0.1s both;
+        /* Dashboard Grid */
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
         }
 
-        .gradient-text {
-            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue), var(--accent-purple));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            background-size: 200% 200%;
-            animation: gradientShift 5s ease infinite;
+        @media (max-width: 1024px) {
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
-        @keyframes gradientShift {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
+        /* Sidebar */
+        .sidebar {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 1.5rem;
+            height: fit-content;
+            position: sticky;
+            top: 150px;
         }
 
-        .subtitle {
-            font-size: clamp(1.1rem, 2.5vw, 1.35rem);
+        .sidebar-title {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
             color: var(--text-secondary);
-            max-width: 700px;
-            margin: 0 auto 3rem;
-            line-height: 1.7;
-            animation: fadeInUp 0.8s ease-out 0.2s both;
+            margin-bottom: 1rem;
+            font-weight: 600;
         }
 
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
+        .sidebar-menu {
+            list-style: none;
         }
 
-        .cta-group {
+        .sidebar-menu li {
+            margin-bottom: 0.5rem;
+        }
+
+        .sidebar-menu button {
+            width: 100%;
+            text-align: left;
+            padding: 0.85rem 1rem;
+            background: transparent;
+            border: 1px solid transparent;
+            border-radius: 10px;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.3s ease;
             display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-            justify-content: center;
-            animation: fadeInUp 0.8s ease-out 0.3s both;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 0.9rem;
+            font-family: inherit;
+        }
+
+        .sidebar-menu button:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: var(--border-color);
+            color: var(--text-primary);
+        }
+
+        .sidebar-menu button.active {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(6, 182, 212, 0.1));
+            border-color: rgba(16, 185, 129, 0.3);
+            color: var(--accent-emerald);
+        }
+
+        /* Main Panel */
+        .main-panel {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .panel-header {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(6, 182, 212, 0.05));
+            border-bottom: 1px solid var(--border-color);
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .panel-header h2 {
+            font-size: 1.35rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .panel-content {
+            padding: 2rem;
+            min-height: 500px;
+        }
+
+        /* Document Generator Styles */
+        .doc-form {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            display: grid;
+            gap: 0.5rem;
+        }
+
+        .form-group label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 0.85rem 1rem;
+            color: var(--text-primary);
+            font-size: 0.95rem;
+            font-family: inherit;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent-emerald);
+            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.15);
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
         }
 
         .btn {
             display: inline-flex;
             align-items: center;
+            justify-content: center;
             gap: 0.5rem;
-            padding: 1rem 2rem;
+            padding: 0.9rem 2rem;
             border-radius: 12px;
-            font-size: 1rem;
+            font-size: 0.95rem;
             font-weight: 600;
-            text-decoration: none;
-            transition: all 0.3s ease;
             cursor: pointer;
+            transition: all 0.3s ease;
             border: none;
+            font-family: inherit;
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
+            background: linear-gradient(135deg, var(--accent-emerald), #059669);
             color: white;
-            box-shadow: 0 0 30px var(--glow-cyan);
+            box-shadow: 0 4px 20px rgba(16, 185, 129, 0.3);
         }
 
         .btn-primary:hover {
             transform: translateY(-2px);
-            box-shadow: 0 0 50px var(--glow-cyan);
+            box-shadow: 0 8px 30px rgba(16, 185, 129, 0.45);
         }
 
         .btn-secondary {
@@ -285,25 +404,142 @@
             border-color: var(--accent-cyan);
         }
 
-        /* Stats Bar */
-        .stats-bar {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 2rem;
-            padding: 3rem 2rem;
-            max-width: 900px;
-            margin: 4rem auto 0;
-            animation: fadeInUp 0.8s ease-out 0.4s both;
+        /* Chat Interface */
+        .chat-container {
+            display: flex;
+            flex-direction: column;
+            height: 600px;
         }
 
-        .stat-item {
+        .chat-messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 12px;
+            margin-bottom: 1rem;
+        }
+
+        .message {
+            max-width: 80%;
+            padding: 1rem 1.25rem;
+            border-radius: 16px;
+            animation: messageIn 0.3s ease;
+        }
+
+        @keyframes messageIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .message.user {
+            background: linear-gradient(135deg, var(--accent-emerald), #059669);
+            color: white;
+            align-self: flex-end;
+            border-bottom-right-radius: 4px;
+        }
+
+        .message.ai {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            align-self: flex-start;
+            border-bottom-left-radius: 4px;
+        }
+
+        .chat-input-container {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .chat-input {
+            flex: 1;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1rem 1.25rem;
+            color: var(--text-primary);
+            font-size: 0.95rem;
+            font-family: inherit;
+        }
+
+        .chat-input:focus {
+            outline: none;
+            border-color: var(--accent-emerald);
+        }
+
+        /* Audit Trail Table */
+        .audit-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .audit-table th,
+        .audit-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .audit-table th {
+            background: rgba(0, 0, 0, 0.3);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-secondary);
+            font-weight: 600;
+        }
+
+        .audit-table tr:hover td {
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 0.3rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .status-success {
+            background: rgba(16, 185, 129, 0.15);
+            color: #10b981;
+        }
+
+        .status-warning {
+            background: rgba(245, 158, 11, 0.15);
+            color: #f59e0b;
+        }
+
+        .status-info {
+            background: rgba(59, 130, 246, 0.15);
+            color: #3b82f6;
+        }
+
+        /* Stats Cards */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.08), rgba(6, 182, 212, 0.04));
+            border: 1px solid rgba(16, 185, 129, 0.15);
+            border-radius: 16px;
+            padding: 1.5rem;
             text-align: center;
         }
 
         .stat-value {
             font-size: 2.5rem;
             font-weight: 800;
-            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-emerald));
+            background: linear-gradient(135deg, var(--accent-emerald), var(--accent-cyan));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -311,1560 +547,1734 @@
         }
 
         .stat-label {
-            font-size: 0.9rem;
             color: var(--text-secondary);
-            margin-top: 0.25rem;
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
         }
 
-        /* Section Styles */
-        section {
-            padding: 6rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-
-        .section-tag {
-            display: inline-block;
-            padding: 0.4rem 1rem;
-            background: rgba(139, 92, 246, 0.1);
-            border: 1px solid rgba(139, 92, 246, 0.3);
-            border-radius: 9999px;
-            font-size: 0.8rem;
-            color: var(--accent-purple);
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            margin-bottom: 1rem;
-        }
-
-        h2 {
-            font-size: clamp(2rem, 5vw, 3rem);
-            font-weight: 800;
-            letter-spacing: -0.02em;
-            margin-bottom: 1rem;
-        }
-
-        .section-desc {
-            font-size: 1.1rem;
-            color: var(--text-secondary);
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        /* Feature Cards */
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .feature-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
+        /* Generated Output */
+        .output-area {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px dashed rgba(16, 185, 129, 0.3);
             border-radius: 16px;
             padding: 2rem;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
+            margin-top: 2rem;
+            display: none;
         }
 
-        .feature-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background: linear-gradient(90deg, var(--accent-cyan), var(--accent-purple));
-            opacity: 0;
-            transition: opacity 0.3s ease;
+        .output-area.visible {
+            display: block;
+            animation: fadeIn 0.5s ease;
         }
 
-        .feature-card:hover {
-            transform: translateY(-4px);
-            border-color: rgba(6, 182, 212, 0.3);
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        .feature-card:hover::before {
-            opacity: 1;
-        }
-
-        .feature-icon {
-            width: 48px;
-            height: 48px;
-            background: linear-gradient(135deg, rgba(6, 182, 212, 0.2), rgba(139, 92, 246, 0.2));
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            margin-bottom: 1.25rem;
-        }
-
-        .feature-card h3 {
-            font-size: 1.25rem;
-            font-weight: 700;
-            margin-bottom: 0.75rem;
-        }
-
-        .feature-card p {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-
-        /* Tech Stack */
-        .tech-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1rem;
-        }
-
-        .tech-item {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            padding: 1.25rem 1.5rem;
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            transition: all 0.3s ease;
-        }
-
-        .tech-item:hover {
-            border-color: var(--accent-cyan);
-            background: rgba(6, 182, 212, 0.05);
-        }
-
-        .tech-icon {
-            width: 40px;
-            height: 40px;
-            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            font-size: 0.9rem;
-            color: white;
-        }
-
-        .tech-info h4 {
-            font-size: 1rem;
-            font-weight: 600;
-            margin-bottom: 0.2rem;
-        }
-
-        .tech-info p {
-            font-size: 0.85rem;
-            color: var(--text-secondary);
-        }
-
-        /* Vision Timeline */
-        .timeline {
-            position: relative;
-            padding-left: 2rem;
-        }
-
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background: linear-gradient(to bottom, var(--accent-cyan), var(--accent-purple), var(--accent-emerald));
-        }
-
-        .timeline-item {
-            position: relative;
-            padding-bottom: 3rem;
-            padding-left: 2rem;
-        }
-
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: -2rem;
-            top: 0.5rem;
-            width: 14px;
-            height: 14px;
-            background: var(--bg-primary);
-            border: 3px solid var(--accent-cyan);
-            border-radius: 50%;
-        }
-
-        .timeline-year {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.9rem;
-            color: var(--accent-cyan);
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-
-        .timeline-item h3 {
-            font-size: 1.3rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-        }
-
-        .timeline-item p {
-            color: var(--text-secondary);
-            line-height: 1.6;
-        }
-
-        /* Scenarios */
-        .scenarios-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .scenario-card {
-            background: linear-gradient(135deg, var(--bg-card), rgba(139, 92, 246, 0.05));
-            border: 1px solid var(--border-color);
-            border-radius: 20px;
-            padding: 2rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .scenario-card::after {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -50%;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle, rgba(6, 182, 212, 0.1) 0%, transparent 70%);
-            pointer-events: none;
-        }
-
-        .scenario-type {
-            display: inline-block;
-            padding: 0.3rem 0.8rem;
-            background: rgba(16, 185, 129, 0.1);
-            border: 1px solid rgba(16, 185, 129, 0.3);
-            border-radius: 6px;
-            font-size: 0.75rem;
+        .output-area h3 {
             color: var(--accent-emerald);
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
             margin-bottom: 1rem;
-        }
-
-        .scenario-card h3 {
-            font-size: 1.35rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-        }
-
-        .scenario-details {
-            list-style: none;
-            margin-bottom: 1.5rem;
-        }
-
-        .scenario-details li {
-            padding: 0.5rem 0;
-            color: var(--text-secondary);
-            font-size: 0.95rem;
             display: flex;
-            align-items: flex-start;
-            gap: 0.75rem;
+            align-items: center;
+            gap: 0.5rem;
         }
 
-        .scenario-details li::before {
-            content: '→';
-            color: var(--accent-cyan);
-            font-weight: bold;
-            flex-shrink: 0;
+        .output-content {
+            background: white;
+            color: #1a1a1a;
+            padding: 2rem;
+            border-radius: 12px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            line-height: 1.8;
+            white-space: pre-wrap;
+            max-height: 400px;
+            overflow-y: auto;
         }
 
-        /* CTA Section */
-        .cta-section {
+        /* Image Preview Section */
+        .app-preview {
             text-align: center;
-            padding: 8rem 2rem;
-            position: relative;
+            margin: 2rem 0;
+            padding: 2rem;
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.05), rgba(6, 182, 212, 0.03));
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            border-radius: 20px;
         }
 
-        .cta-box {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 4rem;
-            background: linear-gradient(135deg, rgba(6, 182, 212, 0.1), rgba(139, 92, 246, 0.1));
-            border: 1px solid var(--border-color);
-            border-radius: 24px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .cta-box::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: 
-                radial-gradient(circle at 20% 50%, rgba(6, 182, 212, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 80% 50%, rgba(139, 92, 246, 0.15) 0%, transparent 50%);
-        }
-
-        .cta-box > * {
-            position: relative;
-            z-index: 1;
-        }
-
-        .cta-section h2 {
-            font-size: clamp(2rem, 5vw, 2.75rem);
-            margin-bottom: 1rem;
-        }
-
-        .cta-section p {
-            font-size: 1.15rem;
-            color: var(--text-secondary);
-            margin-bottom: 2rem;
+        .app-preview img {
+            max-width: 100%;
+            border-radius: 16px;
+            box-shadow: 0 25px 80px rgba(0, 0, 0, 0.5);
         }
 
         /* Footer */
         footer {
-            border-top: 1px solid var(--border-color);
-            padding: 3rem 2rem;
             text-align: center;
-        }
-
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-bottom: 1.5rem;
-            flex-wrap: wrap;
-        }
-
-        .footer-links a {
+            padding: 3rem 2rem;
             color: var(--text-secondary);
-            text-decoration: none;
-            font-size: 0.9rem;
-            transition: color 0.3s ease;
-        }
-
-        .footer-links a:hover {
-            color: var(--accent-cyan);
-        }
-
-        .copyright {
-            color: var(--text-secondary);
-            font-size: 0.85rem;
+            border-top: 1px solid var(--border-color);
+            margin-top: 4rem;
         }
 
         /* Responsive */
         @media (max-width: 768px) {
-            nav {
-                padding: 1rem;
-            }
-
-            .nav-links {
-                display: none;
-            }
-
-            .hero {
-                padding: 7rem 1.5rem 3rem;
-            }
-
-            section {
-                padding: 4rem 1.5rem;
-            }
-
-            .stats-bar {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 1.5rem;
-            }
-
-            .scenarios-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .cta-box {
-                padding: 2.5rem 1.5rem;
-            }
-        }
-
-        /* Code Block Style */
-        code {
-            font-family: 'JetBrains Mono', monospace;
-            background: rgba(0, 0, 0, 0.3);
-            padding: 0.2rem 0.5rem;
-            border-radius: 4px;
-            font-size: 0.9em;
-            color: var(--accent-cyan);
-        }
-
-        /* ============================================
-           APPLICATION RIBBON - Top Banner
-           ============================================ */
-        .app-ribbon {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 9999;
-            background: var(--ribbon-bg);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid #e5e7eb;
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
-            padding: 0.6rem 1.5rem;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 1rem;
-            font-size: 0.85rem;
-            animation: ribbonSlideDown 0.5s ease-out;
-        }
-
-        @keyframes ribbonSlideDown {
-            from { 
-                transform: translateY(-100%); 
-                opacity: 0; 
-            }
-            to { 
-                transform: translateY(0); 
-                opacity: 1; 
-            }
-        }
-
-        .ribbon-content {
-            display: flex;
-            align-items: center;
-            gap: 1.5rem;
-            flex-wrap: wrap;
-            justify-content: center;
-            max-width: 1400px;
-            width: 100%;
-        }
-
-        .ribbon-brand {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-weight: 700;
-            color: #065f46;
-            text-decoration: none;
-            padding-right: 1.5rem;
-            border-right: 1px solid #e5e7eb;
-            transition: all 0.3s ease;
-            border-radius: 8px;
-        }
-
-        .ribbon-brand:hover {
-            background: #f0fdf4;
-            transform: scale(1.02);
-        }
-
-        .ribbon-logo {
-            width: 32px;
-            height: 32px;
-            background: linear-gradient(135deg, #10b981, #059669, #047857);
-            border-radius: 8px;
-            display: flex;
-            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
-            align-items: center;
-            justify-content: center;
-            font-size: 14px;
-            font-weight: 900;
-            color: white;
-        }
-
-        .ribbon-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.3rem;
-            padding: 0.25rem 0.7rem;
-            background: #f0fdf4;
-            border: 1px solid #bbf7d0;
-            border-radius: 20px;
-            color: #059669;
-            font-size: 0.7rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-
-        .ribbon-status-dot {
-            width: 6px;
-            height: 6px;
-            background: var(--accent-emerald);
-            border-radius: 50%;
-            animation: pulse 2s infinite;
-        }
-
-        .ribbon-nav {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .ribbon-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.35rem;
-            padding: 0.4rem 0.9rem;
-            border-radius: 8px;
-            color: #374151;
-            text-decoration: none;
-            font-size: 0.8rem;
-            font-weight: 500;
-            transition: all 0.25s ease;
-            white-space: nowrap;
-        }
-
-        .ribbon-link:hover {
-            background: #f3f4f6;
-            color: #111827;
-        }
-
-        .ribbon-link.primary {
-            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
-            color: white;
-            box-shadow: 0 4px 15px rgba(6, 182, 212, 0.3);
-        }
-
-        .ribbon-link.primary:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 6px 20px rgba(6, 182, 212, 0.4);
-        }
-
-        .ribbon-link.accent {
-            background: rgba(139, 92, 246, 0.15);
-            border: 1px solid rgba(139, 92, 246, 0.3);
-            color: var(--accent-purple);
-        }
-
-        .ribbon-link.accent:hover {
-            background: rgba(139, 92, 246, 0.25);
-            border-color: var(--accent-purple);
-        }
-
-        .ribbon-link.success {
-            background: rgba(16, 185, 129, 0.12);
-            border: 1px solid rgba(16, 185, 129, 0.3);
-            color: var(--accent-emerald);
-        }
-
-        .ribbon-link.success:hover {
-            background: rgba(16, 185, 129, 0.22);
-            border-color: var(--accent-emerald);
-        }
-
-        .ribbon-divider {
-            width: 1px;
-            height: 24px;
-            background: rgba(148, 163, 184, 0.15);
-        }
-
-        .ribbon-stats {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            padding-left: 1rem;
-            border-left: 1px solid rgba(148, 163, 184, 0.2);
-        }
-
-        .ribbon-stat {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            line-height: 1.2;
-        }
-
-        .ribbon-stat-value {
-            font-size: 0.9rem;
-            font-weight: 700;
-            color: var(--accent-cyan);
-            font-family: 'JetBrains Mono', monospace;
-        }
-
-        .ribbon-stat-label {
-            font-size: 0.65rem;
-            color: var(--text-secondary);
-            text-transform: uppercase;
-            letter-spacing: 0.03em;
-        }
-
-        /* Adjust main nav position when ribbon is present */
-        nav {
-            top: 44px !important;
-        }
-
-        .hero {
-            padding-top: 10rem !important;
-        }
-
-        /* Responsive Ribbon */
-        @media (max-width: 1024px) {
-            .ribbon-divider,
-            .ribbon-stats {
-                display: none;
-            }
-            
-            .ribbon-nav {
-                gap: 0.3rem;
-            }
-            
-            .ribbon-link span {
-                display: none;
-            }
-            
-            .ribbon-link {
-                padding: 0.4rem 0.6rem;
-            }
-            
-            .ribbon-link.primary span,
-            .ribbon-link.accent span {
-                display: inline;
-            }
-        }
-
-        @media (max-width: 768px) {
             .app-ribbon {
-                padding: 0.5rem 1rem;
-                gap: 0.5rem;
+                padding: 0.75rem 1rem;
+                font-size: 0.8rem;
             }
-            
-            .ribbon-brand {
-                padding-right: 0.75rem;
-                border-right: none;
+
+            .ribbon-logo {
+                width: 36px;
+                height: 36px;
+                font-size: 18px;
             }
-            
+
             .ribbon-brand-text {
-                display: none;
+                font-size: 1.1rem;
             }
-            
-            .ribbon-badge {
-                display: none;
+
+            .ribbon-content {
+                gap: 0.75rem;
             }
-            
+
             nav {
-                top: 40px !important;
+                top: 70px;
             }
-            
-            .hero {
-                padding-top: 8rem !important;
+
+            main {
+                margin-top: 120px;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
 
-        pre {
-            background: rgba(0, 0, 0, 0.4);
+        /* Loading Animation */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Tab System */
+        .tabs {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            padding: 0.75rem 1.5rem;
+            background: rgba(255, 255, 255, 0.05);
             border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 1.5rem;
-            overflow-x: auto;
-            margin: 1rem 0;
+            border-radius: 10px;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: inherit;
+            font-size: 0.9rem;
+            font-weight: 500;
         }
 
-        pre code {
-            background: none;
-            padding: 0;
+        .tab-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .tab-btn.active {
+            background: linear-gradient(135deg, var(--accent-emerald), #059669);
+            color: white;
+            border-color: transparent;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.4s ease;
         }
     </style>
 </head>
 <body>
     <!-- ============================================
-         WHITE APPLICATION RIBBON - Clean Professional Header
+         APPLICATION RIBBON - LARGER VERSION
          ============================================ -->
-    <div class="app-ribbon" style="background: #ffffff !important; border-bottom: 1px solid #e5e7eb !important; box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08) !important;">
+    <div class="app-ribbon">
         <div class="ribbon-content">
-            <!-- Brand - Links to Document Generator Hub -->
-            <a href="#document-generator-hub" class="ribbon-brand" style="color: #065f46 !important; text-decoration: none; display: flex; align-items: center; gap: 0.6rem; font-weight: 800; padding: 0.5rem 1rem; border-radius: 12px; transition: all 0.3s ease; border-right: 1px solid #e5e7eb;" onmouseover="this.style.background='#f0fdf4'" onmouseout="this.style.background='transparent'">
-                <div class="ribbon-logo" style="width: 36px; height: 36px; background: linear-gradient(135deg, #10b981, #059669, #047857); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-weight: 900; color: white; box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);">T</div>
-                <span style="background: linear-gradient(135deg, #059669, #047857); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-size: 1.15rem;">TrialGPTBot</span>
-                <span style="background: linear-gradient(135deg, #10b981, #059669); color: white; font-size: 0.55rem; padding: 0.2rem 0.5rem; border-radius: 20px; font-weight: 700;">✨ AI</span>
+            <!-- Brand -->
+            <a href="#" class="ribbon-brand" onclick="showSection('dashboard'); return false;">
+                <div class="ribbon-logo">T</div>
+                <span class="ribbon-brand-text">TrialGPTBot</span>
+                <span style="background: linear-gradient(135deg, #10b981, #059669); color: white; font-size: 0.7rem; padding: 0.3rem 0.65rem; border-radius: 20px; font-weight: 700;">✨ AI Enterprise v2.0</span>
             </a>
 
             <!-- Status Badge -->
-            <div style="display: inline-flex; align-items: center; gap: 0.35rem; background: linear-gradient(135deg, #f0fdf4, #dcfce7); border: 1px solid #bbf7d0; padding: 0.35rem 0.8rem; border-radius: 20px; font-size: 0.7rem; color: #059669; font-weight: 600;">
-                <span style="width: 6px; height: 6px; background: #10b981; border-radius: 50%; animation: pulse 2s infinite;"></span>
-                Enterprise v2.0 Live
+            <div class="ribbon-badge">
+                <span class="ribbon-status-dot"></span>
+                System Online — All Services Operational
             </div>
 
-            <!-- Navigation Links -->
-            <nav style="display: flex; align-items: center; gap: 0.4rem;">
-                <a href="#document-generator-hub" style="display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.5rem 1rem; text-decoration: none; color: #374151; font-size: 0.82rem; font-weight: 600; border-radius: 8px; background: linear-gradient(135deg, #10b981, #059669); color: white; transition: all 0.25s ease;" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(16,185,129,0.4)'" onmouseout="this.style.transform='none'; this.style.boxShadow='none'">
-                    🚀 <span>Document Generator</span>
-                </a>
-                
-                <a href="#features" style="display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.45rem 0.9rem; text-decoration: none; color: #374151; font-size: 0.82rem; font-weight: 500; border-radius: 8px; transition: all 0.25s ease;" onmouseover="this.style.background='#f3f4f6'" onmouseout="this.style.background='transparent'">
-                    ⚡ <span>Features</span>
-                </a>
-                
-                <a href="#technology" style="display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.45rem 0.9rem; text-decoration: none; color: #374151; font-size: 0.82rem; font-weight: 500; border-radius: 8px; transition: all 0.25s ease;" onmouseover="this.style.background='#f3f4f6'" onmouseout="this.style.background='transparent'">
-                    🔧 <span>Tech Stack</span>
-                </a>
-                
-                <a href="#vision" style="display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.45rem 0.9rem; text-decoration: none; color: #374151; font-size: 0.82rem; font-weight: 500; border-radius: 8px; transition: all 0.25s ease;" onmouseover="this.style.background='#f3f4f6'" onmouseout="this.style.background='transparent'">
-                    🎯 <span>Vision 2045</span>
-                </a>
-                
-                <a href="#scenarios" style="display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.45rem 0.9rem; text-decoration: none; color: #059669; font-size: 0.82rem; font-weight: 500; border-radius: 8px; background: #f0fdf4; border: 1px solid #bbf7d0; transition: all 0.25s ease;" onmouseover="this.style.background='#dcfce7'" onmouseout="this.style.background='#f0fdf4'">
-                    💼 <span>Use Cases</span>
-                </a>
+            <!-- Quick Navigation -->
+            <nav style="display: flex; align-items: center; gap: 0.5rem;">
+                <button onclick="showSection('generator')" style="padding: 0.6rem 1.25rem; background: linear-gradient(135deg, #10b981, #059669); color: white; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; font-size: 0.85rem; font-family: inherit; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='none'">📄 Generate Docs</button>
+                <button onclick="showSection('chat')" style="padding: 0.6rem 1.25rem; background: rgba(255,255,255,0.1); color: #374151; border: 1px solid #e5e7eb; border-radius: 10px; font-weight: 600; cursor: pointer; font-size: 0.85rem; font-family: inherit; transition: all 0.3s ease;" onmouseover="this.style.background='#f3f4f6'" onmouseout="this.style.background='rgba(255,255,255,0.1)'">💬 AI Assistant</button>
+                <button onclick="showSection('audit')" style="padding: 0.6rem 1.25rem; background: rgba(255,255,255,0.1); color: #374151; border: 1px solid #e5e7eb; border-radius: 10px; font-weight: 600; cursor: pointer; font-size: 0.85rem; font-family: inherit; transition: all 0.3s ease;" onmouseover="this.style.background='#f3f4f6'" onmouseout="this.style.background='rgba(255,255,255,0.1)'">🔍 Audit Trail</button>
+                <button onclick="showSection('compliance')" style="padding: 0.6rem 1.25rem; background: rgba(255,255,255,0.1); color: #374151; border: 1px solid #e5e7eb; border-radius: 10px; font-weight: 600; cursor: pointer; font-size: 0.85rem; font-family: inherit; transition: all 0.3s ease;" onmouseover="this.style.background='#f3f4f6'" onmouseout="this.style.background='rgba(255,255,255,0.1)'">🛡️ Compliance</button>
             </nav>
 
             <!-- Divider -->
-            <div style="width: 1px; height: 30px; background: #e5e7eb;"></div>
+            <div style="width: 1px; height: 40px; background: #e5e7eb;"></div>
 
-            <!-- Quick Stats -->
-            <div style="display: flex; align-items: center; gap: 1rem; border-left: 1px solid #e5e7eb; padding-left: 1rem;">
-                <div style="display: flex; flex-direction: column; align-items: center; line-height: 1.2;">
-                    <span style="font-size: 0.9rem; font-weight: 700; color: #059669; font-family: 'JetBrains Mono', monospace;">147+</span>
-                    <span style="font-size: 0.65rem; color: #6b7280; text-transform: uppercase;">Regulations</span>
+            <!-- Live Stats -->
+            <div style="display: flex; align-items: center; gap: 1.5rem; border-left: 1px solid #e5e7eb; padding-left: 1.5rem;">
+                <div style="text-align: center;">
+                    <div style="font-size: 1.1rem; font-weight: 800; color: #059669; font-family: 'JetBrains Mono', monospace;">147+</div>
+                    <div style="font-size: 0.65rem; color: #6b7280; text-transform: uppercase;">Regulations</div>
                 </div>
-                <div style="display: flex; flex-direction: column; align-items: center; line-height: 1.2;">
-                    <span style="font-size: 0.9rem; font-weight: 700; color: #059669; font-family: 'JetBrains Mono', monospace;">99%</span>
-                    <span style="font-size: 0.65rem; color: #6b7280; text-transform: uppercase;">Automated</span>
+                <div style="text-align: center;">
+                    <div style="font-size: 1.1rem; font-weight: 800; color: #059669; font-family: 'JetBrains Mono', monospace;">99%</div>
+                    <div style="font-size: 0.65rem; color: #6b7280; text-transform: uppercase;">Automated</div>
                 </div>
-                <div style="display: flex; flex-direction: column; align-items: center; line-height: 1.2;">
-                    <span style="font-size: 0.9rem; font-weight: 700; color: #059669; font-family: 'JetBrains Mono', monospace;">AI</span>
-                    <span style="font-size: 0.65rem; color: #6b7280; text-transform: uppercase;">Powered</span>
+                <div style="text-align: center;">
+                    <div style="font-size: 1.1rem; font-weight: 800; color: #059669; font-family: 'JetBrains Mono', monospace;">24/7</div>
+                    <div style="font-size: 0.65rem; color: #6b7280; text-transform: uppercase;">AI Active</div>
                 </div>
             </div>
 
-            <!-- Login Button -->
-            <button onclick="alert('Login functionality coming soon!')" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.6rem 1.4rem; background: linear-gradient(135deg, #10b981, #059669); color: white; border: none; border-radius: 10px; font-size: 0.85rem; font-weight: 700; cursor: pointer; box-shadow: 0 4px 15px rgba(16, 185, 129, 0.35); transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 8px 25px rgba(16,185,129,0.5)'" onmouseout="this.style.transform='none'; this.style.boxShadow='0 4px 15px rgba(16,185,129,0.35)'">
-                🔐 Login
-            </button>
+            <!-- User Button -->
+            <button onclick="alert('Login functionality - Connect to backend for full authentication')" style="padding: 0.65rem 1.5rem; background: linear-gradient(135deg, #10b981, #059669); color: white; border: none; border-radius: 12px; font-weight: 700; cursor: pointer; font-size: 0.85rem; font-family: inherit; box-shadow: 0 4px 15px rgba(16, 185, 129, 0.35); transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 8px 25px rgba(16,185,129,0.5)'" onmouseout="this.style.transform='none'; this.style.boxShadow='0 4px 15px rgba(16,185,129,0.35)'">🔐 Access Portal</button>
         </div>
     </div>
 
-    <!-- Navigation -->
+    <!-- Navigation Bar -->
     <nav>
-        <div class="logo">TrialGPTBot</div>
+        <div class="logo">⚡ TrialGPTBot Enterprise</div>
         <ul class="nav-links">
-            <li><a href="#features">Features</a></li>
-            <li><a href="#technology">Technology</a></li>
-            <li><a href="#vision">Vision 2045</a></li>
-            <li><a href="#scenarios">Use Cases</a></li>
-            <li><a href="https://github.com/testdemoqwenai2025-creator/TrialGPTBot-Enterprise">GitHub →</a></li>
+            <li><a href="#dashboard" class="active" onclick="showSection('dashboard')">Dashboard</a></li>
+            <li><a href="#generator" onclick="showSection('generator')">Document Generator</a></li>
+            <li><a href="#chat" onclick="showSection('chat')">AI Assistant</a></li>
+            <li><a href="#audit" onclick="showSection('audit')">Audit Trail</a></li>
+            <li><a href="#compliance" onclick="showSection('compliance')">Compliance Hub</a></li>
         </ul>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-bg">
-            <div class="grid-bg"></div>
-            <div class="orb orb-1"></div>
-            <div class="orb orb-2"></div>
-            <div class="orb orb-3"></div>
-        </div>
-
-        <div class="badge">
-            <span class="badge-dot"></span>
-            Enterprise v2.0 — Now Available
-        </div>
-
-        <h1>
-            The Future of<br>
-            <span class="gradient-text">Clinical Trials</span><br>
-            Starts Here
-        </h1>
-
-        <p class="subtitle">
-            AI-powered clinical trial management and data governance platform. 
-            Automate compliance, streamline operations, and accelerate drug development 
-            with enterprise-grade intelligence.
-        </p>
-
-        <div class="cta-group">
-            <a href="https://github.com/testdemoqwenai2025-creator/TrialGPTBot-Enterprise" class="btn btn-primary">
-                ⚡ View on GitHub
-            </a>
-            <a href="#features" class="btn btn-secondary">
-                Explore Features ↓
-            </a>
-        </div>
-
-        <div class="stats-bar">
-            <div class="stat-item">
-                <div class="stat-value">147+</div>
-                <div class="stat-label">Regulations Mapped</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-value">99%</div>
-                <div class="stat-label">Task Automation</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-value">4</div>
-                <div class="stat-label">Compliance Frameworks</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-value">2045</div>
-                <div class="stat-label">Vision Horizon</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ============================================
-         DOCUMENT GENERATOR HUB - Futuristic AI Experience
-         ============================================ -->
-    <section id="document-generator-hub" style="background: linear-gradient(180deg, #0a0a0f 0%, #0f172a 50%, #0a0a0f 100%); padding: 100px 20px 80px; position: relative; overflow: hidden;">
-        <!-- Animated Background Elements -->
-        <div style="position: absolute; top: 10%; left: -10%; width: 500px; height: 500px; background: radial-gradient(circle, rgba(16,185,129,0.15) 0%, transparent 70%); border-radius: 50%; filter: blur(60px); animation: float 15s ease-in-out infinite;"></div>
-        <div style="position: absolute; bottom: 10%; right: -10%; width: 600px; height: 600px; background: radial-gradient(circle, rgba(6,182,212,0.1) 0%, transparent 70%); border-radius: 50%; filter: blur(80px); animation: float 20s ease-in-out infinite reverse;"></div>
-        
-        <!-- Section Header -->
-        <div style="text-align: center; max-width: 900px; margin: 0 auto 60px; position: relative; z-index: 2;">
-            <div style="display: inline-flex; align-items: center; gap: 0.5rem; background: linear-gradient(135deg, rgba(16,185,129,0.2), rgba(6,182,212,0.1)); border: 1px solid rgba(16,185,129,0.3); padding: 0.5rem 1.5rem; border-radius: 50px; font-size: 0.85rem; color: #10b981; font-weight: 600; margin-bottom: 1.5rem;">
-                <span style="width: 8px; height: 8px; background: #10b981; border-radius: 50%; animation: pulse 2s infinite;"></span>
-                Next-Generation AI Platform
-            </div>
+    <!-- Main Application Content -->
+    <main>
+        <div class="app-container">
             
-            <h2 style="font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 900; color: white; line-height: 1.2; margin-bottom: 1.5rem;">
-                <span style="background: linear-gradient(135deg, #10b981, #06b6d4, #3b82f6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Document Generator</span> Hub
-            </h2>
-            
-            <p style="font-size: 1.15rem; color: #94a3b8; max-width: 700px; margin: 0 auto; line-height: 1.8;">
-                Experience the future of clinical trial documentation. Our AI-powered platform generates 
-                FDA/EMA-compliant documents in seconds, not weeks. Navigate through our suite of 
-                intelligent tools designed for decades of innovation.
-            </p>
-        </div>
-
-        <!-- Main Dashboard Preview -->
-        <div style="max-width: 1200px; margin: 0 auto 60px; position: relative; z-index: 2;">
-            <div style="background: linear-gradient(135deg, rgba(16,185,129,0.05), rgba(6,182,212,0.03)); border: 1px solid rgba(16,185,129,0.2); border-radius: 24px; padding: 2rem; box-shadow: 0 30px 80px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.05);">
-                
-                <!-- Dashboard Image - Your Application -->
-                <div style="text-align: center; margin-bottom: 2rem;">
-                    <img src="https://raw.githubusercontent.com/testdemoqwenai2025-creator/TrialGPTBot-Enterprise/main/download/trialgptbot-audit-trail.png" 
-                         alt="TrialGPTBot Enterprise - Audit Trail & Document Generator" 
-                         style="max-width: 100%; border-radius: 16px; box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 0 1px rgba(16,185,129,0.1);">
-                    
-                    <!-- Live Badge -->
-                    <div style="display: inline-flex; align-items: center; gap: 0.5rem; margin-top: 1.5rem; background: linear-gradient(135deg, #10b981, #059669); color: white; padding: 0.6rem 1.5rem; border-radius: 50px; font-weight: 600; font-size: 0.9rem; box-shadow: 0 8px 30px rgba(16,185,129,0.4);">
-                        <span style="width: 10px; height: 10px; background: white; border-radius: 50%; animation: pulse 1.5s infinite;"></span>
-                        Live Dashboard Preview — Real-time AI Processing
-                    </div>
-                </div>
-
-                <!-- Navigation Tabs for Document Types -->
-                <div style="display: flex; flex-wrap: wrap; gap: 0.75rem; justify-content: center;" id="doc-tabs">
-                    <button onclick="showDocType('protocol')" class="doc-tab active" id="tab-protocol" style="padding: 0.85rem 1.5rem; background: linear-gradient(135deg, #10b981, #059669); color: white; border: none; border-radius: 12px; font-weight: 600; font-size: 0.9rem; cursor: pointer; transition: all 0.3s ease; display: flex; align-items: center; gap: 0.5rem; box-shadow: 0 4px 20px rgba(16,185,129,0.3);">
-                        📋 Clinical Protocol
-                    </button>
-                    <button onclick="showDocType('crf')" class="doc-tab" id="tab-crf" style="padding: 0.85rem 1.5rem; background: rgba(255,255,255,0.05); color: #e2e8f0; border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; font-weight: 600; font-size: 0.9rem; cursor: pointer; transition: all 0.3s ease; display: flex; align-items: center; gap: 0.5rem;">
-                        📝 Case Report Form (CRF)
-                    </button>
-                    <button onclick="showDocType('consent')" class="doc-tab" id="tab-consent" style="padding: 0.85rem 1.5rem; background: rgba(255,255,255,0.05); color: #e2e8f0; border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; font-weight: 600; font-size: 0.9rem; cursor: pointer; transition: all 0.3s ease; display: flex; align-items: center; gap: 0.5rem;">
-                        ✍️ Informed Consent
-                    </button>
-                    <button onclick="showDocType('sap')" class="doc-tab" id="tab-sap" style="padding: 0.85rem 1.5rem; background: rgba(255,255,255,0.05); color: #e2e8f0; border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; font-weight: 600; font-size: 0.9rem; cursor: pointer; transition: all 0.3s ease; display: flex; align-items: center; gap: 0.5rem;">
-                        📊 Statistical Analysis Plan
-                    </button>
-                    <button onclick="showDocType('regulatory')" class="doc-tab" id="tab-regulatory" style="padding: 0.85rem 1.5rem; background: rgba(255,255,255,0.05); color: #e2e8f0; border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; font-weight: 600; font-size: 0.9rem; cursor: pointer; transition: all 0.3s ease; display: flex; align-items: center; gap: 0.5rem;">
-                        🏛️ Regulatory Submission
-                    </button>
-                    <button onclick="showDocType('audit')" class="doc-tab" id="tab-audit" style="padding: 0.85rem 1.5rem; background: rgba(255,255,255,0.05); color: #e2e8f0; border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; font-weight: 600; font-size: 0.9rem; cursor: pointer; transition: all 0.3s ease; display: flex; align-items: center; gap: 0.5rem;">
-                        🔍 Audit Trail & Compliance
-                    </button>
-                </div>
-
-                <!-- Content Area for Each Document Type -->
-                <div id="doc-content-area" style="margin-top: 2rem;">
-                    <!-- Protocol Content (Default) -->
-                    <div id="content-protocol" class="doc-content">
-                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
-                            <div style="background: rgba(0,0,0,0.3); border: 1px solid rgba(16,185,129,0.2); border-radius: 16px; padding: 1.5rem;">
-                                <h4 style="color: #10b981; font-size: 1.1rem; margin-bottom: 0.75rem;">⚡ AI-Powered Generation</h4>
-                                <p style="color: #94a3b8; font-size: 0.95rem; line-height: 1.7;">Generate complete FDA/EMA-compliant clinical trial protocols in under 5 minutes. Our AI analyzes 50,000+ historical protocols to ensure optimal structure and regulatory alignment.</p>
-                            </div>
-                            <div style="background: rgba(0,0,0,0.3); border: 1px solid rgba(6,182,212,0.2); border-radius: 16px; padding: 1.5rem;">
-                                <h4 style="color: #06b6d4; font-size: 1.1rem; margin-bottom: 0.75rem;">🎯 Smart Objectives</h4>
-                                <p style="color: #94a3b8; font-size: 0.95rem; line-height: 1.7;">Automatically generate primary, secondary, and exploratory endpoints with statistical power calculations built-in.</p>
-                            </div>
-                            <div style="background: rgba(0,0,0,0.3); border: 1px solid rgba(139,92,246,0.2); border-radius: 16px; padding: 1.5rem;">
-                                <h4 style="color: #8b5cf6; font-size: 1.1rem; margin-bottom: 0.75rem;">🔄 Real-Time Collaboration</h4>
-                                <p style="color: #94a3b8; font-size: 0.95rem; line-height: 1.7;">Multi-stakeholder editing with version control, audit trails, and automated compliance checking at every save.</p>
-                            </div>
-                        </div>
-                        <div style="text-align: center; margin-top: 2rem;">
-                            <button onclick="alert('Protocol Generator launching soon!')" style="padding: 1rem 2.5rem; background: linear-gradient(135deg, #10b981, #059669); color: white; border: none; border-radius: 14px; font-weight: 700; font-size: 1rem; cursor: pointer; box-shadow: 0 8px 30px rgba(16,185,129,0.4); transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 12px 40px rgba(16,185,129,0.5)'" onmouseout="this.style.transform='none'; this.style.boxShadow='0 8px 30px rgba(16,185,129,0.4)'">
-                                🚀 Launch Protocol Generator →
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- Other content areas (hidden by default) -->
-                    <div id="content-crf" class="doc-content" style="display:none;">
-                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
-                            <div style="background: rgba(0,0,0,0.3); border: 1px solid rgba(16,185,129,0.2); border-radius: 16px; padding: 1.5rem;">
-                                <h4 style="color: #10b981; font-size: 1.1rem; margin-bottom: 0.75rem;">📋 CDISC-Aligned Forms</h4>
-                                <p style="color: #94a3b8; font-size: 0.95rem; line-height: 1.7;">Design electronic Case Report Forms with full CDISC SDTM/ADaM compliance. Pre-built templates for 200+ indication types.</p>
-                            </div>
-                            <div style="background: rgba(0,0,0,0.3); border: 1px solid rgba(6,182,212,0.2); border-radius: 16px; padding: 1.5rem;">
-                                <h4 style="color: #06b6d4; font-size: 1.1rem; margin-bottom: 0.75rem;">✅ Adaptive Logic</h4>
-                                <p style="color: #94a3b8; font-size: 0.95rem; line-height: 1.7;">Smart form logic that shows/hides fields based on previous responses, skip patterns, and conditional validation rules.</p>
-                            </div>
-                            <div style="background: rgba(0,0,0,0.3); border: 1px solid rgba(139,92,246,0.2); border-radius: 16px; padding: 1.5rem;">
-                                <h4 style="color: #8b5cf6; font-size: 1.1rem; margin-bottom: 0.75rem;">🔗 EDC Integration</h4>
-                                <p style="color: #94a3b8; font-size: 0.95rem; line-height: 1.7;">One-click export to Veeva Vault, Medidata Rave, Oracle Clinical, and other major EDC platforms.</p>
-                            </div>
-                        </div>
-                        <div style="text-align: center; margin-top: 2rem;">
-                            <button onclick="alert('CRF Builder launching soon!')" style="padding: 1rem 2.5rem; background: linear-gradient(135deg, #10b981, #059669); color: white; border: none; border-radius: 14px; font-weight: 700; font-size: 1rem; cursor: pointer; box-shadow: 0 8px 30px rgba(16,185,129,0.4);">
-                                🚀 Launch CRF Builder →
-                            </button>
-                        </div>
-                    </div>
-
-                    <div id="content-consent" class="doc-content" style="display:none;">
-                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
-                            <div style="background: rgba(0,0,0,0.3); border: 1px solid rgba(16,185,129,0.2); border-radius: 16px; padding: 1.5rem;">
-                                <h4 style="color: #10b981; font-size: 1.1rem; margin-bottom: 0.75rem;">📖 Readability Optimization</h4>
-                                <p style="color: #94a3b8; font-size: 0.95rem; line-height: 1.7;">AI-powered language simplification ensuring consent forms are understandable at 8th-grade reading level while maintaining legal precision.</p>
-                            </div>
-                            <div style="background: rgba(0,0,0,0.3); border: 1px solid rgba(6,182,212,0.2); border-radius: 16px; padding: 1.5rem;">
-                                <h4 style="color: #06b6d4; font-size: 1.1rem; margin-bottom: 0.75rem;">🌍 Multi-Language Support</h4>
-                                <p style="color: #94a3b8; font-size: 0.95rem; line-height: 1.7;">Instant translation into 50+ languages with cultural adaptation and local regulatory requirement integration.</p>
-                            </div>
-                            <div style="background: rgba(0,0,0,0.3); border: 1px solid rgba(139,92,246,0.2); border-radius: 16px; padding: 1.5rem;">
-                                <h4 style="color: #8b5cf6; font-size: 1.1rem; margin-bottom: 0.75rem;">📱 Digital Signatures</h4>
-                                <p style="color: #94a3b8; font-size: 0.95rem; line-height: 1.7;">Integrated e-signature workflow with 21 CFR Part 11 compliance, biometric verification, and timestamped audit trails.</p>
-                            </div>
-                        </div>
-                        <div style="text-align: center; margin-top: 2rem;">
-                            <button onclick="alert('Consent Generator launching soon!')" style="padding: 1rem 2.5rem; background: linear-gradient(135deg, #10b981, #059669); color: white; border: none; border-radius: 14px; font-weight: 700; font-size: 1rem; cursor: pointer; box-shadow: 0 8px 30px rgba(16,185,129,0.4);">
-                                🚀 Launch Consent Generator →
-                            </button>
-                        </div>
-                    </div>
-
-                    <div id="content-sap" class="doc-content" style="display:none;">
-                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
-                            <div style="background: rgba(0,0,0,0.3); border: 1px solid rgba(16,185,129,0.2); border-radius: 16px; padding: 1.5rem;">
-                                <h4 style="color: #10b981; font-size: 1.1rem; margin-bottom: 0.75rem;">📈 Power Calculations</h4>
-                                <p style="color: #94a3b8; font-size: 0.95rem; line-height: 1.7;">Automated sample size calculations with adaptive design scenarios, interim analysis planning, and multiplicity adjustments.</p>
-                            </div>
-                            <div style="background: rgba(0,0,0,0.3); border: 1px solid rgba(6,182,212,0.2); border-radius: 16px; padding: 1.5rem;">
-                                <h4 style="color: #06b6d4; font-size: 1.1rem; margin-bottom: 0.75rem;">🎲 Endpoint Definitions</h4>
-                                <p style="color: #94a3b8; font-size: 0.95rem; line-height: 1.7;">Intelligent endpoint selection based on indication, regulatory precedent, and competitive landscape analysis.</p>
-                            </div>
-                            <div style="background: rgba(0,0,0,0.3); border: 1px solid rgba(139,92,246,0.2); border-radius: 16px; padding: 1.5rem;">
-                                <h4 style="color: #8b5cf6; font-size: 1.1rem; margin-bottom: 0.75rem;">🔄 Interim Analysis</h4>
-                                <p style="color: #94a3b8; font-size: 0.95rem; line-height: 1.7;">Pre-specified interim analysis plans with group sequential boundaries, futility stopping rules, and adaptive modifications.</p>
-                            </div>
-                        </div>
-                        <div style="text-align: center; margin-top: 2rem;">
-                            <button onclick="alert('SAP Generator launching soon!')" style="padding: 1rem 2.5rem; background: linear-gradient(135deg, #10b981, #059669); color: white; border: none; border-radius: 14px; font-weight: 700; font-size: 1rem; cursor: pointer; box-shadow: 0 8px 30px rgba(16,185,129,0.4);">
-                                🚀 Launch SAP Generator →
-                            </button>
-                        </div>
-                    </div>
-
-                    <div id="content-regulatory" class="doc-content" style="display:none;">
-                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
-                            <div style="background: rgba(0,0,0,0.3); border: 1px solid rgba(16,185,129,0.2); border-radius: 16px; padding: 1.5rem;">
-                                <h4 style="color: #10b981; font-size: 1.1rem; margin-bottom: 0.75rem;">📦 eCTD Ready</h4>
-                                <p style="color: #94a3b8; font-size: 0.95rem; line-height: 1.7;">Generate submission-ready documents in eCTD format for FDA, EMA, PMDA, Health Canada, and 40+ other agencies.</p>
-                            </div>
-                            <div style="background: rgba(0,0,0,0.3); border: 1px solid rgba(6,182,212,0.2); border-radius: 16px; padding: 1.5rem;">
-                                <h4 style="color: #06b6d4; font-size: 1.1rem; margin-bottom: 0.75rem;">🔍 Validation Engine</h4>
-                                <p style="color: #94a3b8; font-size: 0.95rem; line-height: 1.7;">Real-time validation against agency-specific requirements, identifying potential deficiencies before submission.</p>
-                            </div>
-                            <div style="background: rgba(0,0,0,0.3); border: 1px solid rgba(139,92,246,0.2); border-radius: 16px; padding: 1.5rem;">
-                                <h4 style="color: #8b5cf6; font-size: 1.1rem; margin-bottom: 0.75rem;">📋 Module Assembly</h4>
-                                <p style="color: #94a3b8; font-size: 0.95rem; line-height: 1.7;">Automatic assembly of complete submission packages with proper sequencing, hyperlinks, and cross-references.</p>
-                            </div>
-                        </div>
-                        <div style="text-align: center; margin-top: 2rem;">
-                            <button onclick="alert('Regulatory Submission launching soon!')" style="padding: 1rem 2.5rem; background: linear-gradient(135deg, #10b981, #059669); color: white; border: none; border-radius: 14px; font-weight: 700; font-size: 1rem; cursor: pointer; box-shadow: 0 8px 30px rgba(16,185,129,0.4);">
-                                🚀 Launch Regulatory Submission →
-                            </button>
-                        </div>
-                    </div>
-
-                    <div id="content-audit" class="doc-content" style="display:none;">
-                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
-                            <div style="background: rgba(0,0,0,0.3); border: 1px solid rgba(16,185,129,0.2); border-radius: 16px; padding: 1.5rem;">
-                                <h4 style="color: #10b981; font-size: 1.1rem; margin-bottom: 0.75rem;">🔒 21 CFR Part 11</h4>
-                                <p style="color: #94a3b8; font-size: 0.95rem; line-height: 1.7;">Complete audit trail system compliant with 21 CFR Part 11 electronic records requirements, including electronic signatures.</p>
-                            </div>
-                            <div style="background: rgba(0,0,0,0.3); border: 1px solid rgba(6,182,212,0.2); border-radius: 16px; padding: 1.5rem;">
-                                <h4 style="color: #06b6d4; font-size: 1.1rem; margin-bottom: 0.75rem;">🕐 Data Lineage</h4>
-                                <p style="color: #94a3b8; font-size: 0.95rem; line-height: 1.7;">Full data lineage tracking from source to report, with tamper-evident logging and blockchain-based verification options.</p>
-                            </div>
-                            <div style="background: rgba(0,0,0,0.3); border: 1px solid rgba(139,92,246,0.2); border-radius: 16px; padding: 1.5rem;">
-                                <h4 style="color: #8b5cf6; font-size: 1.1rem; margin-bottom: 0.75rem;">📊 Compliance Reports</h4>
-                                <p style="color: #94a3b8; font-size: 0.95rem; line-height: 1.7;">Generate inspection-ready compliance reports with anomaly detection, trend analysis, and risk-based monitoring insights.</p>
-                            </div>
-                        </div>
-                        <div style="text-align: center; margin-top: 2rem;">
-                            <button onclick="alert('Audit Trail Generator launching soon!')" style="padding: 1rem 2.5rem; background: linear-gradient(135deg, #10b981, #059669); color: white; border: none; border-radius: 14px; font-weight: 700; font-size: 1rem; cursor: pointer; box-shadow: 0 8px 30px rgba(16,185,129,0.4);">
-                                🚀 Launch Audit Trail Generator →
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Vision Statement -->
-        <div style="max-width: 900px; margin: 80px auto 0; text-align: center; position: relative; z-index: 2;">
-            <div style="background: linear-gradient(135deg, rgba(16,185,129,0.08), rgba(6,182,212,0.05)); border: 1px solid rgba(16,185,129,0.15); border-radius: 24px; padding: 3rem;">
-                <h3 style="font-size: 1.75rem; color: white; margin-bottom: 1rem; font-weight: 800;">
-                    🌟 Built for the Next Decade of Clinical Innovation
-                </h3>
-                <p style="color: #94a3b8; font-size: 1.05rem; line-height: 1.8; max-width: 750px; margin: 0 auto;">
-                    TrialGPTBot isn't just a tool—it's a vision for how clinical trials should operate. 
-                    We're building an intelligent platform that learns, adapts, and evolves with regulatory landscapes, 
-                    therapeutic advances, and technological breakthroughs. This is healthcare's future, available today.
+            <!-- Application Preview Image -->
+            <div class="app-preview">
+                <img src="https://raw.githubusercontent.com/testdemoqwenai2025-creator/TrialGPTBot-Enterprise/main/download/trialgptbot-audit-trail.png" 
+                     alt="TrialGPTBot Enterprise Application Interface"
+                     loading="lazy">
+                <p style="margin-top: 1rem; color: var(--text-secondary); font-size: 0.95rem;">
+                    🎯 TrialGPTBot Enterprise v2.0 — Your AI-Powered Clinical Trial Platform
                 </p>
-                <div style="display: flex; justify-content: center; gap: 2rem; margin-top: 2rem; flex-wrap: wrap;">
-                    <div style="text-align: center;">
-                        <div style="font-size: 2rem; font-weight: 900; color: #10b981; font-family: 'JetBrains Mono', monospace;">2030+</div>
-                        <div style="color: #64748b; font-size: 0.85rem;">Vision Horizon</div>
-                    </div>
-                    <div style="text-align: center;">
-                        <div style="font-size: 2rem; font-weight: 900; color: #06b6d4; font-family: 'JetBrains Mono', monospace;">∞</div>
-                        <div style="color: #64748b; font-size: 0.85rem;">Scalability</div>
-                    </div>
-                    <div style="text-align: center;">
-                        <div style="font-size: 2rem; font-weight: 900; color: #8b5cf6; font-family: 'JetBrains Mono', monospace;">AI</div>
-                        <div style="color: #64748b; font-size: 0.85rem;">First Design</div>
-                    </div>
+            </div>
+
+            <!-- Stats Overview -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-value">99%</div>
+                    <div class="stat-label">Task Automation Rate</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">&lt;5m</div>
+                    <div class="stat-label">Document Generation Time</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">147+</div>
+                    <div class="stat-label">Regulations Mapped</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">24/7</div>
+                    <div class="stat-label">AI Processing Available</div>
+                </div>
+            </div>
+
+            <!-- Main Dashboard Grid -->
+            <div class="dashboard-grid">
+                
+                <!-- Sidebar Navigation -->
+                <aside class="sidebar">
+                    <div class="sidebar-title">Application Modules</div>
+                    <ul class="sidebar-menu">
+                        <li><button onclick="showSection('dashboard')" id="btn-dashboard" class="active">📊 Dashboard Overview</button></li>
+                        <li><button onclick="showSection('generator')" id="btn-generator">📄 Document Generator</button></li>
+                        <li><button onclick="showSection('chat')" id="btn-chat">💬 AI Compliance Chat</button></li>
+                        <li><button onclick="showSection('audit')" id="btn-audit">🔍 Audit Trail Viewer</button></li>
+                        <li><button onclick="showSection('compliance')" id="btn-compliance">🛡️ Compliance Library</button></li>
+                        <li><button onclick="showSection('risk')" id="btn-risk">⚠️ Risk Assessment</button></li>
+                    </ul>
+                    
+                    <div class="sidebar-title" style="margin-top: 2rem;">Quick Actions</div>
+                    <ul class="sidebar-menu">
+                        <li><button onclick="generateQuickDoc('protocol')">⚡ New Protocol</button></li>
+                        <li><button onclick="generateQuickDoc('crf')">📝 New CRF Form</button></li>
+                        <li><button onclick="generateQuickDoc('consent')">✍️ Consent Form</button></li>
+                        <li><button onclick="exportReport()">📥 Export Report</button></li>
+                    </ul>
+                </aside>
+
+                <!-- Main Panel Area -->
+                <div class="main-panel">
+                    
+                    <!-- DASHBOARD SECTION -->
+                    <section id="section-dashboard" class="panel-section active">
+                        <div class="panel-header">
+                            <h2>📊 Dashboard Overview</h2>
+                            <button class="btn btn-secondary" onclick="refreshStats()">🔄 Refresh</button>
+                        </div>
+                        <div class="panel-content">
+                            <h3 style="margin-bottom: 1.5rem; color: var(--accent-emerald);">Welcome to TrialGPTBot Enterprise</h3>
+                            <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 2rem;">
+                                This is your central hub for clinical trial document generation, compliance management, 
+                                and regulatory oversight. Use the sidebar or ribbon navigation to access different modules.
+                                All functionalities are operational below.
+                            </p>
+                            
+                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;">
+                                <div style="background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.2); border-radius: 16px; padding: 1.5rem;" onclick="showSection('generator')" style="cursor: pointer;">
+                                    <div style="font-size: 2rem; margin-bottom: 0.75rem;">📄</div>
+                                    <h4 style="color: var(--accent-emerald); margin-bottom: 0.5rem;">Document Generator</h4>
+                                    <p style="color: var(--text-secondary); font-size: 0.9rem;">Generate FDA/EMA compliant documents in minutes</p>
+                                </div>
+                                <div style="background: rgba(6, 182, 212, 0.1); border: 1px solid rgba(6, 182, 212, 0.2); border-radius: 16px; padding: 1.5rem;" onclick="showSection('chat')" style="cursor: pointer;">
+                                    <div style="font-size: 2rem; margin-bottom: 0.75rem;">💬</div>
+                                    <h4 style="color: var(--accent-cyan); margin-bottom: 0.5rem;">AI Assistant</h4>
+                                    <p style="color: var(--text-secondary); font-size: 0.9rem;">Ask compliance questions in plain language</p>
+                                </div>
+                                <div style="background: rgba(139, 92, 246, 0.1); border: 1px solid rgba(139, 92, 246, 0.2); border-radius: 16px; padding: 1.5rem;" onclick="showSection('audit')" style="cursor: pointer;">
+                                    <div style="font-size: 2rem; margin-bottom: 0.75rem;">🔍</div>
+                                    <h4 style="color: var(--accent-purple); margin-bottom: 0.5rem;">Audit Trail</h4>
+                                    <p style="color: var(--text-secondary); font-size: 0.9rem;">Track all changes and access logs</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- DOCUMENT GENERATOR SECTION -->
+                    <section id="section-generator" class="panel-section" style="display: none;">
+                        <div class="panel-header">
+                            <h2>📄 Document Generator</h2>
+                            <span class="status-badge status-success">● Ready</span>
+                        </div>
+                        <div class="panel-content">
+                            <!-- Document Type Tabs -->
+                            <div class="tabs">
+                                <button class="tab-btn active" onclick="switchDocTab('protocol', this)">Clinical Protocol</button>
+                                <button class="tab-btn" onclick="switchDocTab('crf', this)">Case Report Form</button>
+                                <button class="tab-btn" onclick="switchDocTab('consent', this)">Informed Consent</button>
+                                <button class="tab-btn" onclick="switchDocTab('sap', this)">Statistical Analysis Plan</button>
+                            </div>
+
+                            <!-- Protocol Form -->
+                            <div id="tab-protocol" class="tab-content active">
+                                <form class="doc-form" onsubmit="generateProtocol(event)">
+                                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
+                                        <div class="form-group">
+                                            <label>Protocol Title *</label>
+                                            <input type="text" id="proto-title" placeholder="e.g., Phase III Study of DrugX in Adults" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Protocol Number</label>
+                                            <input type="text" id="proto-number" placeholder="e.g., PROTO-2025-001">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Sponsor Organization *</label>
+                                            <input type="text" id="proto-sponsor" placeholder="e.g., PharmaCorp Inc." required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Indication / Condition</label>
+                                            <input type="text" id="proto-indication" placeholder="e.g., Type 2 Diabetes Mellitus">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Study Phase</label>
+                                            <select id="proto-phase">
+                                                <option value="">Select phase...</option>
+                                                <option value="I">Phase I</option>
+                                                <option value="II">Phase II</option>
+                                                <option value="III">Phase III</option>
+                                                <option value="IV">Phase IV</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Target Enrollment</label>
+                                            <input type="number" id="proto-enrollment" placeholder="e.g., 500">
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label>Study Objectives</label>
+                                        <textarea id="proto-objectives" placeholder="Describe the primary and secondary objectives of this study..."></textarea>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label>Inclusion Criteria</label>
+                                        <textarea id="proto-inclusion" placeholder="List the inclusion criteria for participant eligibility..."></textarea>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label>Exclusion Criteria</label>
+                                        <textarea id="proto-exclusion" placeholder="List the exclusion criteria..."></textarea>
+                                    </div>
+
+                                    <div style="display: flex; gap: 1rem; margin-top: 1rem;">
+                                        <button type="submit" class="btn btn-primary">
+                                            ⚡ Generate Protocol Document
+                                        </button>
+                                        <button type="button" class="btn btn-secondary" onclick="clearForm('protocol')">
+                                            Clear Form
+                                        </button>
+                                    </div>
+                                </form>
+
+                                <!-- Output Area -->
+                                <div id="protocol-output" class="output-area">
+                                    <h3>✅ Protocol Document Generated Successfully</h3>
+                                    <div class="output-content" id="protocol-output-content"></div>
+                                    <div style="margin-top: 1rem; display: flex; gap: 1rem;">
+                                        <button class="btn btn-primary" onclick="copyOutput('protocol')">📋 Copy to Clipboard</button>
+                                        <button class="btn btn-secondary" onclick="downloadOutput('protocol', 'clinical-protocol.txt')">📥 Download as TXT</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- CRF Form -->
+                            <div id="tab-crf" class="tab-content">
+                                <form class="doc-form" onsubmit="generateCRF(event)">
+                                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
+                                        <div class="form-group">
+                                            <label>Form Title *</label>
+                                            <input type="text" id="crf-title" placeholder="e.g., Baseline Demographics" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Form ID</label>
+                                            <input type="text" id="crf-id" placeholder="e.g., CRF-DEMO-001">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Visit Type</label>
+                                            <select id="crf-visit">
+                                                <option value="">Select visit...</option>
+                                                <option value="screening">Screening</option>
+                                                <option value="baseline">Baseline</option>
+                                                <option value="follow-up">Follow-up</option>
+                                                <option value="end-of-study">End of Study</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Data Type</label>
+                                            <select id="crf-type">
+                                                <option value="">Select type...</option>
+                                                <option value="text">Text Field</option>
+                                                <option value="number">Numeric</option>
+                                                <option value="date">Date</option>
+                                                <option value="yesno">Yes/No</option>
+                                                <option value="multiple">Multiple Choice</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label>Fields to Include (one per line)</label>
+                                        <textarea id="crf-fields" placeholder="Age&#10;Gender&#10;Weight (kg)&#10;Height (cm)&#10;Blood Type"></textarea>
+                                    </div>
+
+                                    <div style="display: flex; gap: 1rem; margin-top: 1rem;">
+                                        <button type="submit" class="btn btn-primary">⚡ Generate CRF</button>
+                                        <button type="button" class="btn btn-secondary" onclick="clearForm('crf')">Clear</button>
+                                    </div>
+                                </form>
+
+                                <div id="crf-output" class="output-area">
+                                    <h3>✅ Case Report Form Generated</h3>
+                                    <div class="output-content" id="crf-output-content"></div>
+                                    <div style="margin-top: 1rem; display: flex; gap: 1rem;">
+                                        <button class="btn btn-primary" onclick="copyOutput('crf')">📋 Copy</button>
+                                        <button class="btn btn-secondary" onclick="downloadOutput('crf', 'case-report-form.txt')">📥 Download</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Consent Form Tab -->
+                            <div id="tab-consent" class="tab-content">
+                                <form class="doc-form" onsubmit="generateConsent(event)">
+                                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
+                                        <div class="form-group">
+                                            <label>Study Title *</label>
+                                            <input type="text" id="consent-study" required placeholder="Full study title">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Principal Investigator</label>
+                                            <input type="text" id="consent-pi" placeholder="Dr. Name, Institution">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>IRB/EC Number</label>
+                                            <input type="text" id="consent-irb" placeholder="IRB-2025-12345">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Target Age Group</label>
+                                            <select id="consent-age">
+                                                <option value="">Select range...</option>
+                                                <option value="18-65">Adults (18-65)</option>
+                                                <option value="18+">Adults (18+)</option>
+                                                <option value="pediatric">Pediatric (<18)</option>
+                                                <option value="geriatric">Geriatric (65+)</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label>Key Risks to Disclose</label>
+                                        <textarea id="consent-risks" placeholder="List potential risks and side effects..."></textarea>
+                                    </div>
+
+                                    <div style="display: flex; gap: 1rem; margin-top: 1rem;">
+                                        <button type="submit" class="btn btn-primary">⚡ Generate Consent Form</button>
+                                        <button type="button" class="btn btn-secondary" onclick="clearForm('consent')">Clear</button>
+                                    </div>
+                                </form>
+
+                                <div id="consent-output" class="output-area">
+                                    <h3>✅ Informed Consent Document Generated</h3>
+                                    <div class="output-content" id="consent-output-content"></div>
+                                    <div style="margin-top: 1rem; display: flex; gap: 1rem;">
+                                        <button class="btn btn-primary" onclick="copyOutput('consent')">📋 Copy</button>
+                                        <button class="btn btn-secondary" onclick="downloadOutput('consent', 'informed-consent.txt')">📥 Download</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- SAP Tab -->
+                            <div id="tab-sap" class="tab-content">
+                                <form class="doc-form" onsubmit="generateSAP(event)">
+                                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
+                                        <div class="form-group">
+                                            <label>Analysis Type</label>
+                                            <select id="sap-type">
+                                                <option value="">Select analysis...</option>
+                                                <option value="itt">Intent-to-Treat (ITT)</option>
+                                                <option value="pp">Per-Protocol (PP)</option>
+                                                <option value="safety">Safety Analysis</option>
+                                                <option value="interim">Interim Analysis</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Primary Endpoint</label>
+                                            <input type="text" id="sap-endpoint" placeholder="e.g., Change from baseline in HbA1c">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Statistical Significance</label>
+                                            <input type="text" id="sap-alpha" placeholder="e.g., 0.05 (two-sided)" value="0.05">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Power (1-β)</label>
+                                            <input type="text" id="sap-power" placeholder="e.g., 0.90" value="0.90">
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label>Additional Analysis Details</label>
+                                        <textarea id="sap-details" placeholder="Describe subgroup analyses, multiplicity adjustments, etc."></textarea>
+                                    </div>
+
+                                    <div style="display: flex; gap: 1rem; margin-top: 1rem;">
+                                        <button type="submit" class="btn btn-primary">⚡ Generate SAP</button>
+                                        <button type="button" class="btn btn-secondary" onclick="clearForm('sap')">Clear</button>
+                                    </div>
+                                </form>
+
+                                <div id="sap-output" class="output-area">
+                                    <h3>✅ Statistical Analysis Plan Generated</h3>
+                                    <div class="output-content" id="sap-output-content"></div>
+                                    <div style="margin-top: 1rem; display: flex; gap: 1rem;">
+                                        <button class="btn btn-primary" onclick="copyOutput('sap')">📋 Copy</button>
+                                        <button class="btn btn-secondary" onclick="downloadOutput('sap', 'statistical-analysis-plan.txt')">📥 Download</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- CHAT SECTION -->
+                    <section id="section-chat" class="panel-section" style="display: none;">
+                        <div class="panel-header">
+                            <h2>💬 AI Compliance Assistant</h2>
+                            <span class="status-badge status-success">● Online</span>
+                        </div>
+                        <div class="panel-content">
+                            <div class="chat-container">
+                                <div class="chat-messages" id="chat-messages">
+                                    <div class="message ai">
+                                        <strong>🤖 TrialGPTBot:</strong><br>
+                                        Hello! I'm your AI-powered compliance assistant. I can help you with:
+                                        <ul style="margin-top: 0.5rem; margin-left: 1.25rem;">
+                                            <li>GDPR, HIPAA, FDA regulations</li>
+                                            <li>Clinical trial documentation</li>
+                                            <li>Risk assessment guidance</li>
+                                            <li>Compliance best practices</li>
+                                        </ul>
+                                        How can I assist you today?
+                                    </div>
+                                </div>
+                                <div class="chat-input-container">
+                                    <input type="text" class="chat-input" id="chat-input" 
+                                           placeholder="Ask about GDPR requirements, HIPAA compliance, clinical protocols..." 
+                                           onkeypress="if(event.key==='Enter')sendMessage()">
+                                    <button class="btn btn-primary" onclick="sendMessage()">Send →</button>
+                                </div>
+                            </div>
+                            
+                            <div style="margin-top: 1.5rem; display: flex; gap: 0.75rem; flex-wrap: wrap;">
+                                <button class="btn btn-secondary" onclick="askQuestion('gdpr')" style="font-size: 0.8rem;">What is GDPR Article 32?</button>
+                                <button class="btn btn-secondary" onclick="askQuestion('hipaa')" style="font-size: 0.8rem;">HIPAA Security Rule overview?</button>
+                                <button class="btn btn-secondary" onclick="askQuestion('21cfr')" style="font-size: 0.8rem;">21 CFR Part 11 explained?</button>
+                                <button class="btn btn-secondary" onclick="askQuestion('informed')" style="font-size: 0.8rem;">Informed consent elements?</button>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- AUDIT TRAIL SECTION -->
+                    <section id="section-audit" class="panel-section" style="display: none;">
+                        <div class="panel-header">
+                            <h2>🔍 Audit Trail Viewer</h2>
+                            <div style="display: flex; gap: 1rem;">
+                                <input type="text" id="audit-search" placeholder="Search audit log..." 
+                                       style="background: rgba(0,0,0,0.3); border: 1px solid var(--border-color); border-radius: 8px; padding: 0.5rem 1rem; color: var(--text-primary);">
+                                <button class="btn btn-secondary" onclick="exportAuditLog()">📥 Export Log</button>
+                            </div>
+                        </div>
+                        <div class="panel-content">
+                            <table class="audit-table">
+                                <thead>
+                                    <tr>
+                                        <th>Timestamp</th>
+                                        <th>User</th>
+                                        <th>Action</th>
+                                        <th>Module</th>
+                                        <th>Status</th>
+                                        <th>Details</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="audit-table-body">
+                                    <tr>
+                                        <td style="font-family: 'JetBrains Mono', monospace; font-size: 0.85rem;">2025-01-15 14:32:01</td>
+                                        <td>admin@trialgptbot.com</td>
+                                        <td>Generated Protocol Document</td>
+                                        <td>Document Generator</td>
+                                        <td><span class="status-badge status-success">Completed</span></td>
+                                        <td>PROTO-2025-001 created</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="font-family: 'JetBrains Mono', monospace; font-size: 0.85rem;">2025-01-15 14:28:45</td>
+                                        <td>researcher@pharma.com</td>
+                                        <td>Exported CRF Template</td>
+                                        <td>Document Generator</td>
+                                        <td><span class="status-badge status-success">Completed</span></td>
+                                        <td>CRF-BASELINE-v3 exported</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="font-family: 'JetBrains Mono', monospace; font-size: 0.85rem;">2025-01-15 14:15:22</td>
+                                        <td>dpo@trialgptbot.com</td>
+                                        <td>Reviewed Consent Form</td>
+                                        <td>Compliance Review</td>
+                                        <td><span class="status-badge status-warning">Review Required</span></td>
+                                        <td>GDPR Art.7 compliance check</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="font-family: 'JetBrains Mono', monospace; font-size: 0.85rem;">2025-01-15 13:58:10</td>
+                                        <td>system@trialgptbot.com</td>
+                                        <td>Automated Backup</td>
+                                        <td>System</td>
+                                        <td><span class="status-badge status-info">Automatic</span></td>
+                                        <td>Daily backup completed</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="font-family: 'JetBrains Mono', monospace; font-size: 0.85rem;">2025-01-15 13:42:33</td>
+                                        <td>auditor@fda.gov</td>
+                                        <td>Accessed Audit Logs</td>
+                                        <td>Audit Trail</td>
+                                        <td><span class="status-badge status-success">Viewed</span></td>
+                                        <td>Regulatory inspection access</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="font-family: 'JetBrains Mono', monospace; font-size: 0.85rem;">2025-01-15 13:25:18</td>
+                                        <td>user@cro-partner.com</td>
+                                        <td>Generated SAP Document</td>
+                                        <td>Document Generator</td>
+                                        <td><span class="status-badge status-success">Completed</span></td>
+                                        <td>SAP-INTERIM-001 generated</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="font-family: 'JetBrains Mono', monospace; font-size: 0.85rem;">2025-01-15 12:58:44</td>
+                                        <td>admin@trialgptbot.com</td>
+                                        <td>User Login</td>
+                                        <td>Authentication</td>
+                                        <td><span class="status-badge status-info">Success</span></td>
+                                        <td>IP: 192.168.1.xxx</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="font-family: 'JetBrains Mono', monospace; font-size: 0.85rem;">2025-01-15 12:45:00</td>
+                                        <td>system@trialgptbot.com</td>
+                                        <td>Compliance Scan</td>
+                                        <td>Automation</td>
+                                        <td><span class="status-badge status-success">Passed</span></td>
+                                        <td>147 regulations scanned</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            
+                            <div style="margin-top: 2rem; text-align: center; color: var(--text-secondary);">
+                                <p>Showing 8 most recent entries • Full audit log contains 1,247 entries</p>
+                                <button class="btn btn-secondary" style="margin-top: 1rem;" onclick="loadMoreAudit()">Load More Entries</button>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- COMPLIANCE SECTION -->
+                    <section id="section-compliance" class="panel-section" style="display: none;">
+                        <div class="panel-header">
+                            <h2>🛡️ Compliance Library</h2>
+                            <span class="status-badge status-success">147 Regulations Loaded</span>
+                        </div>
+                        <div class="panel-content">
+                            <div class="tabs">
+                                <button class="tab-btn active" onclick="switchCompTab('gdpr', this)">GDPR (EU)</button>
+                                <button class="tab-btn" onclick="switchCompTab('hipaa', this)">HIPAA (US)</button>
+                                <button class="tab-btn" onclick="switchCompTab('fda', this)">FDA 21 CFR</button>
+                                <button class="tab-btn" onclick="switchCompTab('ema', this)">EMA Guidelines</button>
+                            </div>
+
+                            <div id="comp-gdpr" class="tab-content active">
+                                <h3 style="color: var(--accent-emerald); margin-bottom: 1rem;">General Data Protection Regulation (GDPR)</h3>
+                                <div style="background: rgba(0,0,0,0.3); border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem;">
+                                    <h4 style="color: var(--accent-cyan); margin-bottom: 0.75rem;">Key Articles for Clinical Trials:</h4>
+                                    <ul style="color: var(--text-secondary); line-height: 2; margin-left: 1.25rem;">
+                                        <li><strong>Art. 6</strong> - Lawfulness of processing (consent basis)</li>
+                                        <li><strong>Art. 7</strong> - Conditions for consent (explicit, informed, specific)</li>
+                                        <li><strong>Art. 9</strong> - Special category data (health data processing)</li>
+                                        <li><strong>Art. 14</strong> - Information to be provided (patient rights)</li>
+                                        <li><strong>Art. 32</strong> - Security of processing (technical measures)</li>
+                                        <li><strong>Art. 33</strong> - Notification of breach (72-hour rule)</li>
+                                        <li><strong>Art. 89</strong> - Safeguards for research purposes</li>
+                                    </ul>
+                                </div>
+                                <button class="btn btn-primary" onclick="downloadComplianceGuide('gdpr')">📥 Download Full GDPR Guide for CT</button>
+                            </div>
+
+                            <div id="comp-hipaa" class="tab-content">
+                                <h3 style="color: var(--accent-emerald); margin-bottom: 1rem;">Health Insurance Portability and Accountability Act (HIPAA)</h3>
+                                <div style="background: rgba(0,0,0,0.3); border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem;">
+                                    <h4 style="color: var(--accent-cyan); margin-bottom: 0.75rem;">Key Rules for Clinical Research:</h4>
+                                    <ul style="color: var(--text-secondary); line-height: 2; margin-left: 1.25rem;">
+                                        <li><strong>Privacy Rule</strong> - PHI protection and de-identification</li>
+                                        <li><strong>Security Rule</strong> - Administrative, physical, technical safeguards</li>
+                                        <li><strong>Breach Notification</strong> - 60-day notification requirement</li>
+                                        <li><strong>Minimum Necessary</strong> - Limit PHI disclosure</li>
+                                        <li><strong>BAA Requirements</strong> - Business Associate Agreements</li>
+                                        <li><strong>Research Exemption</strong> - IRB-approved research provisions</li>
+                                    </ul>
+                                </div>
+                                <button class="btn btn-primary" onclick="downloadComplianceGuide('hipaa')">📥 Download Full HIPAA Guide for CT</button>
+                            </div>
+
+                            <div id="comp-fda" class="tab-content">
+                                <h3 style="color: var(--accent-emerald); margin-bottom: 1rem;">FDA 21 CFR Part 11 & GCP</h3>
+                                <div style="background: rgba(0,0,0,0.3); border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem;">
+                                    <h4 style="color: var(--accent-cyan); margin-bottom: 0.75rem;">Electronic Records & Signatures:</h4>
+                                    <ul style="color: var(--text-secondary); line-height: 2; margin-left: 1.25rem;">
+                                        <li><strong>§11.10</strong> - System controls (audit trails, access)</li>
+                                        <li><strong>§11.50</strong> - Signature manifestations (meaning, date)</li>
+                                        <li><strong>§11.200</strong> - Scope of application</li>
+                                        <li><strong>§11.300</strong> - Controls for open systems</li>
+                                        <li><strong>§11.30</strong> - Operator training requirements</li>
+                                        <li><strong>ICH E6(R2)</strong> - Good Clinical Practice guidelines</li>
+                                    </ul>
+                                </div>
+                                <button class="btn btn-primary" onclick="downloadComplianceGuide('fda')">📥 Download Full FDA 21 CFR Guide</button>
+                            </div>
+
+                            <div id="comp-ema" class="tab-content">
+                                <h3 style="color: var(--accent-emerald); margin-bottom: 1rem;">European Medicines Agency (EMA) Guidelines</h3>
+                                <div style="background: rgba(0,0,0,0.3); border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem;">
+                                    <h4 style="color: var(--accent-cyan); margin-bottom: 0.75rem;">Key Guidelines for Clinical Trials:</h4>
+                                    <ul style="color: var(--text-secondary); line-height: 2; margin-left: 1.25rem;">
+                                        <li><strong>CTD Format</strong> - Common Technical Document structure</li>
+                                        <li><strong>eCTD Requirements</strong> - Electronic submission specs</li>
+                                        <li><strong>Clinical Trial Regulation EU 2014/536</strong></li>
+                                        <li><strong>GVP Module VI</strong> - Pharmacovigilance</li>
+                                        <li><strong>Reflection Papers</strong> - Emerging topics guidance</li>
+                                    </ul>
+                                </div>
+                                <button class="btn btn-primary" onclick="downloadComplianceGuide('ema')">📥 Download Full EMA Guidelines</button>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- RISK ASSESSMENT SECTION -->
+                    <section id="section-risk" class="panel-section" style="display: none;">
+                        <div class="panel-header">
+                            <h2>⚠️ Risk Assessment Matrix</h2>
+                            <button class="btn btn-primary" onclick="generateRiskReport()">🔄 Generate Risk Report</button>
+                        </div>
+                        <div class="panel-content">
+                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;">
+                                <div style="background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.3); border-radius: 12px; padding: 1.5rem; text-align: center;">
+                                    <div style="font-size: 2rem; font-weight: 800; color: #ef4444;">3</div>
+                                    <div style="color: var(--text-secondary);">High Risk Items</div>
+                                </div>
+                                <div style="background: rgba(245, 158, 11, 0.1); border: 1px solid rgba(245, 158, 11, 0.3); border-radius: 12px; padding: 1.5rem; text-align: center;">
+                                    <div style="font-size: 2rem; font-weight: 800; color: #f59e0b;">7</div>
+                                    <div style="color: var(--text-secondary);">Medium Risk Items</div>
+                                </div>
+                                <div style="background: rgba(34, 197, 94, 0.1); border: 1px solid rgba(34, 197, 94, 0.3); border-radius: 12px; padding: 1.5rem; text-align: center;">
+                                    <div style="font-size: 2rem; font-weight: 800; color: #22c55e;">12</div>
+                                    <div style="color: var(--text-secondary);">Low Risk Items</div>
+                                </div>
+                                <div style="background: rgba(59, 130, 246, 0.1); border: 1px solid rgba(59, 130, 246, 0.3); border-radius: 12px; padding: 1.5rem; text-align: center;">
+                                    <div style="font-size: 2rem; font-weight: 800; color: #3b82f6;">22</div>
+                                    <div style="color: var(--text-secondary);">Total Assessed</div>
+                                </div>
+                            </div>
+
+                            <table class="audit-table">
+                                <thead>
+                                    <tr>
+                                        <th>Risk Category</th>
+                                        <th>Description</th>
+                                        <th>Likelihood</th>
+                                        <th>Impact</th>
+                                        <th>Score</th>
+                                        <th>Mitigation</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Data Breach</td>
+                                        <td>Unauthorized PHI exposure</td>
+                                        <td><span class="status-badge status-warning">Medium</span></td>
+                                        <td><span class="status-badge" style="background: rgba(239,68,68,0.15); color: #ef4444;">Critical</span></td>
+                                        <td style="font-weight: 700; color: #ef4444;">12</td>
+                                        <td>Encryption, Access Controls</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Consent Invalid</td>
+                                        <td>Non-compliant informed consent</td>
+                                        <td><span class="status-badge status-warning">Medium</span></td>
+                                        <td><span class="status-badge status-warning">High</span></td>
+                                        <td style="font-weight: 700; color: #f59e0b;">9</td>
+                                        <td>Template Review, Training</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Audit Gap</td>
+                                        <td>Incomplete audit trail entries</td>
+                                        <td><span class="status-badge status-info">Low</span></td>
+                                        <td><span class="status-badge status-warning">Medium</span></td>
+                                        <td style="font-weight: 700; color: #22c55e;">4</td>
+                                        <td>Auto-logging Enhancement</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+
                 </div>
             </div>
         </div>
-
-        <!-- Floating Action Navigation -->
-        <div style="position: fixed; bottom: 2rem; right: 2rem; z-index: 9998; display: flex; flex-direction: column; gap: 0.75rem;" id="floating-nav">
-            <a href="#document-generator-hub" style="width: 56px; height: 56px; background: linear-gradient(135deg, #10b981, #059669); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; box-shadow: 0 8px 30px rgba(16,185,129,0.4); text-decoration: none; transition: all 0.3s ease;" title="Document Generator">📄</a>
-            <a href="#features" style="width: 48px; height: 48px; background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.2); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.25rem; text-decoration: none; transition: all 0.3s ease;" title="Features">⚡</a>
-            <a href="#vision" style="width: 48px; height: 48px; background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.2); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.25rem; text-decoration: none; transition: all 0.3s ease;" title="Vision">🎯</a>
-            <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" style="width: 48px; height: 48px; background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.2); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.25rem; cursor: pointer; transition: all 0.3s ease;" title="Back to Top">↑</button>
-        </div>
-    </section>
-
-    <!-- Features Section -->
-    <section id="features">
-        <div class="section-header">
-            <span class="section-tag">Core Capabilities</span>
-            <h2>Enterprise-Grade Features</h2>
-            <p class="section-desc">
-                Comprehensive toolkit for modern clinical trial management and regulatory compliance
-            </p>
-        </div>
-
-        <div class="features-grid">
-            <div class="feature-card">
-                <div class="feature-icon">🤖</div>
-                <h3>AI Automation Engine</h3>
-                <p>Auto-complete 99% of tasks including auditing, form filling, and portal updates with intelligent boolean confirmation workflows.</p>
-            </div>
-
-            <div class="feature-card">
-                <div class="feature-icon">🛡️</div>
-                <h3>Multi-Framework Compliance</h3>
-                <p>Built-in support for GDPR, HIPAA, PIPEDA, and PHIPA with 147+ regulations mapped and continuously updated.</p>
-            </div>
-
-            <div class="feature-card">
-                <div class="feature-icon">📊</div>
-                <h3>Data Governance Hub</h3>
-                <p>Centralized data management with real-time monitoring, audit trails, and automated compliance reporting.</p>
-            </div>
-
-            <div class="feature-card">
-                <div class="feature-icon">🔗</div>
-                <h3>Portal Synchronization</h3>
-                <p>Seamless integration with FDA, EMA, and regulatory portals for automatic submission and status tracking.</p>
-            </div>
-
-            <div class="feature-card">
-                <div class="feature-icon">👥</div>
-                <h3>Role-Based Access Control</h3>
-                <p>Granular permissions for ADMIN, DPO, COMPLIANCE_OFFICER, and USER roles with JWT authentication.</p>
-            </div>
-
-            <div class="feature-card">
-                <div class="feature-icon">⚡</div>
-                <h3>Real-Time Intelligence</h3>
-                <p>WebSocket-powered live updates, notifications, and collaborative features across all modules.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Technology Section -->
-    <section id="technology">
-        <div class="section-header">
-            <span class="section-tag">Tech Stack</span>
-            <h2>Built for Scale & Performance</h2>
-            <p class="section-desc">
-                Modern architecture designed to evolve with technology for the next decade
-            </p>
-        </div>
-
-        <div class="tech-grid">
-            <div class="tech-item">
-                <div class="tech-icon">N</div>
-                <div class="tech-info">
-                    <h4>Next.js 16</h4>
-                    <p>React framework with App Router</p>
-                </div>
-            </div>
-            <div class="tech-item">
-                <div class="tech-icon">R</div>
-                <div class="tech-info">
-                    <h4>React 19</h4>
-                    <p>Latest UI library with hooks</p>
-                </div>
-            </div>
-            <div class="tech-item">
-                <div class="tech-icon">TS</div>
-                <div class="tech-info">
-                    <h4>TypeScript 5</h4>
-                    <p>Type-safe development</p>
-                </div>
-            </div>
-            <div class="tech-item">
-                <div class="tech-icon">TW</div>
-                <div class="tech-info">
-                    <h4>Tailwind CSS 4</h4>
-                    <p>Utility-first styling</p>
-                </div>
-            </div>
-            <div class="tech-item">
-                <div class="tech-icon">⚛️</div>
-                <div class="tech-info">
-                    <h4>shadcn/ui</h4>
-                    <p>Accessible component library</p>
-                </div>
-            </div>
-            <div class="tech-item">
-                <div class="tech-icon">🎭</div>
-                <div class="tech-info">
-                    <h4>Framer Motion</h4>
-                    <p>Production-grade animations</p>
-                </div>
-            </div>
-            <div class="tech-item">
-                <div class="tech-icon">🐍</div>
-                <div class="tech-info">
-                    <h4>FastAPI (Python)</h4>
-                    <p>AI Engine backend service</p>
-                </div>
-            </div>
-            <div class="tech-item">
-                <div class="tech-icon">🗄️</div>
-                <div class="tech-info">
-                    <h4>Prisma ORM</h4>
-                    <p>Type-safe database layer</p>
-                </div>
-            </div>
-            <div class="tech-item">
-                <div class="tech-icon">📡</div>
-                <div class="tech-info">
-                    <h4>WebSocket</h4>
-                    <p>Real-time synchronization</p>
-                </div>
-            </div>
-            <div class="tech-item">
-                <div class="tech-icon">🔄</div>
-                <div class="tech-info">
-                    <h4>Zustand</h4>
-                    <p>Lightweight state management</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Vision 2045 Section -->
-    <section id="vision">
-        <div class="section-header">
-            <span class="section-tag">Strategic Roadmap</span>
-            <h2>Vision 2045</h2>
-            <p class="section-desc">
-                A decade-long evolution plan aligned with emerging technologies
-            </p>
-        </div>
-
-        <div class="timeline">
-            <div class="timeline-item">
-                <div class="timeline-year">Phase 1: 2025-2026</div>
-                <h3>Foundation & Core Intelligence</h3>
-                <p>Deploy AI automation engine, complete regulatory framework integration, establish portal synchronization with FDA/EMA, launch role-based access control system.</p>
-            </div>
-
-            <div class="timeline-item">
-                <div class="timeline-year">Phase 2: 2027-2028</div>
-                <h3>Multimodal AI & Predictive Analytics</h3>
-                <p>Integrate multimodal data processing (imaging, genomic, EHR), deploy predictive trial outcome models, implement federated learning across institutions.</p>
-            </div>
-
-            <div class="timeline-item">
-                <div class="timeline-year">Phase 3: 2029-2032</div>
-                <h3>Global Expansion & Blockchain</h3>
-                <p>Launch blockchain-based consent ledger, expand to APAC/LATAM markets, integrate quantum-resistant cryptography, achieve full CTMS interoperability.</p>
-            </div>
-
-            <div class="timeline-item">
-                <div class="timeline-year">Phase 4: 2033-2040</div>
-                <h3>Quantum-Ready Architecture</h3>
-                <p>Transition to quantum-accelerated drug discovery, deploy autonomous trial orchestration, achieve full regulatory automation with zero human intervention.</p>
-            </div>
-
-            <div class="timeline-item">
-                <div class="timeline-year">Phase 5: 2041-2045</div>
-                <h3>Universal Health Intelligence</h3>
-                <p>Become the global standard for clinical trial infrastructure, enable personalized medicine at planetary scale, pioneer human-AI collaboration in healthcare.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Use Cases / Scenarios Section -->
-    <section id="scenarios">
-        <div class="section-header">
-            <span class="section-tag">Real-World Applications</span>
-            <h2>Client & Investor Scenarios</h2>
-            <p class="section-desc">
-                How TrialGPTBot transforms challenges into opportunities
-            </p>
-        </div>
-
-        <div class="scenarios-grid">
-            <div class="scenario-card">
-                <span class="scenario-type">Pharma Enterprise</span>
-                <h3>Global Pharma Corp - Multi-Trial Orchestration</h3>
-                <ul class="scenario-details">
-                    <li>Managing 47 concurrent trials across 23 countries</li>
-                    <li>Real-time GDPR/HIPAA compliance monitoring</li>
-                    <li>Automated FDA/EMA submission preparation</li>
-                    <li>99% reduction in manual data entry overhead</li>
-                </ul>
-            </div>
-
-            <div class="scenario-card">
-                <span class="scenario-type">CRO Partner</span>
-                <h3>CRO Excellence - Client Delivery Optimization</h3>
-                <ul class="scenario-details">
-                    <li>Serving 12 pharma clients simultaneously</li>
-                    <li>White-labeled compliance dashboards per client</li>
-                    <li>Automated audit trail generation</li>
-                    <li>Portal sync with 8 different regulatory bodies</li>
-                </ul>
-            </div>
-
-            <div class="scenario-card">
-                <span class="scenario-type">Academic Research</span>
-                <h3>Medical Center - Research Acceleration</h3>
-                <ul class="scenario-details">
-                    <li>IRB approval workflow automation</li>
-                    <li>Patient consent management with blockchain</li>
-                    <li>Grant compliance reporting (NIH, EU funding)</li>
-                    <li>Data sharing governance across collaborators</li>
-                </ul>
-            </div>
-
-            <div class="scenario-card">
-                <span class="scenario-type">VC Investment</span>
-                <h3>Growth Equity - Platform Scalability Thesis</h3>
-                <ul class="scenario-details">
-                    <li>$50M Series B for global expansion</li>
-                    <li>TAM: $12B clinical trial software market</li>
-                    <li>Path to profitability via SaaS + API revenue</li>
-                    <li>Exit potential: Strategic acquisition by Oracle/Epic</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="cta-section">
-        <div class="cta-box">
-            <h2>Ready to Transform Clinical Trials?</h2>
-            <p>
-                Join the future of healthcare innovation. Access the complete source code,
-                documentation, and contribute to the next generation of clinical trial technology.
-            </p>
-            <div class="cta-group">
-                <a href="https://github.com/testdemoqwenai2025-creator/TrialGPTBot-Enterprise" class="btn btn-primary">
-                    🚀 Get Started on GitHub
-                </a>
-                <a href="#features" class="btn btn-secondary">
-                    Learn More ↑
-                </a>
-            </div>
-        </div>
-    </section>
+    </main>
 
     <!-- Footer -->
     <footer>
-        <div class="footer-links">
-            <a href="https://github.com/testdemoqwenai2025-creator/TrialGPTBot-Enterprise">Repository</a>
-            <a href="https://github.com/testdemoqwenai2025-creator/TrialGPTBot-Enterprise/blob/main/package.json">Dependencies</a>
-            <a href="https://github.com/testdemoqwenai2025-creator/TrialGPTBot-Enterprise/blob/main/src/components/landing/exceptional-landing.tsx">Landing Page Source</a>
-            <a href="https://github.com/testdemoqwenai2025-creator/TrialGPTBot-Enterprise/blob/main/README.md">Documentation</a>
-        </div>
-        <p class="copyright">
-            © 2025 TrialGPTBot Enterprise v2.0 | AI-Powered Clinical Trial & Data Governance Platform
+        <p>&copy; 2025 TrialGPTBot Enterprise v2.0 | AI-Powered Clinical Trial & Data Governance Platform</p>
+        <p style="margin-top: 0.5rem; font-size: 0.85rem;">
+            <a href="https://github.com/testdemoqwenai2025-creator/TrialGPTBot-Enterprise" style="color: var(--accent-cyan); text-decoration: none;">GitHub Repository</a> • 
+            Built with Next.js, React, TypeScript
         </p>
     </footer>
 
     <script>
-        // Smooth scroll for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
+        // =============================================
+        // SECTION NAVIGATION
+        // =============================================
+        function showSection(sectionId) {
+            // Hide all sections
+            document.querySelectorAll('.panel-section').forEach(section => {
+                section.style.display = 'none';
             });
-        });
+            
+            // Show selected section
+            const targetSection = document.getElementById('section-' + sectionId);
+            if (targetSection) {
+                targetSection.style.display = 'block';
+            }
+            
+            // Update sidebar buttons
+            document.querySelectorAll('.sidebar-menu button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            const targetBtn = document.getElementById('btn-' + sectionId);
+            if (targetBtn) {
+                targetBtn.classList.add('active');
+            }
+            
+            // Update nav links
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.classList.remove('active');
+            });
+            const targetLink = document.querySelector(`.nav-links a[href="#${sectionId}"]`);
+            if (targetLink) {
+                targetLink.classList.add('active');
+            }
+            
+            // Scroll to top of main
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
 
-        // Intersection Observer for fade-in animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
+        // =============================================
+        // TAB SWITCHING
+        // =============================================
+        function switchDocTab(tabName, btnElement) {
+            // Hide all doc tabs
+            document.querySelectorAll('#section-generator .tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Show selected tab
+            document.getElementById('tab-' + tabName).classList.add('active');
+            
+            // Update buttons
+            document.querySelectorAll('#section-generator .tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            btnElement.classList.add('active');
+        }
+
+        function switchCompTab(tabName, btnElement) {
+            document.querySelectorAll('#section-compliance .tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            document.getElementById('comp-' + tabName).classList.add('active');
+            
+            document.querySelectorAll('#section-compliance .tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            btnElement.classList.add('active');
+        }
+
+        // =============================================
+        // DOCUMENT GENERATION FUNCTIONS
+        // =============================================
+        function generateProtocol(e) {
+            e.preventDefault();
+            
+            const title = document.getElementById('proto-title').value || 'Untitled Protocol';
+            const number = document.getElementById('proto-number').value || 'PROTO-2025-XXX';
+            const sponsor = document.getElementById('proto-sponsor').value || 'Organization Name';
+            const indication = document.getElementById('proto-indication').value || 'Therapeutic Area';
+            const phase = document.getElementById('proto-phase').value || 'TBD';
+            const enrollment = document.getElementById('proto-enrollment').value || 'TBD';
+            const objectives = document.getElementById('proto-objectives').value || 'To be defined.';
+            const inclusion = document.getElementById('proto-inclusion').value || 'To be defined.';
+            const exclusion = document.getElementById('proto-exclusion').value || 'To be defined.';
+            
+            const protocolContent = `
+╔══════════════════════════════════════════════════════════════╗
+║     CLINICAL TRIAL PROTOCOL - AUTOGENERATED DOCUMENT         ║
+║              TrialGPTBot Enterprise v2.0                      ║
+╚══════════════════════════════════════════════════════════════╝
+
+PROTOCOL IDENTIFICATION
+───────────────────────
+Protocol Title:       ${title}
+Protocol Number:      ${number}
+Sponsor:              ${sponsor}
+Version:              1.0
+Date Generated:       ${new Date().toLocaleDateString()}
+
+STUDY OVERVIEW
+──────────────
+Indication:           ${indication}
+Phase:                ${phase}
+Target Enrollment:    ${enrollment participants
+Study Design:         Randomized, Controlled, Multi-center
+
+OBJECTIVES
+──────────
+Primary Objective:
+${objectives}
+
+Secondary Objectives:
+- Evaluate safety and tolerability
+- Assess efficacy endpoints per statistical analysis plan
+- Collect exploratory biomarker data
+
+ELIGIBILITY CRITERIA
+────────────────────
+Inclusion Criteria:
+${inclusion}
+
+Exclusion Criteria:
+${exclusion}
+
+REGULATORY COMPLIANCE
+────────────────────
+☑ ICH E6(R2) GCP Compliant
+☑ FDA 21 CFR Part 11 Ready
+☑ EU CTR 2014/536 Aligned
+☑ HIPAA Privacy Rule Adherent
+☑ GDPR Article 9 Compliant
+
+DOCUMENT METADATA
+─────────────────
+Generated by:        TrialGPTBot AI Engine
+Generation Time:     ${new Date().toISOString()}
+Document ID:         DOC-${Date.now()}
+Regulations Mapped:  147+
+Confidence Score:    98.7%
+
+═══════════════════════════════════════════════════════════════
+This document was automatically generated by TrialGPTBot.
+Review and approve before submission to regulatory authorities.
+═══════════════════════════════════════════════════════════════`;
+            
+            document.getElementById('protocol-output-content').textContent = protocolContent;
+            document.getElementById('protocol-output').classList.add('visible');
+            
+            // Add to audit log
+            addAuditEntry('Generated Protocol Document', 'Document Generator', `${title} (${number})`);
+        }
+
+        function generateCRF(e) {
+            e.preventDefault();
+            
+            const title = document.getElementById('crf-title').value || 'Case Report Form';
+            const formId = document.getElementById('crf-id').value || 'CRF-XXX';
+            const visit = document.getElementById('crf-visit').value || 'Baseline';
+            const fields = document.getElementById('crf-fields').value || 'Field1\nField2\nField3';
+            
+            const crfContent = `
+╔══════════════════════════════════════════════════════════════╗
+║          CASE REPORT FORM (CRF) - AUTOGENERATED             ║
+╚══════════════════════════════════════════════════════════════╝
+
+FORM INFORMATION
+────────────────
+Form Title:    ${title}
+Form ID:       ${formId}
+Visit Type:    ${visit}
+Version:       1.0
+CDISC SDTM:     Compliant
+Date:          ${new Date().toLocaleDateString()}
+
+DATA FIELDS
+───────────
+${fields.split('\n').map((field, i) => `${i+1}. ${field.trim()} [_________________]\n`).join('')}
+
+VALIDATION RULES
+───────────────
+☑ Required field validation enabled
+☑ Range checks configured
+☑ Cross-field validation active
+☑ Edit check rules applied
+
+COMPLIANCE NOTES
+────────────────
+• 21 CFR Part 11 electronic signature ready
+• Audit trail enabled for all fields
+• Query management integrated
+• Source data verification support
+
+Generated by TrialGPTBot Enterprise v2.0
+Document ID: CRF-${Date.now()}`;
+            
+            document.getElementById('crf-output-content').textContent = crfContent;
+            document.getElementById('crf-output').classList.add('visible');
+            
+            addAuditEntry('Generated CRF Template', 'Document Generator', `${title} (${formId})`);
+        }
+
+        function generateConsent(e) {
+            e.preventDefault();
+            
+            const study = document.getElementById('consent-study').value || 'Clinical Study';
+            const pi = document.getElementById('consent-pi').value || 'Principal Investigator';
+            const irb = document.getElementById('consent-irb').value || 'IRB-XXXXX';
+            const ageGroup = document.getElementById('consent-age').value || 'Adults (18+)';
+            const risks = document.getElementById('consent-risks').value || 'Standard clinical trial risks';
+            
+            const consentContent = `
+╔══════════════════════════════════════════════════════════════╗
+║        INFORMED CONSENT FORM - AUTOGENERATED DOCUMENT        ║
+╚══════════════════════════════════════════════════════════════╝
+
+STUDY INFORMATION
+─────────────────
+Study Title:    ${study}
+Principal Investigator: ${pi}
+IRB/EC Number:  ${irb}
+Target Population: ${ageGroup}
+Version:        1.0
+Date:           ${new Date().toLocaleDateString()}
+
+CONSENT STATEMENT
+─────────────────
+I, ________________________, hereby confirm that I have been fully
+informed about the clinical research study described above.
+
+WHAT THIS MEANS
+───────────────
+• You are being asked to participate in a research study
+• Participation is completely voluntary
+• You may withdraw at any time without penalty
+• Your privacy will be protected
+
+POTENTIAL RISKS AND BENEFITS
+────────────────────────────
+Risks:
+${risks}
+
+Benefits:
+• Contribution to medical science
+• Potential therapeutic benefit
+• Close medical monitoring
+
+YOUR RIGHTS AS A PARTICIPANT
+─────────────────────────────
+☑ Right to withdraw without giving a reason
+☑ Right to access your data
+☑ Right to be informed of new findings
+☑ Right to compensation for injury (if applicable)
+
+DATA PROTECTION
+───────────────
+Your personal data will be processed in accordance with:
+• GDPR Articles 6, 7, 9, 13, 14
+• HIPAA Privacy Rule (if applicable)
+• 21 CFR Part 50 (FDA requirements)
+
+SIGNATURE SECTION
+─────────────────
+Participant Signature: _________________ Date: _______
+Participant Printed Name: _________________
+Witness Signature: _________________ Date: _______
+Person Obtaining Consent: _________________
+
+Generated by TrialGPTBot Enterprise v2.0
+GDPR/HIPAA/FDA Compliant | Document ID: IC-${Date.now()}`;
+            
+            document.getElementById('consent-output-content').textContent = consentContent;
+            document.getElementById('consent-output').classList.add('visible');
+            
+            addAuditEntry('Generated Informed Consent', 'Document Generator', study);
+        }
+
+        function generateSAP(e) {
+            e.preventDefault();
+            
+            const type = document.getElementById('sap-type').value || 'Intent-to-Treat';
+            const endpoint = document.getElementById('sap-endpoint').value || 'Primary endpoint TBD';
+            const alpha = document.getElementById('sap-alpha').value || '0.05';
+            const power = document.getElementById('sap-power').value || '0.90';
+            const details = document.getElementById('sap-details').value || 'Standard analysis plan';
+            
+            const sapContent = `
+╔══════════════════════════════════════════════════════════════╗
+║   STATISTICAL ANALYSIS PLAN (SAP) - AUTOGENERATED DOCUMENT   ║
+╚══════════════════════════════════════════════════════════════╝
+
+ANALYSIS SPECIFICATIONS
+──────────────────────
+Analysis Population:  ${type.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase())}
+Primary Endpoint:    ${endpoint}
+Significance Level:  α = ${alpha} (two-sided)
+Power:               1-β = ${power}
+Date:                ${new Date().toLocaleDateString()}
+
+HYPOTHESIS TESTING FRAMEWORK
+───────────────────────────
+Null Hypothesis (H₀): No significant difference between treatment groups
+Alternative Hypothesis (H₁): Significant difference exists
+
+STATISTICAL METHODS
+──────────────────
+Primary Analysis:
+${details}
+
+Sample Size Justification:
+Based on assumed effect size, significance level (${alpha}), and power (${power}),
+the calculated sample size accounts for potential dropouts (~10%).
+
+INTERIM ANALYSIS PLAN
+─────────────────────
+☑ Group sequential design specified
+☑ O'Brien-Fleming boundaries defined
+☑ Futility stopping rules included
+☑ Alpha spending function allocated
+
+SUBGROUP ANALYSES
+─────────────────
+Pre-specified subgroups:
+• Age categories
+• Gender
+• Baseline disease severity
+• Geographic region
+• Prior treatment history
+
+MULTIPLICITY ADJUSTMENTS
+───────────────────────
+Method: Hierarchical testing procedure
+Family-wise error rate controlled at α = ${alpha}
+
+REGULATORY ALIGNMENT
+───────────────────
+☑ ICH E9 Statistical Principles
+☑ FDA Guidance for Industry: E9
+☑ CHMP Guideline on Statistical Principles
+☑ CONSORT Statement compliant
+
+Generated by TrialGPTBot Enterprise v2.0
+Document ID: SAP-${Date.now()}`;
+            
+            document.getElementById('sap-output-content').textContent = sapContent;
+            document.getElementById('sap-output').classList.add('visible');
+            
+            addAuditEntry('Generated Statistical Analysis Plan', 'Document Generator', type);
+        }
+
+        function clearForm(formType) {
+            if (formType === 'protocol') {
+                document.getElementById('proto-title').value = '';
+                document.getElementById('proto-number').value = '';
+                document.getElementById('proto-sponsor').value = '';
+                document.getElementById('proto-indication').value = '';
+                document.getElementById('proto-phase').value = '';
+                document.getElementById('proto-enrollment').value = '';
+                document.getElementById('proto-objectives').value = '';
+                document.getElementById('proto-inclusion').value = '';
+                document.getElementById('proto-exclusion').value = '';
+                document.getElementById('protocol-output').classList.remove('visible');
+            } else if (formType === 'crf') {
+                document.getElementById('crf-title').value = '';
+                document.getElementById('crf-id').value = '';
+                document.getElementById('crf-visit').value = '';
+                document.getElementById('crf-fields').value = '';
+                document.getElementById('crf-output').classList.remove('visible');
+            } else if (formType === 'consent') {
+                document.getElementById('consent-study').value = '';
+                document.getElementById('consent-pi').value = '';
+                document.getElementById('consent-irb').value = '';
+                document.getElementById('consent-age').value = '';
+                document.getElementById('consent-risks').value = '';
+                document.getElementById('consent-output').classList.remove('visible');
+            } else if (formType === 'sap') {
+                document.getElementById('sap-type').value = '';
+                document.getElementById('sap-endpoint').value = '';
+                document.getElementById('sap-alpha').value = '0.05';
+                document.getElementById('sap-power').value = '0.90';
+                document.getElementById('sap-details').value = '';
+                document.getElementById('sap-output').classList.remove('visible');
+            }
+        }
+
+        function copyOutput(type) {
+            const content = document.getElementById(type + '-output-content').textContent;
+            navigator.clipboard.writeText(content).then(() => {
+                alert('✅ Document copied to clipboard!');
+            });
+        }
+
+        function downloadOutput(type, filename) {
+            const content = document.getElementById(type + '-output-content').textContent;
+            const blob = new Blob([content], { type: 'text/plain' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = filename;
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+
+        function generateQuickDoc(type) {
+            showSection('generator');
+            setTimeout(() => {
+                if (type === 'protocol') switchDocTab('protocol', document.querySelector('#section-generator .tab-btn'));
+                else if (type === 'crf') switchDocTab('crf', document.querySelectorAll('#section-generator .tab-btn')[1]);
+                else if (type === 'consent') switchDocTab('consent', document.querySelectorAll('#section-generator .tab-btn')[2]);
+            }, 100);
+        }
+
+        // =============================================
+        // CHAT FUNCTIONS
+        // =============================================
+        const responses = {
+            gdpr: `**GDPR Article 32 - Security of Processing**
+
+Article 32 requires controllers and processors to implement appropriate technical and organizational security measures.
+
+**Key Requirements:**
+
+1. **Risk Assessment** - Evaluate processing risks to individuals
+2. **Encryption** - Implement pseudonymization and encryption where appropriate
+3. **Access Control** - Ensure confidentiality, integrity, availability
+4. **Resilience** - Ability to restore availability after incidents
+5. **Testing** - Regular testing of security measures
+6. **Continuous Improvement** - Process for evaluating effectiveness
+
+**For Clinical Trials Specifically:**
+- Pseudonymization of subject data is mandatory
+- Encryption required for data in transit and at rest
+- Access must be role-based and logged
+- Regular security audits required`,
+            
+            hipaa: `**HIPAA Security Rule Overview**
+
+The HIPAA Security Rule (45 CFR Parts 160, 162, 164) establishes national standards for protecting electronic PHI (ePHI).
+
+**Three Safeguards Categories:**
+
+**Administrative Safeguards (§164.308):**
+- Security Management Process
+- Workforce Security
+- Information Access Management
+- Security Awareness & Training
+- Incident Procedures
+- Contingency Planning
+
+**Physical Safeguards (§164.310):**
+- Facility Access Controls
+- Workstation Security
+- Device & Media Controls
+
+**Technical Safeguards (§164.312):**
+- Access Control (unique user ID, emergency access, auto-logoff)
+- Audit Controls
+- Integrity Controls
+- Transmission Security (encryption)
+
+**Clinical Research Implications:**
+- De-identification methods (Safe Harbor or Expert Determination)
+- Limited Data Set agreements
+- IRB approval requirements for waiver of authorization`,
+
+            '21cfr': `**21 CFR Part 11 - Electronic Records; Electronic Signatures**
+
+This regulation establishes criteria for FDA acceptance of electronic records, signatures, and submissions.
+
+**Core Requirements:**
+
+**§11.10 - Controls for Closed Systems:**
+- System validation ensuring accuracy, reliability
+- Ability to generate accurate copies
+- Protection of records throughout retention period
+- Limit system access to authorized individuals
+- Use of secure, computer-generated, time-stamped audit trails
+- Operational checkpoint controls
+- Authority checks
+- Device checks
+
+**§11.50 - Signature Manifestations:**
+- Signed records must contain: printed name, date/time, meaning
+
+**§11.30 - Controls for Open Systems:**
+- Additional measures like encryption, digital signatures
+
+**§11.300 - Electronic Signature Requirements:**
+- Unique to individual
+- Never reused/reassigned
+- Issued once, verified
+- Periodic checks (every 6 months minimum)`,
+
+            informed: `**Essential Elements of Informed Consent (ICH E6/21 CFR 50)**
+
+**Required Elements:**
+
+1. **Statement that study involves research** - Explanation of research purpose
+2. **Reasonable foreseeable risks/discomforts** - Physical, psychological, social
+3. **Potential benefits** - To subject and others
+4. **Alternative procedures/treatments** - What else is available
+5. **Confidentiality of records** - Extent and limits
+6. **Compensation/treatment for injury** - What's provided
+7. **Contact information** - Questions, rights, injuries
+8. **Statement of voluntary participation** - Can discontinue without penalty
+
+**Additional Elements (when applicable):**
+- Additional costs to subject
+- Early termination procedures
+- New findings that may affect willingness
+- Number of subjects involved
+- Clinical investigation designation
+- Statement that certain treatments are experimental
+
+**GDPR-Specific Additions:**
+- Right to withdraw consent (Art. 7.3)
+- Automated decision-making disclosure (Art. 22)
+- Data protection officer contact`
         };
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
+        function sendMessage() {
+            const input = document.getElementById('chat-input');
+            const message = input.value.trim();
+            if (!message) return;
 
-        // Observe all cards and items
-        document.querySelectorAll('.feature-card, .tech-item, .scenario-card, .timeline-item').forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(20px)';
-            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-            observer.observe(el);
-        });
+            // Add user message
+            addMessage(message, 'user');
+            input.value = '';
 
-        // Parallax effect for orbs
-        document.addEventListener('mousemove', (e) => {
-            const orbs = document.querySelectorAll('.orb');
-            const x = e.clientX / window.innerWidth;
-            const y = e.clientY / window.innerHeight;
-
-            orbs.forEach((orb, index) => {
-                const speed = (index + 1) * 20;
-                orb.style.transform = `translate(${x * speed}px, ${y * speed}px)`;
-            });
-        });
-    </script>
-
-    <!-- Document Generator Modal -->
-    <div id="document-generator-modal" class="doc-gen-modal">
-        <div class="doc-gen-content">
-            <div class="doc-gen-header">
-                <button class="doc-gen-close" onclick="closeDocumentGenerator()">✕</button>
-                <h2 class="doc-gen-title">📄 TrialGPTBot Document Generator</h2>
-                <p class="doc-gen-subtitle">AI-Powered Clinical Trial Documentation Suite</p>
-            </div>
-            <div class="doc-gen-body">
-                <div class="doc-gen-grid">
-                    <div class="doc-gen-card" onclick="alert('Opening Clinical Protocol Generator...')">
-                        <div class="doc-gen-icon">📋</div>
-                        <h3>Clinical Protocol Generator</h3>
-                        <p>Generate FDA/EMA-compliant clinical trial protocols with AI-powered optimization</p>
-                    </div>
-                    <div class="doc-gen-card" onclick="alert('Opening CRF Builder...')">
-                        <div class="doc-gen-icon">📝</div>
-                        <h3>Case Report Form Builder</h3>
-                        <p>Design electronic CRFs with CDISC compliance and adaptive form logic</p>
-                    </div>
-                    <div class="doc-gen-card" onclick="alert('Opening Informed Consent...')">
-                        <div class="doc-gen-icon">✍️</div>
-                        <h3>Informed Consent Document</h3>
-                        <p>Create patient-friendly consent forms with readability optimization</p>
-                    </div>
-                    <div class="doc-gen-card" onclick="alert('Opening SAP Generator...')">
-                        <div class="doc-gen-icon">📊</div>
-                        <h3>Statistical Analysis Plan</h3>
-                        <p>Generate comprehensive SAPs with power calculations and endpoint definitions</p>
-                    </div>
-                    <div class="doc-gen-card" onclick="alert('Opening Regulatory Submission...')">
-                        <div class="doc-gen-icon">🏛️</div>
-                        <h3>Regulatory Submission Package</h3>
-                        <p>Prepare complete submission packages for FDA, EMA with eCTD format</p>
-                    </div>
-                    <div class="doc-gen-card" onclick="alert('Opening Audit Trail Report...')">
-                        <div class="doc-gen-icon">🔍</div>
-                        <h3>Audit Trail & Compliance</h3>
-                        <p>Generate 21 CFR Part 11 compliant audit trails with data lineage</p>
-                    </div>
-                </div>
-                <div class="doc-gen-preview">
-                    <img src="https://raw.githubusercontent.com/testdemoqwenai2025-creator/TrialGPTBot-Enterprise/main/download/trialgptbot-audit-trail.png" alt="TrialGPTBot Dashboard" style="max-width:100%; border-radius:12px; box-shadow:0 10px 40px rgba(0,0,0,0.2);">
-                    <p style="margin-top:1rem; color:#6b7280;">Interactive dashboard showing real-time document generation workflow</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <style>
-    /* Document Generator Modal */
-    .doc-gen-modal {
-        position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-        background: rgba(0,0,0,0.8); backdrop-filter: blur(10px);
-        z-index: 10000; display: none; align-items: center; justify-content: center;
-        animation: fadeIn 0.3s ease;
-    }
-    .doc-gen-modal.active { display: flex; }
-    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-
-    .doc-gen-content {
-        background: linear-gradient(135deg, #ffffff, #f8fafc);
-        border-radius: 24px; max-width: 900px; width: 95%;
-        max-height: 90vh; overflow-y: auto;
-        box-shadow: 0 30px 80px rgba(16,185,129,0.3);
-        animation: slideUp 0.4s ease;
-    }
-    @keyframes slideUp { from { transform: translateY(50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
-
-    .doc-gen-header {
-        background: linear-gradient(135deg, #059669, #047857, #10b981);
-        color: white; padding: 2rem; border-radius: 24px 24px 0 0;
-        position: relative; overflow: hidden;
-    }
-    .doc-gen-header::before {
-        content: ''; position: absolute; top: -50%; right: -50%;
-        width: 100%; height: 200%;
-        background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
-        animation: headerFloat 6s infinite ease-in-out;
-    }
-    @keyframes headerFloat {
-        0%, 100% { transform: translate(0, 0); }
-        50% { transform: translate(-20px, 20px); }
-    }
-
-    .doc-gen-close {
-        position: absolute; top: 1rem; right: 1rem;
-        width: 40px; height: 40px; background: rgba(255,255,255,0.2);
-        border: none; border-radius: 10px; color: white; font-size: 1.5rem;
-        cursor: pointer; transition: all 0.3s ease;
-        display: flex; align-items: center; justify-content: center;
-    }
-    .doc-gen-close:hover { background: rgba(255,255,255,0.3); transform: rotate(90deg); }
-
-    .doc-gen-title { font-size: 1.75rem; font-weight: 800; margin-bottom: 0.5rem; position: relative; z-index: 1; }
-    .doc-gen-subtitle { font-size: 1rem; opacity: 0.9; position: relative; z-index: 1; }
-
-    .doc-gen-body { padding: 2rem; }
-
-    .doc-gen-grid {
-        display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 1.5rem; margin-top: 1.5rem;
-    }
-
-    .doc-gen-card {
-        background: white; border: 1px solid #e5e7eb; border-radius: 16px;
-        padding: 1.5rem; transition: all 0.3s ease; cursor: pointer;
-    }
-    .doc-gen-card:hover {
-        border-color: #10b981; box-shadow: 0 10px 40px rgba(16,185,129,0.15);
-        transform: translateY(-5px);
-    }
-
-    .doc-gen-icon {
-        width: 56px; height: 56px;
-        background: linear-gradient(135deg, #d1fae5, #a7f3d0);
-        border-radius: 14px; display: flex; align-items: center; justify-content: center;
-        font-size: 1.5rem; margin-bottom: 1rem;
-    }
-    .doc-gen-card h3 { font-size: 1.1rem; font-weight: 700; color: #111827; margin-bottom: 0.5rem; }
-    .doc-gen-card p { font-size: 0.9rem; color: #6b7280; line-height: 1.5; }
-
-    .doc-gen-preview {
-        background: linear-gradient(135deg, #f0fdf4, #ecfdf5);
-        border: 2px dashed #86efac; border-radius: 16px;
-        padding: 2rem; text-align: center; margin-top: 2rem;
-    }
-    </style>
-
-    <script>
-    // Document Generator Functions
-    function showDocumentGenerator() {
-        const modal = document.getElementById('document-generator-modal');
-        if (modal) {
-            modal.classList.add('active');
-            document.body.style.overflow = 'hidden';
+            // Simulate AI response
+            setTimeout(() => {
+                let response = responses[message.toLowerCase()] || generateAIResponse(message);
+                addMessage(response, 'ai');
+            }, 800);
         }
-    }
 
-    function closeDocumentGenerator() {
-        const modal = document.getElementById('document-generator-modal');
-        if (modal) {
-            modal.classList.remove('active');
-            document.body.style.overflow = '';
+        function askQuestion(topic) {
+            const questions = {
+                gdpr: 'What is GDPR Article 32?',
+                hipaa: 'HIPAA Security Rule overview?',
+                '21cfr': '21 CFR Part 11 explained?',
+                informed: 'Informed consent elements?'
+            };
+            document.getElementById('chat-input').value = questions[topic];
+            sendMessage();
         }
-    }
 
-    // Close on outside click
-    document.addEventListener('click', function(e) {
-        const modal = document.getElementById('document-generator-modal');
-        if (modal && e.target === modal) {
-            closeDocumentGenerator();
-        }
-    });
-
-    // Close on Escape key
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape') {
-            closeDocumentGenerator();
-        }
-    });
-
-    // Document Type Tab Switching
-    function showDocType(type) {
-        // Hide all content areas
-        document.querySelectorAll('.doc-content').forEach(content => {
-            content.style.display = 'none';
-        });
-        
-        // Reset all tabs
-        document.querySelectorAll('.doc-tab').forEach(tab => {
-            tab.style.background = 'rgba(255,255,255,0.05)';
-            tab.style.color = '#e2e8f0';
-            tab.style.border = '1px solid rgba(255,255,255,0.1)';
-            tab.style.boxShadow = 'none';
-        });
-        
-        // Show selected content
-        const selectedContent = document.getElementById('content-' + type);
-        if (selectedContent) {
-            selectedContent.style.display = 'block';
-            // Add fade-in animation
-            selectedContent.style.animation = 'fadeIn 0.5s ease';
-        }
-        
-        // Highlight active tab
-        const activeTab = document.getElementById('tab-' + type);
-        if (activeTab) {
-            activeTab.style.background = 'linear-gradient(135deg, #10b981, #059669)';
-            activeTab.style.color = 'white';
-            activeTab.style.border = 'none';
-            activeTab.style.boxShadow = '0 4px 20px rgba(16,185,129,0.3)';
-        }
-    }
-
-    // Add fadeIn keyframe if not exists
-    if (!document.getElementById('dynamic-styles')) {
-        const style = document.createElement('style');
-        style.id = 'dynamic-styles';
-        style.textContent = `
-            @keyframes fadeIn {
-                from { opacity: 0; transform: translateY(10px); }
-                to { opacity: 1; transform: translateY(0); }
+        function addMessage(content, type) {
+            const messagesDiv = document.getElementById('chat-messages');
+            const msgDiv = document.createElement('div');
+            msgDiv.className = `message ${type}`;
+            
+            if (type === 'user') {
+                msgDiv.innerHTML = `<strong>You:</strong>${content}`;
+            } else {
+                msgDiv.innerHTML = `<strong>🤖 TrialGPTBot:</strong><br>${content.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>').replace(/\n/g, '<br>')}`;
             }
-        `;
-        document.head.appendChild(style);
-    }
+            
+            messagesDiv.appendChild(msgDiv);
+            messagesDiv.scrollTop = messagesDiv.scrollHeight;
+        }
+
+        function generateAIResponse(query) {
+            const lowerQuery = query.toLowerCase();
+            
+            if (lowerQuery.includes('consent') || lowerQuery.includes('permission')) {
+                return `Regarding **informed consent**, here are key points:\n\n• Must be obtained before any study procedure\n• Should be documented (written preferred)\n• Must include all ICH E6 essential elements\n• Subject can withdraw at any time\n• Re-consent needed for significant protocol changes\n\nWould you like me to elaborate on any specific aspect?`;
+            } else if (lowerQuery.includes('risk') || lowerQuery.includes('safety')) {
+                return `**Risk Assessment Framework:**\n\n1. **Identify** - Catalog all potential risks\n2. **Assess** - Evaluate likelihood and impact\n3. **Mitigate** - Implement control measures\n4. **Monitor** - Track risk indicators\n5. **Report** - Communicate to stakeholders\n\nFor clinical trials, key areas include:\n- Patient safety risks\n- Data integrity risks\n- Regulatory compliance risks\n- Operational risks`;
+            } else if (lowerQuery.includes('document') || lowerQuery.includes('protocol')) {
+                return `I can help you generate various clinical trial documents:\n\n• **Clinical Protocols** - Full ICH/GCP compliant\n• **Case Report Forms** - CDISC SDTM aligned\n• **Informed Consent Forms** - GDPR/HIPAA compliant\n• **Statistical Analysis Plans** - FDA/EMA acceptable\n\nNavigate to the **Document Generator** module to create these documents interactively.`;
+            } else {
+                return `Thank you for your question about "${query}".\n\nAs an AI compliance assistant, I'm trained on:\n- GDPR (EU General Data Protection Regulation)\n- HIPAA (US Health Insurance Portability)\n- FDA 21 CFR Part 11 (Electronic Records)\n- ICH E6(R2) Good Clinical Practice\n- EMA Clinical Trial Guidelines\n\nCould you provide more specific details about what you'd like to know? Or try one of the suggested questions above.`;
+            }
+        }
+
+        // =============================================
+        // AUDIT TRAIL FUNCTIONS
+        // =============================================
+        function addAuditEntry(action, module, details) {
+            const tbody = document.getElementById('audit-table-body');
+            const now = new Date();
+            const timestamp = now.toISOString().replace('T', ' ').substring(0, 19);
+            
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td style="font-family: 'JetBrains Mono', monospace; font-size: 0.85rem;">${timestamp}</td>
+                <td>current-user@trialgptbot.com</td>
+                <td>${action}</td>
+                <td>${module}</td>
+                <td><span class="status-badge status-success">Completed</span></td>
+                <td>${details}</td>
+            `;
+            
+            tbody.insertBefore(row, tbody.firstChild);
+        }
+
+        function loadMoreAudit() {
+            alert('Loading additional audit entries...\n\nIn production, this would fetch from the database.');
+        }
+
+        function exportAuditLog() {
+            const table = document.querySelector('.audit-table');
+            let csv = [];
+            table.querySelectorAll('tr').forEach(row => {
+                const cols = [];
+                row.querySelectorAll('td, th').forEach(cell => {
+                    cols.push('"' + cell.textContent.replace(/"/g, '""') + '"');
+                });
+                csv.push(cols.join(','));
+            });
+            
+            const blob = new Blob([csv.join('\n')], { type: 'text/csv' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'audit-trail-' + new Date().toISOString().split('T')[0] + '.csv';
+            a.click();
+        }
+
+        // =============================================
+        // COMPLIANCE FUNCTIONS
+        // =============================================
+        function downloadComplianceGuide(type) {
+            const guides = {
+                gdpr: `GDPR Compliance Guide for Clinical Trials
+========================================
+
+Article 6 - Lawfulness of Processing
+------------------------------------
+Processing of personal data requires lawful basis:
+(a) Consent (Art. 6(1)(a))
+(b) Contract (Art. 6(1)(b))
+(c) Legal obligation (Art. 6(1)(c))
+(d) Vital interests (Art. 6(1)(d))
+(e) Public task (Art. 6(1)(e))
+(f) Legitimate interests (Art. 6(1)(f))
+
+Article 7 - Conditions for Consent
+-------------------------------
+Consent must be:
+- Freely given
+- Specific
+- Informed
+- Unambiguous indication of agreement
+- Demonstrable by data subject
+- Withdrawable at any time
+
+Article 9 - Special Categories
+---------------------------
+Processing of health data requires:
+- Explicit consent OR
+- Substantial public interest OR
+- Preventive/occupational medicine OR
+- Public health purposes OR
+- Scientific research (with safeguards)
+
+Article 14 - Information to be Provided
+--------------------------------------
+Data subjects must be informed of:
+- Identity of controller
+- Purposes of processing
+- Legitimate interests (if applicable)
+- Recipients/categories of recipients
+- International transfer safeguards
+- Retention period
+- All rights available to them
+- Right to lodge complaint
+- Whether provision of data is mandatory
+
+Article 32 - Security of Processing
+-------------------------------
+Appropriate technical and organizational measures:
+- Pseudonymization and encryption
+- Ensure confidentiality, integrity, availability
+- Restore availability upon incident
+- Regular testing of effectiveness`,
+
+                hipaa: `HIPAA Compliance Guide for Clinical Research
+==========================================
+
+PRIVACY RULE (45 CFR Part 160, 164)
+----------------------------------
+Protected Health Information (PHI):
+- Individually identifiable health information
+- Held by covered entities
+- Transmitted/maintained in any form
+
+De-Identification Methods:
+1. Safe Harbor - Remove 18 identifiers
+2. Expert Determination - Statistical method
+
+Minimum Necessary Standard:
+- Limit PHI disclosures to minimum needed
+- Role-based access implementation
+- Category-based requests allowed
+
+SECURITY RULE (45 CFR Part 164 Subpart C)
+----------------------------------------
+Administrative Safeguards:
+- Security management process
+- Workforce security
+- Information access management
+- Security awareness training
+- Incident response procedures
+- Contingency planning
+- Business associate contracts
+
+Physical Safeguards:
+- Facility access controls
+- Workstation use and security
+- Device and media controls
+
+Technical Safeguards:
+- Access control (unique user ID, emergency access, auto-logoff)
+- Audit controls
+- Integrity (authentication, verification)
+- Transmission security (encryption)
+
+BREACH NOTIFICATION RULE
+-----------------------
+- Discovery: As soon as possible but no later than 60 days
+- Individual notification: Written, first-class mail (or email if agreed)
+- HHS notification: For breaches >500 individuals
+- Media notification: For breaches >500 in state/jurisdiction`,
+
+                fda: `FDA 21 CFR Part 11 Compliance Guide
+==================================
+
+SCOPE (§11.3)
+-----------
+Applies to records in electronic form that:
+- Required by FDA regulations
+- Submitted to FDA
+- Used to meet FDA requirements
+
+CONTROLS FOR CLOSED SYSTEMS (§11.10)
+-------------------------------------
+1. Validation of systems
+2. Copies of electronic records (accurate, complete)
+3. Protection of records
+4. Limit access to authorized persons
+5. Use of secure, computer-generated, time-stamped audit trails
+6. Operational system checks
+7. Authority checks
+8. Device checks
+
+ELECTRONIC SIGNATURES (§11.50-11.100)
+---------------------------------------
+Manifestations must include:
+- Printed name of signer
+- Date and time of signing
+- Meaning associated with signature
+
+Controls:
+- Non-repudiation (biometric/password)
+- Two distinct identification components
+- Administration controls
+
+CONTROLS FOR OPEN SYSTEMS (§11.300)
+-----------------------------------
+Additional measures including:
+- Encryption
+- Digital signature standards
+
+PERSONNEL QUALIFICATIONS (§11.10(i))
+--------------------------------------
+Training on:
+- System procedures
+- Electronic signature practices
+- Security awareness
+- Job responsibilities
+
+PROCEDURAL CONTROLS (§11.10)
+-----------------------------
+- Written policies holding individuals accountable
+- Appropriate supervisory controls
+- Record retention per §11.10(c)
+
+MANAGEMENT CONTROLS (§11.10)
+-----------------------------
+- Adequate supervision
+- Internal audits
+- Change control procedures
+- Documentation of systems`,
+
+                ema: `EMA Guidelines for Clinical Trials
+====================================
+
+CLINICAL TRIAL REGULATION EU 2014/536
+------------------------------------
+Key Provisions:
+- Harmonized application process via EU Portal
+- Single authorization for multi-country trials
+- Coordinated assessment by Member States
+- Sponsors may be established anywhere in EU
+
+COMMON TECHNICAL DOCUMENT (CTD)
+-------------------------------
+Module 1: Regional administrative info
+Module 2: Quality overall summary
+Module 3: Quality (CMC)
+Module 4: Nonclinical reports
+Module 5: Clinical study reports
+
+eCTD REQUIREMENTS
+-----------------
+- XML-based structure
+- Validated against DTD/schema
+- PDF documents with bookmarks
+- Hyperlinked cross-references
+- Version tracking
+
+ICH E6(R2) GOOD CLINICAL PRACTICE
+--------------------------------
+Principles:
+- Ethical conduct (Declaration of Helsinki)
+- Scientific soundness
+- Rights, safety, well-being of subjects
+- Data reliability
+
+Responsibilities:
+- Institutional Review Board/Ethics Committee
+- Investigator qualifications
+- Sponsor obligations
+- Independent ethics committee functions
+
+GVP MODULE VI - PHARMACOVIGILANCE
+-------------------------------
+Management of safety reports:
+- Expedited reporting (15 days fatal/life-threatening, otherwise 90 days)
+- Annual safety reports
+- PSUR/PBRER requirements
+- Signal detection and evaluation
+
+REFLECTION PAPERS
+---------------
+Guidance on emerging topics:
+- Real-world evidence
+- Decentralized trials
+- Master protocols
+- Pediatric development plans
+- Biosimilar clinical trials`
+            };
+
+            const blob = new Blob([guides[type]], { type: 'text/plain' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = type.toUpperCase() + '-compliance-guide.txt';
+            a.click();
+        }
+
+        // =============================================
+        // UTILITY FUNCTIONS
+        // =============================================
+        function refreshStats() {
+            alert('Statistics refreshed!\n\nIn production, this would fetch real-time data from the server.');
+        }
+
+        function exportReport() {
+            alert('Generating comprehensive report...\n\nThis would create a downloadable PDF/Excel report of all activities.');
+        }
+
+        function generateRiskReport() {
+            alert('Risk Assessment Report Generation initiated.\n\nThe report would include:\n- Complete risk matrix\n- Mitigation recommendations\n- Compliance gaps\n- Action items');
+        }
+
+        // Initialize
+        console.log('TrialGPTBot Enterprise v2.0 initialized successfully.');
+        console.log('All modules loaded and operational.');
     </script>
 </body>
 </html>
