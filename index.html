@@ -28,8 +28,8 @@
             --accent-purple: #8b5cf6;
             --accent-emerald: #10b981;
             --border-color: rgba(148, 163, 184, 0.1);
-            --glow-cyan: rgba(6, 182, 212, 0.4);
-            --glow-purple: rgba(139, 92, 246, 0.4);
+            --glow-cyan: rgba(6, 182, 212, 0.3);
+            --ribbon-bg: #ffffff;
         }
 
         * {
@@ -48,792 +48,6 @@
             color: var(--text-primary);
             line-height: 1.6;
             overflow-x: hidden;
-        }
-
-        /* ============================================
-           VIBRANT FUTURISTIC RIBBON - EXCITING DESIGN
-           ============================================ */
-        
-        .app-ribbon {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 9999;
-            background: linear-gradient(135deg, 
-                rgba(6, 182, 212, 0.12) 0%, 
-                rgba(139, 92, 246, 0.15) 25%,
-                rgba(16, 185, 129, 0.12) 50%,
-                rgba(59, 130, 246, 0.15) 75%,
-                rgba(6, 182, 212, 0.12) 100%);
-            backdrop-filter: blur(24px);
-            -webkit-backdrop-filter: blur(24px);
-            border-bottom: 2px solid transparent;
-            border-image: linear-gradient(90deg, 
-                var(--accent-cyan), 
-                var(--accent-purple), 
-                var(--accent-emerald), 
-                var(--accent-blue),
-                var(--accent-cyan)) 1;
-            padding: 0.7rem 2rem;
-            animation: ribbonSlideIn 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-            box-shadow: 
-                0 4px 30px rgba(6, 182, 212, 0.15),
-                0 8px 40px rgba(139, 92, 246, 0.1),
-                inset 0 1px 0 rgba(255, 255, 255, 0.1);
-        }
-
-        .app-ribbon::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 200%;
-            height: 100%;
-            background: linear-gradient(90deg,
-                transparent,
-                rgba(255, 255, 255, 0.05),
-                transparent);
-            animation: shimmer 3s infinite;
-        }
-
-        @keyframes shimmer {
-            0% { transform: translateX(-50%); }
-            100% { transform: translateX(50%); }
-        }
-
-        @keyframes ribbonSlideIn {
-            from { transform: translateY(-100%); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-
-        .ribbon-content {
-            max-width: 1500px;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 1.5rem;
-            flex-wrap: wrap;
-            position: relative;
-            z-index: 1;
-        }
-
-        /* LEFT SECTION: Brand + Dashboard Preview */
-        .ribbon-left {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        /* Brand Button - Links to Dashboard */
-        .ribbon-brand {
-            display: flex;
-            align-items: center;
-            gap: 0.65rem;
-            text-decoration: none;
-            color: var(--text-primary);
-            font-weight: 800;
-            font-size: 1.25rem;
-            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-            padding: 0.55rem 1.1rem;
-            border-radius: 14px;
-            background: linear-gradient(135deg, 
-                rgba(6, 182, 212, 0.2), 
-                rgba(139, 92, 246, 0.2));
-            border: 1px solid rgba(6, 182, 212, 0.3);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .ribbon-brand::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, 
-                transparent, 
-                rgba(255, 255, 255, 0.2), 
-                transparent);
-            transition: left 0.5s ease;
-        }
-
-        .ribbon-brand:hover::before {
-            left: 100%;
-        }
-
-        .ribbon-brand:hover {
-            transform: scale(1.05) translateY(-2px);
-            box-shadow: 
-                0 8px 25px rgba(6, 182, 212, 0.4),
-                0 0 40px rgba(139, 92, 246, 0.3);
-            border-color: var(--accent-cyan);
-        }
-
-        .ribbon-logo {
-            width: 38px;
-            height: 38px;
-            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple), var(--accent-blue));
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 900;
-            font-size: 1.2rem;
-            color: white;
-            box-shadow: 0 4px 15px rgba(6, 182, 212, 0.4);
-            animation: logoGlow 2s ease-in-out infinite alternate;
-        }
-
-        @keyframes logoGlow {
-            from { box-shadow: 0 4px 15px rgba(6, 182, 212, 0.4); }
-            to { box-shadow: 0 4px 25px rgba(139, 92, 246, 0.6); }
-        }
-
-        .ribbon-brand-text {
-            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            letter-spacing: -0.02em;
-        }
-
-        /* Status Badge - Animated */
-        .ribbon-badge {
-            display: flex;
-            align-items: center;
-            gap: 0.45rem;
-            padding: 0.4rem 0.95rem;
-            background: linear-gradient(135deg, 
-                rgba(16, 185, 129, 0.15), 
-                rgba(6, 182, 212, 0.15));
-            border: 1px solid rgba(16, 185, 129, 0.4);
-            border-radius: 25px;
-            font-size: 0.78rem;
-            color: var(--accent-emerald);
-            font-weight: 700;
-            animation: badgePulse 2s ease-in-out infinite;
-        }
-
-        @keyframes badgePulse {
-            0%, 100% { 
-                box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4);
-            }
-            50% { 
-                box-shadow: 0 0 20px 5px rgba(16, 185, 129, 0.2);
-            }
-        }
-
-        .ribbon-status-dot {
-            width: 9px;
-            height: 9px;
-            background: var(--accent-emerald);
-            border-radius: 50%;
-            animation: dotPulse 1.5s ease-in-out infinite;
-            box-shadow: 0 0 10px var(--accent-emerald);
-        }
-
-        @keyframes dotPulse {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.6; transform: scale(1.3); }
-        }
-
-        /* Dashboard Audit Trail Preview - EXCITING */
-        .ribbon-dashboard-preview {
-            position: relative;
-            display: flex;
-            align-items: center;
-            gap: 0.7rem;
-            padding: 0.5rem 0.95rem;
-            background: linear-gradient(135deg, 
-                rgba(16, 185, 129, 0.12), 
-                rgba(6, 182, 212, 0.12));
-            border: 1px solid rgba(16, 185, 129, 0.35);
-            border-radius: 14px;
-            cursor: pointer;
-            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-            text-decoration: none;
-            overflow: hidden;
-        }
-
-        .ribbon-dashboard-preview::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            background: radial-gradient(circle, rgba(16, 185, 129, 0.3) 0%, transparent 70%);
-            transform: translate(-50%, -50%);
-            transition: all 0.5s ease;
-            border-radius: 50%;
-        }
-
-        .ribbon-dashboard-preview:hover::after {
-            width: 300px;
-            height: 300px;
-        }
-
-        .ribbon-dashboard-preview:hover {
-            background: linear-gradient(135deg, 
-                rgba(16, 185, 129, 0.25), 
-                rgba(6, 182, 212, 0.25));
-            border-color: var(--accent-emerald);
-            transform: translateY(-3px) scale(1.02);
-            box-shadow: 
-                0 10px 35px rgba(16, 185, 129, 0.3),
-                0 0 50px rgba(6, 182, 212, 0.15);
-        }
-
-        .ribbon-preview-img {
-            width: 42px;
-            height: 42px;
-            border-radius: 10px;
-            object-fit: cover;
-            border: 2px solid var(--accent-emerald);
-            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
-            transition: all 0.3s ease;
-            position: relative;
-            z-index: 1;
-        }
-
-        .ribbon-dashboard-preview:hover .ribbon-preview-img {
-            transform: rotate(-3deg) scale(1.1);
-            box-shadow: 0 6px 20px rgba(16, 185, 129, 0.5);
-        }
-
-        .ribbon-preview-text {
-            display: flex;
-            flex-direction: column;
-            position: relative;
-            z-index: 1;
-        }
-
-        .ribbon-preview-title {
-            font-size: 0.8rem;
-            font-weight: 800;
-            color: var(--accent-emerald);
-            line-height: 1.2;
-            letter-spacing: 0.02em;
-        }
-
-        .ribbon-preview-subtitle {
-            font-size: 0.68rem;
-            color: var(--accent-cyan);
-            font-weight: 600;
-        }
-
-        .ribbon-preview-badge {
-            position: absolute;
-            top: -6px;
-            right: -6px;
-            background: linear-gradient(135deg, #10b981, #059669);
-            color: white;
-            font-size: 0.58rem;
-            font-weight: 800;
-            padding: 0.2rem 0.5rem;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.5);
-            animation: liveBadge 1.5s ease-in-out infinite;
-            z-index: 2;
-        }
-
-        @keyframes liveBadge {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.08); }
-        }
-
-        /* CENTER SECTION: Navigation Menu Bar */
-        .ribbon-center {
-            display: flex;
-            align-items: center;
-        }
-
-        .ribbon-nav {
-            display: flex;
-            align-items: center;
-            gap: 0.4rem;
-            background: rgba(0, 0, 0, 0.2);
-            padding: 0.4rem;
-            border-radius: 14px;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-        }
-
-        .ribbon-link {
-            display: flex;
-            align-items: center;
-            gap: 0.4rem;
-            padding: 0.6rem 1.1rem;
-            text-decoration: none;
-            color: var(--text-secondary);
-            font-size: 0.88rem;
-            font-weight: 600;
-            border-radius: 10px;
-            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-            white-space: nowrap;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .ribbon-link::before {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            width: 0;
-            height: 2px;
-            background: linear-gradient(90deg, var(--accent-cyan), var(--accent-purple));
-            transition: all 0.3s ease;
-            transform: translateX(-50%);
-        }
-
-        .ribbon-link:hover::before {
-            width: 80%;
-        }
-
-        .ribbon-link:hover {
-            background: rgba(6, 182, 212, 0.15);
-            color: var(--text-primary);
-            transform: translateY(-2px);
-        }
-
-        .ribbon-link.primary {
-            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
-            color: white;
-            font-weight: 700;
-            box-shadow: 0 4px 20px rgba(6, 182, 212, 0.35);
-        }
-
-        .ribbon-link.primary:hover {
-            box-shadow: 0 8px 30px rgba(6, 182, 212, 0.5);
-            transform: translateY(-3px);
-        }
-
-        .ribbon-link.primary::before {
-            display: none;
-        }
-
-        .ribbon-link.accent {
-            background: linear-gradient(135deg, 
-                rgba(139, 92, 246, 0.2), 
-                rgba(236, 72, 153, 0.2));
-            color: #c084fc;
-            border: 1px solid rgba(139, 92, 246, 0.3);
-        }
-
-        .ribbon-link.success {
-            background: linear-gradient(135deg, 
-                rgba(16, 185, 129, 0.15), 
-                rgba(6, 182, 212, 0.15));
-            color: var(--accent-emerald);
-        }
-
-        /* RIGHT SECTION: Actions + Login CTA */
-        .ribbon-right {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        /* Automation Status - Glowing */
-        .automation-status {
-            display: flex;
-            align-items: center;
-            gap: 0.55rem;
-            padding: 0.5rem 1rem;
-            background: linear-gradient(135deg, 
-                rgba(6, 182, 212, 0.12), 
-                rgba(59, 130, 246, 0.12));
-            border: 1px solid rgba(6, 182, 212, 0.3);
-            border-radius: 25px;
-            font-size: 0.82rem;
-            color: var(--accent-cyan);
-            font-weight: 600;
-        }
-
-        .automation-spinner {
-            width: 16px;
-            height: 16px;
-            border: 2px solid transparent;
-            border-top-color: var(--accent-cyan);
-            border-right-color: var(--accent-purple);
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
-
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-
-        .automation-count {
-            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
-            color: white;
-            padding: 0.18rem 0.5rem;
-            border-radius: 12px;
-            font-weight: 800;
-            font-size: 0.75rem;
-            box-shadow: 0 2px 10px rgba(6, 182, 212, 0.4);
-        }
-
-        /* Login Button - PROMINENT CTA */
-        .ribbon-login-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.6rem;
-            padding: 0.7rem 1.6rem;
-            background: linear-gradient(135deg, #10b981, #059669, #047857);
-            background-size: 200% 200%;
-            color: white;
-            text-decoration: none;
-            border-radius: 12px;
-            font-size: 0.95rem;
-            font-weight: 800;
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            cursor: pointer;
-            border: none;
-            box-shadow: 
-                0 6px 25px rgba(16, 185, 129, 0.4),
-                0 0 40px rgba(16, 185, 129, 0.15);
-            animation: 
-                loginGradient 3s ease infinite,
-                loginGlow 2s ease-in-out infinite;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .ribbon-login-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, 
-                transparent, 
-                rgba(255, 255, 255, 0.3), 
-                transparent);
-            animation: btnShine 2.5s infinite;
-        }
-
-        @keyframes loginGradient {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-        }
-
-        @keyframes loginGlow {
-            0%, 100% { 
-                box-shadow: 
-                    0 6px 25px rgba(16, 185, 129, 0.4),
-                    0 0 40px rgba(16, 185, 129, 0.15);
-            }
-            50% { 
-                box-shadow: 
-                    0 8px 35px rgba(16, 185, 129, 0.6),
-                    0 0 60px rgba(16, 185, 129, 0.25);
-            }
-        }
-
-        @keyframes btnShine {
-            0% { left: -100%; }
-            50%, 100% { left: 100%; }
-        }
-
-        .ribbon-login-btn:hover {
-            transform: translateY(-4px) scale(1.03);
-            box-shadow: 
-                0 12px 40px rgba(16, 185, 129, 0.5),
-                0 0 80px rgba(16, 185, 129, 0.3);
-        }
-
-        .ribbon-login-icon {
-            font-size: 1.2rem;
-            animation: lockBounce 2s ease-in-out infinite;
-        }
-
-        @keyframes lockBounce {
-            0%, 100% { transform: rotate(0deg); }
-            25% { transform: rotate(-5deg); }
-            75% { transform: rotate(5deg); }
-        }
-
-        /* Notifications */
-        .ribbon-notifications {
-            position: relative;
-        }
-
-        .ribbon-notification-btn {
-            position: relative;
-            width: 42px;
-            height: 42px;
-            background: linear-gradient(135deg, 
-                rgba(251, 191, 36, 0.15), 
-                rgba(245, 158, 11, 0.15));
-            border: 1px solid rgba(251, 191, 36, 0.3);
-            border-radius: 11px;
-            cursor: pointer;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .ribbon-notification-btn:hover {
-            background: linear-gradient(135deg, 
-                rgba(251, 191, 36, 0.25), 
-                rgba(245, 158, 11, 0.25));
-            border-color: #fbbf24;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(251, 191, 36, 0.3);
-        }
-
-        .notification-badge {
-            position: absolute;
-            top: -5px;
-            right: -5px;
-            width: 20px;
-            height: 20px;
-            background: linear-gradient(135deg, #ef4444, #dc2626);
-            color: white;
-            font-size: 0.68rem;
-            font-weight: 800;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            animation: notifPulse 2s infinite;
-            box-shadow: 0 2px 10px rgba(239, 68, 68, 0.5);
-        }
-
-        @keyframes notifPulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.15); }
-        }
-
-        /* Notification Dropdown */
-        .notification-dropdown {
-            position: absolute;
-            top: calc(100% + 10px);
-            right: 0;
-            width: 380px;
-            background: var(--bg-secondary);
-            border: 1px solid rgba(6, 182, 212, 0.2);
-            border-radius: 16px;
-            box-shadow: 
-                0 25px 50px rgba(0, 0, 0, 0.5),
-                0 0 60px rgba(6, 182, 212, 0.1);
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(-10px) scale(0.96);
-            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-            z-index: 100000;
-        }
-
-        .notification-dropdown.active {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0) scale(1);
-        }
-
-        .notification-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1.2rem 1.3rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-            background: linear-gradient(135deg, 
-                rgba(6, 182, 212, 0.08), 
-                rgba(139, 92, 246, 0.08));
-            border-radius: 16px 16px 0 0;
-        }
-
-        .notification-header h4 {
-            font-size: 1rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .notification-header a {
-            color: var(--accent-cyan);
-            text-decoration: none;
-            font-size: 0.82rem;
-            font-weight: 600;
-            transition: all 0.2s ease;
-        }
-
-        .notification-header a:hover {
-            color: var(--accent-emerald);
-        }
-
-        .notification-list {
-            max-height: 320px;
-            overflow-y: auto;
-        }
-
-        .notification-item {
-            display: flex;
-            gap: 0.9rem;
-            padding: 1rem 1.3rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-            transition: all 0.25s ease;
-            cursor: pointer;
-        }
-
-        .notification-item:hover {
-            background: rgba(6, 182, 212, 0.08);
-        }
-
-        .notification-item.unread {
-            background: linear-gradient(90deg, 
-                rgba(6, 182, 212, 0.08), 
-                transparent);
-            border-left: 3px solid var(--accent-cyan);
-        }
-
-        .notification-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.1rem;
-            flex-shrink: 0;
-        }
-
-        .notification-icon.automation { 
-            background: linear-gradient(135deg, rgba(6, 182, 212, 0.2), rgba(59, 130, 246, 0.2)); 
-        }
-        .notification-icon.compliance { 
-            background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(34, 197, 94, 0.2)); 
-        }
-        .notification-icon.portal { 
-            background: linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(236, 72, 153, 0.2)); 
-        }
-        .notification-icon.alert { 
-            background: linear-gradient(135deg, rgba(251, 191, 36, 0.2), rgba(245, 158, 11, 0.2)); 
-        }
-
-        .notification-content {
-            flex: 1;
-            min-width: 0;
-        }
-
-        .notification-title {
-            font-size: 0.88rem;
-            font-weight: 700;
-            margin-bottom: 0.25rem;
-            color: var(--text-primary);
-        }
-
-        .notification-desc {
-            font-size: 0.82rem;
-            color: var(--text-secondary);
-            line-height: 1.4;
-        }
-
-        .notification-time {
-            font-size: 0.75rem;
-            color: rgba(148, 163, 184, 0.6);
-            margin-top: 0.35rem;
-        }
-
-        /* User Menu */
-        .ribbon-user-menu {
-            position: relative;
-            display: none;
-        }
-
-        .ribbon-user-btn {
-            display: flex;
-            align-items: center;
-            gap: 0.55rem;
-            padding: 0.5rem 0.9rem;
-            background: linear-gradient(135deg, 
-                rgba(6, 182, 212, 0.12), 
-                rgba(139, 92, 246, 0.12));
-            border: 1px solid rgba(6, 182, 212, 0.25);
-            border-radius: 22px;
-            cursor: pointer;
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: var(--text-primary);
-            transition: all 0.3s ease;
-        }
-
-        .ribbon-user-btn:hover {
-            border-color: var(--accent-cyan);
-            background: linear-gradient(135deg, 
-                rgba(6, 182, 212, 0.2), 
-                rgba(139, 92, 246, 0.2));
-            box-shadow: 0 4px 20px rgba(6, 182, 212, 0.2);
-        }
-
-        .user-avatar {
-            width: 28px;
-            height: 28px;
-            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.8rem;
-            font-weight: 800;
-            color: white;
-        }
-
-        .user-dropdown {
-            position: absolute;
-            top: calc(100% + 10px);
-            right: 0;
-            width: 220px;
-            background: var(--bg-secondary);
-            border: 1px solid rgba(6, 182, 212, 0.2);
-            border-radius: 14px;
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(-10px) scale(0.96);
-            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-            z-index: 100000;
-            overflow: hidden;
-        }
-
-        .user-dropdown.active {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0) scale(1);
-        }
-
-        .user-dropdown-item {
-            display: flex;
-            align-items: center;
-            gap: 0.7rem;
-            padding: 0.85rem 1.1rem;
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-size: 0.88rem;
-            font-weight: 500;
-            transition: all 0.2s ease;
-        }
-
-        .user-dropdown-item:hover {
-            background: rgba(6, 182, 212, 0.1);
-            color: var(--text-primary);
-        }
-
-        .user-dropdown-divider {
-            height: 1px;
-            background: linear-gradient(90deg, 
-                transparent, 
-                rgba(255, 255, 255, 0.1), 
-                transparent);
-            margin: 0.3rem 0;
         }
 
         /* Animated Background */
@@ -907,16 +121,16 @@
             66% { transform: translate(-20px, 20px) scale(0.95); }
         }
 
-        /* Navigation below ribbon */
+        /* Navigation */
         nav {
             position: fixed;
-            top: 72px;
+            top: 0;
             left: 0;
             right: 0;
-            z-index: 998;
+            z-index: 1000;
             padding: 1rem 2rem;
             backdrop-filter: blur(20px);
-            background: rgba(10, 10, 15, 0.9);
+            background: rgba(10, 10, 15, 0.8);
             border-bottom: 1px solid var(--border-color);
             display: flex;
             justify-content: space-between;
@@ -959,7 +173,7 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding: 10rem 2rem 4rem;
+            padding: 8rem 2rem 4rem;
             position: relative;
         }
 
@@ -985,13 +199,18 @@
             animation: pulse 2s infinite;
         }
 
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.2); }
+        }
+
         h1 {
-            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-size: clamp(2.5rem, 8vw, 5rem);
             font-weight: 900;
             line-height: 1.1;
-            letter-spacing: -0.03em;
             margin-bottom: 1.5rem;
-            animation: fadeInUp 0.8s ease-out 0.1s backwards;
+            letter-spacing: -0.03em;
+            animation: fadeInUp 0.8s ease-out 0.1s both;
         }
 
         .gradient-text {
@@ -999,14 +218,27 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            background-size: 200% 200%;
+            animation: gradientShift 5s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
         }
 
         .subtitle {
-            font-size: clamp(1rem, 2vw, 1.25rem);
+            font-size: clamp(1.1rem, 2.5vw, 1.35rem);
             color: var(--text-secondary);
-            max-width: 650px;
-            margin-bottom: 2.5rem;
-            animation: fadeInUp 0.8s ease-out 0.2s backwards;
+            max-width: 700px;
+            margin: 0 auto 3rem;
+            line-height: 1.7;
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .cta-group {
@@ -1014,16 +246,16 @@
             gap: 1rem;
             flex-wrap: wrap;
             justify-content: center;
-            animation: fadeInUp 0.8s ease-out 0.3s backwards;
+            animation: fadeInUp 0.8s ease-out 0.3s both;
         }
 
         .btn {
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            padding: 0.9rem 1.8rem;
-            border-radius: 10px;
-            font-size: 0.95rem;
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            font-size: 1rem;
             font-weight: 600;
             text-decoration: none;
             transition: all 0.3s ease;
@@ -1034,34 +266,34 @@
         .btn-primary {
             background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
             color: white;
-            box-shadow: 0 4px 20px rgba(6, 182, 212, 0.3);
+            box-shadow: 0 0 30px var(--glow-cyan);
         }
 
         .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 30px rgba(6, 182, 212, 0.4);
+            transform: translateY(-2px);
+            box-shadow: 0 0 50px var(--glow-cyan);
         }
 
         .btn-secondary {
-            background: rgba(148, 163, 184, 0.1);
+            background: rgba(255, 255, 255, 0.05);
             color: var(--text-primary);
             border: 1px solid var(--border-color);
         }
 
         .btn-secondary:hover {
-            background: rgba(148, 163, 184, 0.15);
+            background: rgba(255, 255, 255, 0.1);
             border-color: var(--accent-cyan);
         }
 
+        /* Stats Bar */
         .stats-bar {
-            display: flex;
-            gap: 3rem;
-            margin-top: 4rem;
-            padding: 1.5rem 2rem;
-            background: rgba(18, 18, 26, 0.6);
-            border-radius: 16px;
-            border: 1px solid var(--border-color);
-            animation: fadeInUp 0.8s ease-out 0.4s backwards;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 2rem;
+            padding: 3rem 2rem;
+            max-width: 900px;
+            margin: 4rem auto 0;
+            animation: fadeInUp 0.8s ease-out 0.4s both;
         }
 
         .stat-item {
@@ -1069,21 +301,22 @@
         }
 
         .stat-value {
-            font-size: 1.8rem;
+            font-size: 2.5rem;
             font-weight: 800;
             background: linear-gradient(135deg, var(--accent-cyan), var(--accent-emerald));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            font-family: 'JetBrains Mono', monospace;
         }
 
         .stat-label {
-            font-size: 0.8rem;
+            font-size: 0.9rem;
             color: var(--text-secondary);
-            margin-top: 0.3rem;
+            margin-top: 0.25rem;
         }
 
-        /* Sections */
+        /* Section Styles */
         section {
             padding: 6rem 2rem;
             max-width: 1200px;
@@ -1098,32 +331,31 @@
         .section-tag {
             display: inline-block;
             padding: 0.4rem 1rem;
-            background: rgba(6, 182, 212, 0.1);
-            border: 1px solid rgba(6, 182, 212, 0.3);
-            border-radius: 20px;
+            background: rgba(139, 92, 246, 0.1);
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            border-radius: 9999px;
             font-size: 0.8rem;
-            color: var(--accent-cyan);
-            font-weight: 600;
-            margin-bottom: 1rem;
+            color: var(--accent-purple);
             text-transform: uppercase;
             letter-spacing: 0.1em;
+            margin-bottom: 1rem;
         }
 
-        .section-header h2 {
-            font-size: clamp(1.8rem, 4vw, 2.5rem);
+        h2 {
+            font-size: clamp(2rem, 5vw, 3rem);
             font-weight: 800;
-            margin-bottom: 1rem;
             letter-spacing: -0.02em;
+            margin-bottom: 1rem;
         }
 
         .section-desc {
+            font-size: 1.1rem;
             color: var(--text-secondary);
             max-width: 600px;
             margin: 0 auto;
-            font-size: 1.05rem;
         }
 
-        /* Features Grid */
+        /* Feature Cards */
         .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -1136,35 +368,59 @@
             border-radius: 16px;
             padding: 2rem;
             transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent-cyan), var(--accent-purple));
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
 
         .feature-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-4px);
             border-color: rgba(6, 182, 212, 0.3);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .feature-card:hover::before {
+            opacity: 1;
         }
 
         .feature-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, rgba(6, 182, 212, 0.2), rgba(139, 92, 246, 0.2));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1.25rem;
         }
 
         .feature-card h3 {
-            font-size: 1.2rem;
+            font-size: 1.25rem;
             font-weight: 700;
-            margin-bottom: 0.8rem;
+            margin-bottom: 0.75rem;
         }
 
         .feature-card p {
             color: var(--text-secondary);
             font-size: 0.95rem;
-            line-height: 1.7;
+            line-height: 1.6;
         }
 
         /* Tech Stack */
         .tech-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 1rem;
         }
 
@@ -1172,7 +428,7 @@
             display: flex;
             align-items: center;
             gap: 1rem;
-            padding: 1.2rem 1.5rem;
+            padding: 1.25rem 1.5rem;
             background: var(--bg-card);
             border: 1px solid var(--border-color);
             border-radius: 12px;
@@ -1180,155 +436,167 @@
         }
 
         .tech-item:hover {
-            border-color: rgba(6, 182, 212, 0.3);
-            transform: translateX(5px);
+            border-color: var(--accent-cyan);
+            background: rgba(6, 182, 212, 0.05);
         }
 
         .tech-icon {
-            width: 44px;
-            height: 44px;
-            background: linear-gradient(135deg, rgba(6, 182, 212, 0.2), rgba(139, 92, 246, 0.2));
-            border-radius: 10px;
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
+            border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: 700;
-            font-size: 0.85rem;
-            color: var(--accent-cyan);
+            font-size: 0.9rem;
+            color: white;
         }
 
         .tech-info h4 {
-            font-size: 0.95rem;
+            font-size: 1rem;
             font-weight: 600;
             margin-bottom: 0.2rem;
         }
 
         .tech-info p {
-            font-size: 0.82rem;
+            font-size: 0.85rem;
             color: var(--text-secondary);
         }
 
-        /* Timeline */
+        /* Vision Timeline */
         .timeline {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--accent-cyan), var(--accent-purple), var(--accent-emerald));
         }
 
         .timeline-item {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
-            padding: 2rem;
             position: relative;
-            padding-left: 3.5rem;
-            transition: all 0.3s ease;
-        }
-
-        .timeline-item:hover {
-            border-color: rgba(6, 182, 212, 0.3);
+            padding-bottom: 3rem;
+            padding-left: 2rem;
         }
 
         .timeline-item::before {
             content: '';
             position: absolute;
-            left: 1.2rem;
-            top: 2.2rem;
-            width: 12px;
-            height: 12px;
-            background: var(--accent-cyan);
+            left: -2rem;
+            top: 0.5rem;
+            width: 14px;
+            height: 14px;
+            background: var(--bg-primary);
+            border: 3px solid var(--accent-cyan);
             border-radius: 50%;
-            box-shadow: 0 0 20px var(--glow-cyan);
         }
 
         .timeline-year {
-            font-size: 0.85rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
             color: var(--accent-cyan);
             font-weight: 600;
             margin-bottom: 0.5rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
         }
 
         .timeline-item h3 {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             font-weight: 700;
-            margin-bottom: 0.8rem;
+            margin-bottom: 0.5rem;
         }
 
         .timeline-item p {
             color: var(--text-secondary);
-            line-height: 1.7;
+            line-height: 1.6;
         }
 
         /* Scenarios */
         .scenarios-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 1.5rem;
         }
 
         .scenario-card {
-            background: var(--bg-card);
+            background: linear-gradient(135deg, var(--bg-card), rgba(139, 92, 246, 0.05));
             border: 1px solid var(--border-color);
-            border-radius: 16px;
+            border-radius: 20px;
             padding: 2rem;
-            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
 
-        .scenario-card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(139, 92, 246, 0.3);
+        .scenario-card::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(6, 182, 212, 0.1) 0%, transparent 70%);
+            pointer-events: none;
         }
 
         .scenario-type {
             display: inline-block;
             padding: 0.3rem 0.8rem;
-            background: rgba(139, 92, 246, 0.15);
-            border-radius: 20px;
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            border-radius: 6px;
             font-size: 0.75rem;
-            color: var(--accent-purple);
+            color: var(--accent-emerald);
             font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
             margin-bottom: 1rem;
         }
 
         .scenario-card h3 {
-            font-size: 1.1rem;
+            font-size: 1.35rem;
             font-weight: 700;
             margin-bottom: 1rem;
-            line-height: 1.4;
         }
 
         .scenario-details {
             list-style: none;
+            margin-bottom: 1.5rem;
         }
 
         .scenario-details li {
             padding: 0.5rem 0;
             color: var(--text-secondary);
-            font-size: 0.9rem;
-            padding-left: 1.2rem;
-            position: relative;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
         }
 
         .scenario-details li::before {
             content: '→';
-            position: absolute;
-            left: 0;
             color: var(--accent-cyan);
+            font-weight: bold;
+            flex-shrink: 0;
         }
 
         /* CTA Section */
         .cta-section {
             text-align: center;
-            padding: 6rem 2rem;
+            padding: 8rem 2rem;
+            position: relative;
         }
 
         .cta-box {
-            max-width: 700px;
+            max-width: 800px;
             margin: 0 auto;
-            padding: 3rem;
-            background: var(--bg-card);
+            padding: 4rem;
+            background: linear-gradient(135deg, rgba(6, 182, 212, 0.1), rgba(139, 92, 246, 0.1));
             border: 1px solid var(--border-color);
             border-radius: 24px;
             position: relative;
@@ -1338,31 +606,33 @@
         .cta-box::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, var(--accent-cyan), var(--accent-purple), var(--accent-emerald));
+            inset: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(6, 182, 212, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 50%, rgba(139, 92, 246, 0.15) 0%, transparent 50%);
         }
 
-        .cta-box h2 {
-            font-size: 2rem;
-            font-weight: 800;
+        .cta-box > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-section h2 {
+            font-size: clamp(2rem, 5vw, 2.75rem);
             margin-bottom: 1rem;
         }
 
-        .cta-box p {
+        .cta-section p {
+            font-size: 1.15rem;
             color: var(--text-secondary);
             margin-bottom: 2rem;
-            font-size: 1.05rem;
         }
 
         /* Footer */
         footer {
-            text-align: center;
-            padding: 3rem 2rem;
             border-top: 1px solid var(--border-color);
-            margin-top: 4rem;
+            padding: 3rem 2rem;
+            text-align: center;
         }
 
         .footer-links {
@@ -1389,234 +659,384 @@
             font-size: 0.85rem;
         }
 
-        /* Animations */
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        
-        @keyframes fadeOut {
-            from { opacity: 1; }
-            to { opacity: 0; }
-        }
-        
-        @keyframes slideUp {
-            from { 
-                opacity: 0;
-                transform: translateY(30px); 
-            }
-            to { 
-                opacity: 1;
-                transform: translateY(0); 
-            }
-        }
-        
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.5; transform: scale(1.2); }
-        }
-
         /* Responsive */
-        @media (max-width: 1024px) {
-            .ribbon-nav {
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem;
+            }
+
+            .nav-links {
                 display: none;
             }
-            
+
+            .hero {
+                padding: 7rem 1.5rem 3rem;
+            }
+
+            section {
+                padding: 4rem 1.5rem;
+            }
+
+            .stats-bar {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+            }
+
+            .scenarios-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-box {
+                padding: 2.5rem 1.5rem;
+            }
+        }
+
+        /* Code Block Style */
+        code {
+            font-family: 'JetBrains Mono', monospace;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.9em;
+            color: var(--accent-cyan);
+        }
+
+        /* ============================================
+           APPLICATION RIBBON - Top Banner
+           ============================================ */
+        .app-ribbon {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 9999;
+            background: #ffffff !important;
+            border-bottom: 1px solid #e5e7eb;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.12), 0 1px 3px rgba(0, 0, 0, 0.08);
+            padding: 0.65rem 1.5rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            font-size: 0.85rem;
+            animation: ribbonSlideDown 0.5s ease-out;
+        }
+
+        @keyframes ribbonSlideDown {
+            from { 
+                transform: translateY(-100%); 
+                opacity: 0; 
+            }
+            to { 
+                transform: translateY(0); 
+                opacity: 1; 
+            }
+        }
+
+        .ribbon-content {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            max-width: 1400px;
+            width: 100%;
+        }
+
+        .ribbon-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 700;
+            color: #065f46;
+            text-decoration: none;
+            padding-right: 1.5rem;
+            border-right: 1px solid #e5e7eb;
+            transition: all 0.3s ease;
+            border-radius: 8px;
+        }
+
+        .ribbon-brand:hover {
+            background: #f0fdf4;
+            transform: scale(1.02);
+        }
+
+        .ribbon-logo {
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, #10b981, #059669, #047857);
+            border-radius: 8px;
+            display: flex;
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 900;
+            color: white;
+        }
+
+        .ribbon-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            padding: 0.25rem 0.7rem;
+            background: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            border-radius: 20px;
+            color: #059669;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .ribbon-status-dot {
+            width: 6px;
+            height: 6px;
+            background: var(--accent-emerald);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        .ribbon-nav {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .ribbon-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            padding: 0.4rem 0.9rem;
+            border-radius: 8px;
+            color: #374151;
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: 500;
+            transition: all 0.25s ease;
+            white-space: nowrap;
+        }
+
+        .ribbon-link:hover {
+            background: #f3f4f6;
+            color: #111827;
+        }
+
+        .ribbon-link.primary {
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
+            color: white;
+            box-shadow: 0 4px 15px rgba(6, 182, 212, 0.3);
+        }
+
+        .ribbon-link.primary:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(6, 182, 212, 0.4);
+        }
+
+        .ribbon-link.accent {
+            background: rgba(139, 92, 246, 0.15);
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            color: var(--accent-purple);
+        }
+
+        .ribbon-link.accent:hover {
+            background: rgba(139, 92, 246, 0.25);
+            border-color: var(--accent-purple);
+        }
+
+        .ribbon-link.success {
+            background: rgba(16, 185, 129, 0.12);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            color: var(--accent-emerald);
+        }
+
+        .ribbon-link.success:hover {
+            background: rgba(16, 185, 129, 0.22);
+            border-color: var(--accent-emerald);
+        }
+
+        .ribbon-divider {
+            width: 1px;
+            height: 24px;
+            background: rgba(148, 163, 184, 0.15);
+        }
+
+        .ribbon-stats {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding-left: 1rem;
+            border-left: 1px solid rgba(148, 163, 184, 0.2);
+        }
+
+        .ribbon-stat {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            line-height: 1.2;
+        }
+
+        .ribbon-stat-value {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--accent-cyan);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .ribbon-stat-label {
+            font-size: 0.65rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+        }
+
+        /* Adjust main nav position when ribbon is present */
+        nav {
+            top: 44px !important;
+        }
+
+        .hero {
+            padding-top: 10rem !important;
+        }
+
+        /* Responsive Ribbon */
+        @media (max-width: 1024px) {
+            .ribbon-divider,
             .ribbon-stats {
                 display: none;
             }
             
-            nav {
-                top: 70px;
+            .ribbon-nav {
+                gap: 0.3rem;
             }
             
-            .ribbon-dashboard-preview {
+            .ribbon-link span {
                 display: none;
+            }
+            
+            .ribbon-link {
+                padding: 0.4rem 0.6rem;
+            }
+            
+            .ribbon-link.primary span,
+            .ribbon-link.accent span {
+                display: inline;
             }
         }
 
         @media (max-width: 768px) {
-            .hero {
-                padding: 8rem 1.5rem 3rem;
+            .app-ribbon {
+                padding: 0.5rem 1rem;
+                gap: 0.5rem;
             }
             
-            .stats-bar {
-                flex-direction: column;
-                gap: 1.5rem;
+            .ribbon-brand {
+                padding-right: 0.75rem;
+                border-right: none;
             }
             
-            section {
-                padding: 4rem 1.5rem;
-            }
-            
-            .ribbon-badge span:not(.ribbon-status-dot) {
+            .ribbon-brand-text {
                 display: none;
             }
             
-            .app-ribbon {
-                padding: 0.5rem 1rem;
+            .ribbon-badge {
+                display: none;
             }
+            
+            nav {
+                top: 40px !important;
+            }
+            
+            .hero {
+                padding-top: 8rem !important;
+            }
+        }
+
+        pre {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.5rem;
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+
+        pre code {
+            background: none;
+            padding: 0;
         }
     </style>
 </head>
 <body>
     <!-- ============================================
-         VIBRANT FUTURISTIC RIBBON - EXCITING DESIGN
+         WHITE APPLICATION RIBBON - Clean Professional Header
          ============================================ -->
     <div class="app-ribbon">
         <div class="ribbon-content">
-            <!-- LEFT SECTION: Brand + Dashboard Preview -->
-            <div class="ribbon-left">
-                <!-- Brand (Opens Dashboard Preview) -->
-                <a href="#" class="ribbon-brand" onclick="showDashboardPreview(); return false;">
-                    <div class="ribbon-logo">T</div>
-                    <span class="ribbon-brand-text">TrialGPTBot</span>
+            <!-- Brand - Links to Document Generator Hub -->
+            <a href="#document-generator-hub" class="ribbon-brand" style="color: #065f46 !important; text-decoration: none; display: flex; align-items: center; gap: 0.6rem; font-weight: 800; padding: 0.5rem 1rem; border-radius: 12px; transition: all 0.3s ease; border-right: 1px solid #e5e7eb;" onmouseover="this.style.background='#f0fdf4'" onmouseout="this.style.background='transparent'">
+                <div class="ribbon-logo" style="width: 36px; height: 36px; background: linear-gradient(135deg, #10b981, #059669, #047857); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-weight: 900; color: white; box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);">T</div>
+                <span style="background: linear-gradient(135deg, #059669, #047857); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-size: 1.15rem;">TrialGPTBot</span>
+                <span style="background: linear-gradient(135deg, #10b981, #059669); color: white; font-size: 0.55rem; padding: 0.2rem 0.5rem; border-radius: 20px; font-weight: 700;">✨ AI</span>
+            </a>
+
+            <!-- Status Badge -->
+            <div style="display: inline-flex; align-items: center; gap: 0.35rem; background: linear-gradient(135deg, #f0fdf4, #dcfce7); border: 1px solid #bbf7d0; padding: 0.35rem 0.8rem; border-radius: 20px; font-size: 0.7rem; color: #059669; font-weight: 600;">
+                <span style="width: 6px; height: 6px; background: #10b981; border-radius: 50%; animation: pulse 2s infinite;"></span>
+                Enterprise v2.0 Live
+            </div>
+
+            <!-- Navigation Links -->
+            <nav style="display: flex; align-items: center; gap: 0.4rem;">
+                <a href="#document-generator-hub" style="display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.5rem 1rem; text-decoration: none; color: #374151; font-size: 0.82rem; font-weight: 600; border-radius: 8px; background: linear-gradient(135deg, #10b981, #059669); color: white; transition: all 0.25s ease;" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(16,185,129,0.4)'" onmouseout="this.style.transform='none'; this.style.boxShadow='none'">
+                    🚀 <span>Document Generator</span>
                 </a>
-
-                <!-- Live Status Badge -->
-                <div class="ribbon-badge">
-                    <span class="ribbon-status-dot"></span>
-                    <span>Enterprise v2.0 LIVE</span>
-                </div>
-
-                <!-- Dashboard Audit Trail Preview (CTA) -->
-                <a href="#" class="ribbon-dashboard-preview" onclick="showDashboardPreview(); return false;">
-                    <img src="https://raw.githubusercontent.com/testdemoqwenai2025-creator/TrialGPTBot-Enterprise/gh-pages/docs/images/trialgptbot-audit-trail.png" alt="TrialGPTBot Dashboard" class="ribbon-preview-img">
-                    <div class="ribbon-preview-text">
-                        <span class="ribbon-preview-title">Audit Trail</span>
-                        <span class="ribbon-preview-subtitle">Dashboard →</span>
-                    </div>
-                    <span class="ribbon-preview-badge">LIVE</span>
+                
+                <a href="#features" style="display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.45rem 0.9rem; text-decoration: none; color: #374151; font-size: 0.82rem; font-weight: 500; border-radius: 8px; transition: all 0.25s ease;" onmouseover="this.style.background='#f3f4f6'" onmouseout="this.style.background='transparent'">
+                    ⚡ <span>Features</span>
                 </a>
-            </div>
+                
+                <a href="#technology" style="display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.45rem 0.9rem; text-decoration: none; color: #374151; font-size: 0.82rem; font-weight: 500; border-radius: 8px; transition: all 0.25s ease;" onmouseover="this.style.background='#f3f4f6'" onmouseout="this.style.background='transparent'">
+                    🔧 <span>Tech Stack</span>
+                </a>
+                
+                <a href="#vision" style="display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.45rem 0.9rem; text-decoration: none; color: #374151; font-size: 0.82rem; font-weight: 500; border-radius: 8px; transition: all 0.25s ease;" onmouseover="this.style.background='#f3f4f6'" onmouseout="this.style.background='transparent'">
+                    🎯 <span>Vision 2045</span>
+                </a>
+                
+                <a href="#scenarios" style="display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.45rem 0.9rem; text-decoration: none; color: #059669; font-size: 0.82rem; font-weight: 500; border-radius: 8px; background: #f0fdf4; border: 1px solid #bbf7d0; transition: all 0.25s ease;" onmouseover="this.style.background='#dcfce7'" onmouseout="this.style.background='#f0fdf4'">
+                    💼 <span>Use Cases</span>
+                </a>
+            </nav>
 
-            <!-- CENTER SECTION: Navigation Menu Bar -->
-            <div class="ribbon-center">
-                <nav class="ribbon-nav">
-                    <a href="#features" class="ribbon-link primary">
-                        ⚡ <span>Features</span>
-                    </a>
-                    
-                    <a href="#technology" class="ribbon-link accent">
-                        🔧 <span>Tech Stack</span>
-                    </a>
-                    
-                    <a href="#vision" class="ribbon-link">
-                        🎯 <span>Vision 2045</span>
-                    </a>
-                    
-                    <a href="#scenarios" class="ribbon-link success">
-                        💼 <span>Use Cases</span>
-                    </a>
-                </nav>
-            </div>
+            <!-- Divider -->
+            <div style="width: 1px; height: 30px; background: #e5e7eb;"></div>
 
-            <!-- RIGHT SECTION: AI Status + Login CTA -->
-            <div class="ribbon-right">
-                <!-- AI Automation Status -->
-                <div class="automation-status" id="automationStatus">
-                    <div class="automation-spinner"></div>
-                    <span>AI Engine</span>
-                    <span class="automation-count">99%</span>
+            <!-- Quick Stats -->
+            <div style="display: flex; align-items: center; gap: 1rem; border-left: 1px solid #e5e7eb; padding-left: 1rem;">
+                <div style="display: flex; flex-direction: column; align-items: center; line-height: 1.2;">
+                    <span style="font-size: 0.9rem; font-weight: 700; color: #059669; font-family: 'JetBrains Mono', monospace;">147+</span>
+                    <span style="font-size: 0.65rem; color: #6b7280; text-transform: uppercase;">Regulations</span>
                 </div>
-
-                <!-- Login Button (Prominent CTA) -->
-                <button class="ribbon-login-btn" id="loginBtn" onclick="showLoginModal()">
-                    <span class="ribbon-login-icon">🔐</span>
-                    <span>Access Dashboard</span>
-                    <small>→</small>
-                </button>
-
-                <!-- Notifications (shown when logged in) -->
-                <div class="ribbon-notifications" id="notifications" style="display: none;">
-                    <button class="ribbon-notification-btn" onclick="toggleNotifications()">
-                        🔔
-                        <span class="notification-badge">5</span>
-                    </button>
-                    
-                    <!-- Notification Dropdown -->
-                    <div class="notification-dropdown" id="notificationDropdown">
-                        <div class="notification-header">
-                            <h4>📬 Notifications</h4>
-                            <a href="#" onclick="markAllRead()">Mark all read</a>
-                        </div>
-                        <div class="notification-list">
-                            <div class="notification-item unread">
-                                <div class="notification-icon automation">🤖</div>
-                                <div class="notification-content">
-                                    <div class="notification-title">Automation Complete</div>
-                                    <div class="notification-desc">47 audit tasks completed successfully</div>
-                                    <div class="notification-time">2 minutes ago</div>
-                                </div>
-                            </div>
-                            <div class="notification-item unread">
-                                <div class="notification-icon compliance">✅</div>
-                                <div class="notification-content">
-                                    <div class="notification-title">Compliance Check Passed</div>
-                                    <div class="notification-desc">GDPR Article 17 validation successful</div>
-                                    <div class="notification-time">15 minutes ago</div>
-                                </div>
-                            </div>
-                            <div class="notification-item unread">
-                                <div class="notification-icon portal">🔗</div>
-                                <div class="notification-content">
-                                    <div class="notification-title">FDA Portal Sync Ready</div>
-                                    <div class="notification-desc">3 submissions pending your approval</div>
-                                    <div class="notification-time">1 hour ago</div>
-                                </div>
-                            </div>
-                            <div class="notification-item">
-                                <div class="notification-icon alert">⚠️</div>
-                                <div class="notification-content">
-                                    <div class="notification-title">Action Required</div>
-                                    <div class="notification-desc">HIPAA consent form needs review</div>
-                                    <div class="notification-time">3 hours ago</div>
-                                </div>
-                            </div>
-                            <div class="notification-item">
-                                <div class="notification-icon automation">📊</div>
-                                <div class="notification-content">
-                                    <div class="notification-title">Weekly Report Generated</div>
-                                    <div class="notification-desc">Trial progress summary available</div>
-                                    <div class="notification-time">Yesterday</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div style="display: flex; flex-direction: column; align-items: center; line-height: 1.2;">
+                    <span style="font-size: 0.9rem; font-weight: 700; color: #059669; font-family: 'JetBrains Mono', monospace;">99%</span>
+                    <span style="font-size: 0.65rem; color: #6b7280; text-transform: uppercase;">Automated</span>
                 </div>
-
-                <!-- User Menu (shown when logged in) -->
-                <div class="ribbon-user-menu" id="userMenu" style="display: none;">
-                    <button class="ribbon-user-btn" onclick="toggleUserMenu()">
-                        <div class="user-avatar">A</div>
-                        <span>Admin</span>
-                        <small>▼</small>
-                    </button>
-                    
-                    <div class="user-dropdown" id="userDropdown">
-                        <a href="#features" class="user-dropdown-item">📊 Dashboard</a>
-                        <a href="#scenarios" class="user-dropdown-item">⚙️ Settings</a>
-                        <a href="#" class="user-dropdown-item">🔑 API Keys</a>
-                        <div class="user-dropdown-divider"></div>
-                        <a href="#" class="user-dropdown-item" onclick="logout()">🚪 Sign Out</a>
-                    </div>
+                <div style="display: flex; flex-direction: column; align-items: center; line-height: 1.2;">
+                    <span style="font-size: 0.9rem; font-weight: 700; color: #059669; font-family: 'JetBrains Mono', monospace;">AI</span>
+                    <span style="font-size: 0.65rem; color: #6b7280; text-transform: uppercase;">Powered</span>
                 </div>
             </div>
+
+            <!-- Login Button -->
+            <button onclick="alert('Login functionality coming soon!')" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.6rem 1.4rem; background: linear-gradient(135deg, #10b981, #059669); color: white; border: none; border-radius: 10px; font-size: 0.85rem; font-weight: 700; cursor: pointer; box-shadow: 0 4px 15px rgba(16, 185, 129, 0.35); transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 8px 25px rgba(16,185,129,0.5)'" onmouseout="this.style.transform='none'; this.style.boxShadow='0 4px 15px rgba(16,185,129,0.35)'">
+                🔐 Login
+            </button>
         </div>
     </div>
 
-    <!-- Navigation (below ribbon) -->
+    <!-- Navigation -->
     <nav>
         <div class="logo">TrialGPTBot</div>
         <ul class="nav-links">
@@ -1624,6 +1044,7 @@
             <li><a href="#technology">Technology</a></li>
             <li><a href="#vision">Vision 2045</a></li>
             <li><a href="#scenarios">Use Cases</a></li>
+            <li><a href="https://github.com/testdemoqwenai2025-creator/TrialGPTBot-Enterprise">GitHub →</a></li>
         </ul>
     </nav>
 
@@ -1654,11 +1075,11 @@
         </p>
 
         <div class="cta-group">
-            <a href="#features" class="btn btn-primary">
-                ⚡ Explore Features
+            <a href="https://github.com/testdemoqwenai2025-creator/TrialGPTBot-Enterprise" class="btn btn-primary">
+                ⚡ View on GitHub
             </a>
-            <a href="#vision" class="btn btn-secondary">
-                View Roadmap ↓
+            <a href="#features" class="btn btn-secondary">
+                Explore Features ↓
             </a>
         </div>
 
@@ -1679,6 +1100,247 @@
                 <div class="stat-value">2045</div>
                 <div class="stat-label">Vision Horizon</div>
             </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         DOCUMENT GENERATOR HUB - Futuristic AI Experience
+         ============================================ -->
+    <section id="document-generator-hub" style="background: linear-gradient(180deg, #0a0a0f 0%, #0f172a 50%, #0a0a0f 100%); padding: 100px 20px 80px; position: relative; overflow: hidden;">
+        <!-- Animated Background Elements -->
+        <div style="position: absolute; top: 10%; left: -10%; width: 500px; height: 500px; background: radial-gradient(circle, rgba(16,185,129,0.15) 0%, transparent 70%); border-radius: 50%; filter: blur(60px); animation: float 15s ease-in-out infinite;"></div>
+        <div style="position: absolute; bottom: 10%; right: -10%; width: 600px; height: 600px; background: radial-gradient(circle, rgba(6,182,212,0.1) 0%, transparent 70%); border-radius: 50%; filter: blur(80px); animation: float 20s ease-in-out infinite reverse;"></div>
+        
+        <!-- Section Header -->
+        <div style="text-align: center; max-width: 900px; margin: 0 auto 60px; position: relative; z-index: 2;">
+            <div style="display: inline-flex; align-items: center; gap: 0.5rem; background: linear-gradient(135deg, rgba(16,185,129,0.2), rgba(6,182,212,0.1)); border: 1px solid rgba(16,185,129,0.3); padding: 0.5rem 1.5rem; border-radius: 50px; font-size: 0.85rem; color: #10b981; font-weight: 600; margin-bottom: 1.5rem;">
+                <span style="width: 8px; height: 8px; background: #10b981; border-radius: 50%; animation: pulse 2s infinite;"></span>
+                Next-Generation AI Platform
+            </div>
+            
+            <h2 style="font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 900; color: white; line-height: 1.2; margin-bottom: 1.5rem;">
+                <span style="background: linear-gradient(135deg, #10b981, #06b6d4, #3b82f6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Document Generator</span> Hub
+            </h2>
+            
+            <p style="font-size: 1.15rem; color: #94a3b8; max-width: 700px; margin: 0 auto; line-height: 1.8;">
+                Experience the future of clinical trial documentation. Our AI-powered platform generates 
+                FDA/EMA-compliant documents in seconds, not weeks. Navigate through our suite of 
+                intelligent tools designed for decades of innovation.
+            </p>
+        </div>
+
+        <!-- Main Dashboard Preview -->
+        <div style="max-width: 1200px; margin: 0 auto 60px; position: relative; z-index: 2;">
+            <div style="background: linear-gradient(135deg, rgba(16,185,129,0.05), rgba(6,182,212,0.03)); border: 1px solid rgba(16,185,129,0.2); border-radius: 24px; padding: 2rem; box-shadow: 0 30px 80px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.05);">
+                
+                <!-- Dashboard Image -->
+                <div style="text-align: center; margin-bottom: 2rem;">
+                    <img src="https://raw.githubusercontent.com/testdemoqwenai2025-creator/TrialGPTBot-Enterprise/gh-pages/docs/images/trialgptbot-audit-trail.png" 
+                         alt="TrialGPTBot Document Generator Interface" 
+                         style="max-width: 100%; border-radius: 16px; box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 0 1px rgba(16,185,129,0.1);">
+                    
+                    <!-- Live Badge -->
+                    <div style="display: inline-flex; align-items: center; gap: 0.5rem; margin-top: 1.5rem; background: linear-gradient(135deg, #10b981, #059669); color: white; padding: 0.6rem 1.5rem; border-radius: 50px; font-weight: 600; font-size: 0.9rem; box-shadow: 0 8px 30px rgba(16,185,129,0.4);">
+                        <span style="width: 10px; height: 10px; background: white; border-radius: 50%; animation: pulse 1.5s infinite;"></span>
+                        Live Dashboard Preview — Real-time AI Processing
+                    </div>
+                </div>
+
+                <!-- Navigation Tabs for Document Types -->
+                <div style="display: flex; flex-wrap: wrap; gap: 0.75rem; justify-content: center;" id="doc-tabs">
+                    <button onclick="showDocType('protocol')" class="doc-tab active" id="tab-protocol" style="padding: 0.85rem 1.5rem; background: linear-gradient(135deg, #10b981, #059669); color: white; border: none; border-radius: 12px; font-weight: 600; font-size: 0.9rem; cursor: pointer; transition: all 0.3s ease; display: flex; align-items: center; gap: 0.5rem; box-shadow: 0 4px 20px rgba(16,185,129,0.3);">
+                        📋 Clinical Protocol
+                    </button>
+                    <button onclick="showDocType('crf')" class="doc-tab" id="tab-crf" style="padding: 0.85rem 1.5rem; background: rgba(255,255,255,0.05); color: #e2e8f0; border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; font-weight: 600; font-size: 0.9rem; cursor: pointer; transition: all 0.3s ease; display: flex; align-items: center; gap: 0.5rem;">
+                        📝 Case Report Form (CRF)
+                    </button>
+                    <button onclick="showDocType('consent')" class="doc-tab" id="tab-consent" style="padding: 0.85rem 1.5rem; background: rgba(255,255,255,0.05); color: #e2e8f0; border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; font-weight: 600; font-size: 0.9rem; cursor: pointer; transition: all 0.3s ease; display: flex; align-items: center; gap: 0.5rem;">
+                        ✍️ Informed Consent
+                    </button>
+                    <button onclick="showDocType('sap')" class="doc-tab" id="tab-sap" style="padding: 0.85rem 1.5rem; background: rgba(255,255,255,0.05); color: #e2e8f0; border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; font-weight: 600; font-size: 0.9rem; cursor: pointer; transition: all 0.3s ease; display: flex; align-items: center; gap: 0.5rem;">
+                        📊 Statistical Analysis Plan
+                    </button>
+                    <button onclick="showDocType('regulatory')" class="doc-tab" id="tab-regulatory" style="padding: 0.85rem 1.5rem; background: rgba(255,255,255,0.05); color: #e2e8f0; border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; font-weight: 600; font-size: 0.9rem; cursor: pointer; transition: all 0.3s ease; display: flex; align-items: center; gap: 0.5rem;">
+                        🏛️ Regulatory Submission
+                    </button>
+                    <button onclick="showDocType('audit')" class="doc-tab" id="tab-audit" style="padding: 0.85rem 1.5rem; background: rgba(255,255,255,0.05); color: #e2e8f0; border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; font-weight: 600; font-size: 0.9rem; cursor: pointer; transition: all 0.3s ease; display: flex; align-items: center; gap: 0.5rem;">
+                        🔍 Audit Trail & Compliance
+                    </button>
+                </div>
+
+                <!-- Content Area for Each Document Type -->
+                <div id="doc-content-area" style="margin-top: 2rem;">
+                    <!-- Protocol Content (Default) -->
+                    <div id="content-protocol" class="doc-content">
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
+                            <div style="background: rgba(0,0,0,0.3); border: 1px solid rgba(16,185,129,0.2); border-radius: 16px; padding: 1.5rem;">
+                                <h4 style="color: #10b981; font-size: 1.1rem; margin-bottom: 0.75rem;">⚡ AI-Powered Generation</h4>
+                                <p style="color: #94a3b8; font-size: 0.95rem; line-height: 1.7;">Generate complete FDA/EMA-compliant clinical trial protocols in under 5 minutes. Our AI analyzes 50,000+ historical protocols to ensure optimal structure and regulatory alignment.</p>
+                            </div>
+                            <div style="background: rgba(0,0,0,0.3); border: 1px solid rgba(6,182,212,0.2); border-radius: 16px; padding: 1.5rem;">
+                                <h4 style="color: #06b6d4; font-size: 1.1rem; margin-bottom: 0.75rem;">🎯 Smart Objectives</h4>
+                                <p style="color: #94a3b8; font-size: 0.95rem; line-height: 1.7;">Automatically generate primary, secondary, and exploratory endpoints with statistical power calculations built-in.</p>
+                            </div>
+                            <div style="background: rgba(0,0,0,0.3); border: 1px solid rgba(139,92,246,0.2); border-radius: 16px; padding: 1.5rem;">
+                                <h4 style="color: #8b5cf6; font-size: 1.1rem; margin-bottom: 0.75rem;">🔄 Real-Time Collaboration</h4>
+                                <p style="color: #94a3b8; font-size: 0.95rem; line-height: 1.7;">Multi-stakeholder editing with version control, audit trails, and automated compliance checking at every save.</p>
+                            </div>
+                        </div>
+                        <div style="text-align: center; margin-top: 2rem;">
+                            <button onclick="alert('Protocol Generator launching soon!')" style="padding: 1rem 2.5rem; background: linear-gradient(135deg, #10b981, #059669); color: white; border: none; border-radius: 14px; font-weight: 700; font-size: 1rem; cursor: pointer; box-shadow: 0 8px 30px rgba(16,185,129,0.4); transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 12px 40px rgba(16,185,129,0.5)'" onmouseout="this.style.transform='none'; this.style.boxShadow='0 8px 30px rgba(16,185,129,0.4)'">
+                                🚀 Launch Protocol Generator →
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Other content areas (hidden by default) -->
+                    <div id="content-crf" class="doc-content" style="display:none;">
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
+                            <div style="background: rgba(0,0,0,0.3); border: 1px solid rgba(16,185,129,0.2); border-radius: 16px; padding: 1.5rem;">
+                                <h4 style="color: #10b981; font-size: 1.1rem; margin-bottom: 0.75rem;">📋 CDISC-Aligned Forms</h4>
+                                <p style="color: #94a3b8; font-size: 0.95rem; line-height: 1.7;">Design electronic Case Report Forms with full CDISC SDTM/ADaM compliance. Pre-built templates for 200+ indication types.</p>
+                            </div>
+                            <div style="background: rgba(0,0,0,0.3); border: 1px solid rgba(6,182,212,0.2); border-radius: 16px; padding: 1.5rem;">
+                                <h4 style="color: #06b6d4; font-size: 1.1rem; margin-bottom: 0.75rem;">✅ Adaptive Logic</h4>
+                                <p style="color: #94a3b8; font-size: 0.95rem; line-height: 1.7;">Smart form logic that shows/hides fields based on previous responses, skip patterns, and conditional validation rules.</p>
+                            </div>
+                            <div style="background: rgba(0,0,0,0.3); border: 1px solid rgba(139,92,246,0.2); border-radius: 16px; padding: 1.5rem;">
+                                <h4 style="color: #8b5cf6; font-size: 1.1rem; margin-bottom: 0.75rem;">🔗 EDC Integration</h4>
+                                <p style="color: #94a3b8; font-size: 0.95rem; line-height: 1.7;">One-click export to Veeva Vault, Medidata Rave, Oracle Clinical, and other major EDC platforms.</p>
+                            </div>
+                        </div>
+                        <div style="text-align: center; margin-top: 2rem;">
+                            <button onclick="alert('CRF Builder launching soon!')" style="padding: 1rem 2.5rem; background: linear-gradient(135deg, #10b981, #059669); color: white; border: none; border-radius: 14px; font-weight: 700; font-size: 1rem; cursor: pointer; box-shadow: 0 8px 30px rgba(16,185,129,0.4);">
+                                🚀 Launch CRF Builder →
+                            </button>
+                        </div>
+                    </div>
+
+                    <div id="content-consent" class="doc-content" style="display:none;">
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
+                            <div style="background: rgba(0,0,0,0.3); border: 1px solid rgba(16,185,129,0.2); border-radius: 16px; padding: 1.5rem;">
+                                <h4 style="color: #10b981; font-size: 1.1rem; margin-bottom: 0.75rem;">📖 Readability Optimization</h4>
+                                <p style="color: #94a3b8; font-size: 0.95rem; line-height: 1.7;">AI-powered language simplification ensuring consent forms are understandable at 8th-grade reading level while maintaining legal precision.</p>
+                            </div>
+                            <div style="background: rgba(0,0,0,0.3); border: 1px solid rgba(6,182,212,0.2); border-radius: 16px; padding: 1.5rem;">
+                                <h4 style="color: #06b6d4; font-size: 1.1rem; margin-bottom: 0.75rem;">🌍 Multi-Language Support</h4>
+                                <p style="color: #94a3b8; font-size: 0.95rem; line-height: 1.7;">Instant translation into 50+ languages with cultural adaptation and local regulatory requirement integration.</p>
+                            </div>
+                            <div style="background: rgba(0,0,0,0.3); border: 1px solid rgba(139,92,246,0.2); border-radius: 16px; padding: 1.5rem;">
+                                <h4 style="color: #8b5cf6; font-size: 1.1rem; margin-bottom: 0.75rem;">📱 Digital Signatures</h4>
+                                <p style="color: #94a3b8; font-size: 0.95rem; line-height: 1.7;">Integrated e-signature workflow with 21 CFR Part 11 compliance, biometric verification, and timestamped audit trails.</p>
+                            </div>
+                        </div>
+                        <div style="text-align: center; margin-top: 2rem;">
+                            <button onclick="alert('Consent Generator launching soon!')" style="padding: 1rem 2.5rem; background: linear-gradient(135deg, #10b981, #059669); color: white; border: none; border-radius: 14px; font-weight: 700; font-size: 1rem; cursor: pointer; box-shadow: 0 8px 30px rgba(16,185,129,0.4);">
+                                🚀 Launch Consent Generator →
+                            </button>
+                        </div>
+                    </div>
+
+                    <div id="content-sap" class="doc-content" style="display:none;">
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
+                            <div style="background: rgba(0,0,0,0.3); border: 1px solid rgba(16,185,129,0.2); border-radius: 16px; padding: 1.5rem;">
+                                <h4 style="color: #10b981; font-size: 1.1rem; margin-bottom: 0.75rem;">📈 Power Calculations</h4>
+                                <p style="color: #94a3b8; font-size: 0.95rem; line-height: 1.7;">Automated sample size calculations with adaptive design scenarios, interim analysis planning, and multiplicity adjustments.</p>
+                            </div>
+                            <div style="background: rgba(0,0,0,0.3); border: 1px solid rgba(6,182,212,0.2); border-radius: 16px; padding: 1.5rem;">
+                                <h4 style="color: #06b6d4; font-size: 1.1rem; margin-bottom: 0.75rem;">🎲 Endpoint Definitions</h4>
+                                <p style="color: #94a3b8; font-size: 0.95rem; line-height: 1.7;">Intelligent endpoint selection based on indication, regulatory precedent, and competitive landscape analysis.</p>
+                            </div>
+                            <div style="background: rgba(0,0,0,0.3); border: 1px solid rgba(139,92,246,0.2); border-radius: 16px; padding: 1.5rem;">
+                                <h4 style="color: #8b5cf6; font-size: 1.1rem; margin-bottom: 0.75rem;">🔄 Interim Analysis</h4>
+                                <p style="color: #94a3b8; font-size: 0.95rem; line-height: 1.7;">Pre-specified interim analysis plans with group sequential boundaries, futility stopping rules, and adaptive modifications.</p>
+                            </div>
+                        </div>
+                        <div style="text-align: center; margin-top: 2rem;">
+                            <button onclick="alert('SAP Generator launching soon!')" style="padding: 1rem 2.5rem; background: linear-gradient(135deg, #10b981, #059669); color: white; border: none; border-radius: 14px; font-weight: 700; font-size: 1rem; cursor: pointer; box-shadow: 0 8px 30px rgba(16,185,129,0.4);">
+                                🚀 Launch SAP Generator →
+                            </button>
+                        </div>
+                    </div>
+
+                    <div id="content-regulatory" class="doc-content" style="display:none;">
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
+                            <div style="background: rgba(0,0,0,0.3); border: 1px solid rgba(16,185,129,0.2); border-radius: 16px; padding: 1.5rem;">
+                                <h4 style="color: #10b981; font-size: 1.1rem; margin-bottom: 0.75rem;">📦 eCTD Ready</h4>
+                                <p style="color: #94a3b8; font-size: 0.95rem; line-height: 1.7;">Generate submission-ready documents in eCTD format for FDA, EMA, PMDA, Health Canada, and 40+ other agencies.</p>
+                            </div>
+                            <div style="background: rgba(0,0,0,0.3); border: 1px solid rgba(6,182,212,0.2); border-radius: 16px; padding: 1.5rem;">
+                                <h4 style="color: #06b6d4; font-size: 1.1rem; margin-bottom: 0.75rem;">🔍 Validation Engine</h4>
+                                <p style="color: #94a3b8; font-size: 0.95rem; line-height: 1.7;">Real-time validation against agency-specific requirements, identifying potential deficiencies before submission.</p>
+                            </div>
+                            <div style="background: rgba(0,0,0,0.3); border: 1px solid rgba(139,92,246,0.2); border-radius: 16px; padding: 1.5rem;">
+                                <h4 style="color: #8b5cf6; font-size: 1.1rem; margin-bottom: 0.75rem;">📋 Module Assembly</h4>
+                                <p style="color: #94a3b8; font-size: 0.95rem; line-height: 1.7;">Automatic assembly of complete submission packages with proper sequencing, hyperlinks, and cross-references.</p>
+                            </div>
+                        </div>
+                        <div style="text-align: center; margin-top: 2rem;">
+                            <button onclick="alert('Regulatory Submission launching soon!')" style="padding: 1rem 2.5rem; background: linear-gradient(135deg, #10b981, #059669); color: white; border: none; border-radius: 14px; font-weight: 700; font-size: 1rem; cursor: pointer; box-shadow: 0 8px 30px rgba(16,185,129,0.4);">
+                                🚀 Launch Regulatory Submission →
+                            </button>
+                        </div>
+                    </div>
+
+                    <div id="content-audit" class="doc-content" style="display:none;">
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
+                            <div style="background: rgba(0,0,0,0.3); border: 1px solid rgba(16,185,129,0.2); border-radius: 16px; padding: 1.5rem;">
+                                <h4 style="color: #10b981; font-size: 1.1rem; margin-bottom: 0.75rem;">🔒 21 CFR Part 11</h4>
+                                <p style="color: #94a3b8; font-size: 0.95rem; line-height: 1.7;">Complete audit trail system compliant with 21 CFR Part 11 electronic records requirements, including electronic signatures.</p>
+                            </div>
+                            <div style="background: rgba(0,0,0,0.3); border: 1px solid rgba(6,182,212,0.2); border-radius: 16px; padding: 1.5rem;">
+                                <h4 style="color: #06b6d4; font-size: 1.1rem; margin-bottom: 0.75rem;">🕐 Data Lineage</h4>
+                                <p style="color: #94a3b8; font-size: 0.95rem; line-height: 1.7;">Full data lineage tracking from source to report, with tamper-evident logging and blockchain-based verification options.</p>
+                            </div>
+                            <div style="background: rgba(0,0,0,0.3); border: 1px solid rgba(139,92,246,0.2); border-radius: 16px; padding: 1.5rem;">
+                                <h4 style="color: #8b5cf6; font-size: 1.1rem; margin-bottom: 0.75rem;">📊 Compliance Reports</h4>
+                                <p style="color: #94a3b8; font-size: 0.95rem; line-height: 1.7;">Generate inspection-ready compliance reports with anomaly detection, trend analysis, and risk-based monitoring insights.</p>
+                            </div>
+                        </div>
+                        <div style="text-align: center; margin-top: 2rem;">
+                            <button onclick="alert('Audit Trail Generator launching soon!')" style="padding: 1rem 2.5rem; background: linear-gradient(135deg, #10b981, #059669); color: white; border: none; border-radius: 14px; font-weight: 700; font-size: 1rem; cursor: pointer; box-shadow: 0 8px 30px rgba(16,185,129,0.4);">
+                                🚀 Launch Audit Trail Generator →
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Vision Statement -->
+        <div style="max-width: 900px; margin: 80px auto 0; text-align: center; position: relative; z-index: 2;">
+            <div style="background: linear-gradient(135deg, rgba(16,185,129,0.08), rgba(6,182,212,0.05)); border: 1px solid rgba(16,185,129,0.15); border-radius: 24px; padding: 3rem;">
+                <h3 style="font-size: 1.75rem; color: white; margin-bottom: 1rem; font-weight: 800;">
+                    🌟 Built for the Next Decade of Clinical Innovation
+                </h3>
+                <p style="color: #94a3b8; font-size: 1.05rem; line-height: 1.8; max-width: 750px; margin: 0 auto;">
+                    TrialGPTBot isn't just a tool—it's a vision for how clinical trials should operate. 
+                    We're building an intelligent platform that learns, adapts, and evolves with regulatory landscapes, 
+                    therapeutic advances, and technological breakthroughs. This is healthcare's future, available today.
+                </p>
+                <div style="display: flex; justify-content: center; gap: 2rem; margin-top: 2rem; flex-wrap: wrap;">
+                    <div style="text-align: center;">
+                        <div style="font-size: 2rem; font-weight: 900; color: #10b981; font-family: 'JetBrains Mono', monospace;">2030+</div>
+                        <div style="color: #64748b; font-size: 0.85rem;">Vision Horizon</div>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="font-size: 2rem; font-weight: 900; color: #06b6d4; font-family: 'JetBrains Mono', monospace;">∞</div>
+                        <div style="color: #64748b; font-size: 0.85rem;">Scalability</div>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="font-size: 2rem; font-weight: 900; color: #8b5cf6; font-family: 'JetBrains Mono', monospace;">AI</div>
+                        <div style="color: #64748b; font-size: 0.85rem;">First Design</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Floating Action Navigation -->
+        <div style="position: fixed; bottom: 2rem; right: 2rem; z-index: 9998; display: flex; flex-direction: column; gap: 0.75rem;" id="floating-nav">
+            <a href="#document-generator-hub" style="width: 56px; height: 56px; background: linear-gradient(135deg, #10b981, #059669); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; box-shadow: 0 8px 30px rgba(16,185,129,0.4); text-decoration: none; transition: all 0.3s ease;" title="Document Generator">📄</a>
+            <a href="#features" style="width: 48px; height: 48px; background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.2); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.25rem; text-decoration: none; transition: all 0.3s ease;" title="Features">⚡</a>
+            <a href="#vision" style="width: 48px; height: 48px; background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.2); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.25rem; text-decoration: none; transition: all 0.3s ease;" title="Vision">🎯</a>
+            <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" style="width: 48px; height: 48px; background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.2); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.25rem; cursor: pointer; transition: all 0.3s ease;" title="Back to Top">↑</button>
         </div>
     </section>
 
@@ -1920,15 +1582,15 @@
         <div class="cta-box">
             <h2>Ready to Transform Clinical Trials?</h2>
             <p>
-                Join the future of healthcare innovation. Experience the power of AI-driven 
-                clinical trial management with enterprise-grade security and compliance.
+                Join the future of healthcare innovation. Access the complete source code,
+                documentation, and contribute to the next generation of clinical trial technology.
             </p>
             <div class="cta-group">
-                <a href="#" class="btn btn-primary" onclick="showLoginModal()">
-                    🚀 Access Dashboard
+                <a href="https://github.com/testdemoqwenai2025-creator/TrialGPTBot-Enterprise" class="btn btn-primary">
+                    🚀 Get Started on GitHub
                 </a>
-                <a href="#technology" class="btn btn-secondary">
-                    View Technology ↑
+                <a href="#features" class="btn btn-secondary">
+                    Learn More ↑
                 </a>
             </div>
         </div>
@@ -1937,10 +1599,10 @@
     <!-- Footer -->
     <footer>
         <div class="footer-links">
-            <a href="#features">Features</a>
-            <a href="#technology">Technology</a>
-            <a href="#vision">Vision 2045</a>
-            <a href="#scenarios">Use Cases</a>
+            <a href="https://github.com/testdemoqwenai2025-creator/TrialGPTBot-Enterprise">Repository</a>
+            <a href="https://github.com/testdemoqwenai2025-creator/TrialGPTBot-Enterprise/blob/main/package.json">Dependencies</a>
+            <a href="https://github.com/testdemoqwenai2025-creator/TrialGPTBot-Enterprise/blob/main/src/components/landing/exceptional-landing.tsx">Landing Page Source</a>
+            <a href="https://github.com/testdemoqwenai2025-creator/TrialGPTBot-Enterprise/blob/main/README.md">Documentation</a>
         </div>
         <p class="copyright">
             © 2025 TrialGPTBot Enterprise v2.0 | AI-Powered Clinical Trial & Data Governance Platform
@@ -1948,239 +1610,6 @@
     </footer>
 
     <script>
-        // ============================================
-        // VIBRANT RIBBON INTERACTIVE FEATURES
-        // ============================================
-        
-        let isLoggedIn = false;
-
-        // Show Dashboard Preview Modal (when clicking TrialGPTBot or Audit Trail)
-        function showDashboardPreview() {
-            const overlay = document.createElement('div');
-            overlay.id = 'dashboardModal';
-            overlay.style.cssText = `
-                position: fixed;
-                top: 0;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                background: rgba(0, 0, 0, 0.9);
-                z-index: 100000;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                padding: 2rem;
-                animation: fadeIn 0.3s ease;
-                backdrop-filter: blur(10px);
-            `;
-            
-            overlay.innerHTML = `
-                <div style="
-                    max-width: 950px;
-                    width: 100%;
-                    background: linear-gradient(135deg, #12121a 0%, #1a1a2e 100%);
-                    border-radius: 24px;
-                    overflow: hidden;
-                    border: 2px solid;
-                    border-image: linear-gradient(135deg, #06b6d4, #8b5cf6, #10b981) 1;
-                    box-shadow: 
-                        0 40px 80px rgba(0, 0, 0, 0.6),
-                        0 0 100px rgba(6, 182, 212, 0.15),
-                        0 0 150px rgba(139, 92, 246, 0.1);
-                    animation: slideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-                ">
-                    <div style="
-                        padding: 1.8rem 2.2rem;
-                        background: linear-gradient(135deg, rgba(6, 182, 212, 0.15), rgba(139, 92, 246, 0.15));
-                        border-bottom: 1px solid rgba(6, 182, 212, 0.2);
-                        display: flex;
-                        justify-content: space-between;
-                        align-items: center;
-                    ">
-                        <div>
-                            <h3 style="font-size: 1.5rem; font-weight: 800; margin-bottom: 0.4rem; background: linear-gradient(135deg, #06b6d4, #8b5cf6); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
-                                📊 TrialGPTBot Dashboard
-                            </h3>
-                            <p style="color: #94a3b8; font-size: 0.95rem;">
-                                Compliance Audit Trail • Real-time Monitoring • 147+ Regulations • AI-Powered
-                            </p>
-                        </div>
-                        <button onclick="closeDashboardModal()" style="
-                            background: rgba(239, 68, 68, 0.15);
-                            border: 1px solid rgba(239, 68, 68, 0.3);
-                            color: #ef4444;
-                            width: 40px;
-                            height: 40px;
-                            border-radius: 10px;
-                            cursor: pointer;
-                            font-size: 1.3rem;
-                            transition: all 0.2s ease;
-                        " onmouseover="this.style.background='rgba(239, 68, 68, 0.25)'" 
-                           onmouseout="this.style.background='rgba(239, 68, 68, 0.15)'">✕</button>
-                    </div>
-                    <div style="padding: 1.8rem;">
-                        <img src="https://raw.githubusercontent.com/testdemoqwenai2025-creator/TrialGPTBot-Enterprise/gh-pages/docs/images/trialgptbot-audit-trail.png" 
-                             alt="TrialGPTBot Audit Trail Dashboard" 
-                             style="width: 100%; border-radius: 16px; border: 1px solid rgba(6, 182, 212, 0.2); box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);">
-                        
-                        <div style="
-                            margin-top: 1.8rem;
-                            display: flex;
-                            gap: 1.2rem;
-                            flex-wrap: wrap;
-                            justify-content: center;
-                        ">
-                            <button onclick="closeDashboardModal(); showLoginModal();" style="
-                                display: inline-flex;
-                                align-items: center;
-                                gap: 0.6rem;
-                                padding: 1rem 2.2rem;
-                                background: linear-gradient(135deg, #10b981, #059669, #047857);
-                                background-size: 200% 200%;
-                                color: white;
-                                border: none;
-                                border-radius: 14px;
-                                font-size: 1.05rem;
-                                font-weight: 800;
-                                cursor: pointer;
-                                transition: all 0.35s ease;
-                                box-shadow: 0 6px 25px rgba(16, 185, 129, 0.4);
-                                animation: gradientShift 3s ease infinite;
-                            " onmouseover="this.style.transform='translateY(-4px) scale(1.02)'; this.style.boxShadow='0 12px 40px rgba(16, 185, 129, 0.5)'" 
-                               onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 6px 25px rgba(16, 185, 129, 0.4)'">
-                                🔐 Login to Access Full Dashboard
-                            </button>
-                            <button onclick="closeDashboardModal()" style="
-                                display: inline-flex;
-                                align-items: center;
-                                gap: 0.6rem;
-                                padding: 1rem 2.2rem;
-                                background: transparent;
-                                color: #94a3b8;
-                                border: 1px solid rgba(148, 163, 184, 0.2);
-                                border-radius: 14px;
-                                font-size: 1.05rem;
-                                font-weight: 600;
-                                cursor: pointer;
-                                transition: all 0.3s ease;
-                            " onmouseover="this.style.borderColor='#06b6d4'; this.style.color='#ffffff'" 
-                               onmouseout="this.style.borderColor='rgba(148, 163, 184, 0.2)'; this.style.color='#94a3b8'">
-                                Close Preview
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                
-                <style>
-                    @keyframes gradientShift {
-                        0%, 100% { background-position: 0% 50%; }
-                        50% { background-position: 100% 50%; }
-                    }
-                </style>
-            `;
-            
-            document.body.appendChild(overlay);
-            
-            document.addEventListener('keydown', function escHandler(e) {
-                if (e.key === 'Escape') closeDashboardModal();
-                document.removeEventListener('keydown', escHandler);
-            });
-        }
-
-        // Close Dashboard Modal
-        function closeDashboardModal() {
-            const modal = document.getElementById('dashboardModal');
-            if (modal) {
-                modal.style.animation = 'fadeOut 0.3s ease';
-                setTimeout(() => modal.remove(), 300);
-            }
-        }
-
-        // Toggle Notifications Dropdown
-        function toggleNotifications() {
-            const dropdown = document.getElementById('notificationDropdown');
-            const userDropdown = document.getElementById('userDropdown');
-            
-            if (userDropdown) userDropdown.classList.remove('active');
-            dropdown.classList.toggle('active');
-        }
-
-        // Toggle User Menu Dropdown
-        function toggleUserMenu() {
-            const dropdown = document.getElementById('userDropdown');
-            const notificationDropdown = document.getElementById('notificationDropdown');
-            
-            if (notificationDropdown) notificationDropdown.classList.remove('active');
-            dropdown.classList.toggle('active');
-        }
-
-        // Show Login Modal (Demo)
-        function showLoginModal() {
-            alert('🔐 TrialGPTBot Authentication\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\nWelcome to TrialGPTBot Enterprise v2.0\n\nAuthentication Options:\n• Email & Password\n• SSO Integration\n• MFA Verification\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\nClick OK to simulate secure login...');
-            simulateLogin();
-        }
-
-        // Simulate Login
-        function simulateLogin() {
-            isLoggedIn = true;
-            
-            document.getElementById('loginBtn').style.display = 'none';
-            document.getElementById('notifications').style.display = 'block';
-            document.getElementById('userMenu').style.display = 'block';
-            
-            const status = document.getElementById('automationStatus');
-            status.innerHTML = `
-                <div class="automation-spinner"></div>
-                <span>Running...</span>
-                <span class="automation-count">47</span>
-            `;
-            
-            console.log('✅ Logged in successfully! AI Automation Engine activated.');
-        }
-
-        // Logout
-        function logout() {
-            isLoggedIn = false;
-            
-            document.getElementById('loginBtn').style.display = 'inline-flex';
-            document.getElementById('notifications').style.display = 'none';
-            document.getElementById('userMenu').style.display = 'none';
-            
-            const status = document.getElementById('automationStatus');
-            status.innerHTML = `
-                <div class="automation-spinner"></div>
-                <span>AI Engine</span>
-                <span class="automation-count">99%</span>
-            `;
-            
-            document.getElementById('userDropdown').classList.remove('active');
-            
-            console.log('👋 Logged out successfully.');
-        }
-
-        // Mark All Notifications as Read
-        function markAllRead() {
-            const items = document.querySelectorAll('.notification-item.unread');
-            items.forEach(item => item.classList.remove('unread'));
-            
-            const badge = document.querySelector('.notification-badge');
-            if (badge) badge.textContent = '0';
-        }
-
-        // Close dropdowns when clicking outside
-        document.addEventListener('click', function(e) {
-            const notifications = document.getElementById('notifications');
-            const userMenu = document.getElementById('userMenu');
-            
-            if (notifications && !notifications.contains(e.target)) {
-                document.getElementById('notificationDropdown').classList.remove('active');
-            }
-            
-            if (userMenu && !userMenu.contains(e.target)) {
-                document.getElementById('userDropdown').classList.remove('active');
-            }
-        });
-
         // Smooth scroll for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
@@ -2207,6 +1636,7 @@
             });
         }, observerOptions);
 
+        // Observe all cards and items
         document.querySelectorAll('.feature-card, .tech-item, .scenario-card, .timeline-item').forEach(el => {
             el.style.opacity = '0';
             el.style.transform = 'translateY(20px)';
@@ -2225,6 +1655,56 @@
                 orb.style.transform = `translate(${x * speed}px, ${y * speed}px)`;
             });
         });
+    </script>
+
+
+
+    <script>
+    // Document Type Tab Switching
+    function showDocType(type) {
+        // Hide all content areas
+        document.querySelectorAll('.doc-content').forEach(content => {
+            content.style.display = 'none';
+        });
+        
+        // Reset all tabs
+        document.querySelectorAll('.doc-tab').forEach(tab => {
+            tab.style.background = 'rgba(255,255,255,0.05)';
+            tab.style.color = '#e2e8f0';
+            tab.style.border = '1px solid rgba(255,255,255,0.1)';
+            tab.style.boxShadow = 'none';
+        });
+        
+        // Show selected content
+        const selectedContent = document.getElementById('content-' + type);
+        if (selectedContent) {
+            selectedContent.style.display = 'block';
+            // Add fade-in animation
+            selectedContent.style.animation = 'fadeIn 0.5s ease';
+        }
+        
+        // Highlight active tab
+        const activeTab = document.getElementById('tab-' + type);
+        if (activeTab) {
+            activeTab.style.background = 'linear-gradient(135deg, #10b981, #059669)';
+            activeTab.style.color = 'white';
+            activeTab.style.border = 'none';
+            activeTab.style.boxShadow = '0 4px 20px rgba(16,185,129,0.3)';
+        }
+    }
+
+    // Add fadeIn keyframe if not exists
+    if (!document.getElementById('dynamic-styles')) {
+        const style = document.createElement('style');
+        style.id = 'dynamic-styles';
+        style.textContent = `
+            @keyframes fadeIn {
+                from { opacity: 0; transform: translateY(10px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+        `;
+        document.head.appendChild(style);
+    }
     </script>
 </body>
 </html>
