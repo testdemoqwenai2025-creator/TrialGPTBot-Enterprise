@@ -708,18 +708,20 @@
             position: fixed;
             top: 0;
             left: 0;
-            right: 0;
+            width: 100vw;
+            max-width: 100vw;
             z-index: 9999;
             background: #ffffff !important;
             border-bottom: 1px solid #e5e7eb;
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.12), 0 1px 3px rgba(0, 0, 0, 0.08);
-            padding: 0.65rem 1.5rem;
+            padding: 0.7rem 2rem;
             display: flex;
             justify-content: center;
             align-items: center;
             gap: 1rem;
             font-size: 0.85rem;
             animation: ribbonSlideDown 0.5s ease-out;
+            box-sizing: border-box;
         }
 
         @keyframes ribbonSlideDown {
@@ -1066,16 +1068,79 @@
         <div style="max-width: 1200px; margin: 0 auto 60px; position: relative; z-index: 2;">
             <div style="background: linear-gradient(135deg, rgba(16,185,129,0.05), rgba(6,182,212,0.03)); border: 1px solid rgba(16,185,129,0.2); border-radius: 24px; padding: 2rem; box-shadow: 0 30px 80px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.05);">
                 
-                <!-- Dashboard Image -->
+                <!-- Dashboard Preview - Interactive UI -->
                 <div style="text-align: center; margin-bottom: 2rem;">
-                    <img src="https://raw.githubusercontent.com/testdemoqwenai2025-creator/TrialGPTBot-Enterprise/gh-pages/docs/images/trialgptbot-audit-trail.png" 
-                         alt="TrialGPTBot Document Generator Interface" 
-                         style="max-width: 100%; border-radius: 16px; box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 0 1px rgba(16,185,129,0.1);">
+                    <!-- Simulated Dashboard Interface -->
+                    <div style="background: linear-gradient(135deg, #0f172a, #1e293b); border-radius: 20px; padding: 2rem; box-shadow: 0 25px 80px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.1), 0 0 0 1px rgba(16,185,129,0.2); position: relative; overflow: hidden;">
+                        
+                        <!-- Dashboard Header -->
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <div style="display: flex; align-items: center; gap: 0.75rem;">
+                                <div style="width: 36px; height: 36px; background: linear-gradient(135deg, #10b981, #059669); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-weight: 900; color: white; font-size: 14px;">T</div>
+                                <div style="text-align: left;">
+                                    <div style="color: white; font-weight: 700; font-size: 0.95rem;">TrialGPTBot</div>
+                                    <div style="color: #10b981; font-size: 0.7rem; font-weight: 600;">Document Generator v2.0</div>
+                                </div>
+                            </div>
+                            <div style="display: flex; gap: 0.5rem;">
+                                <span style="background: rgba(16,185,129,0.2); color: #10b981; padding: 0.35rem 0.8rem; border-radius: 20px; font-size: 0.7rem; font-weight: 600;">● LIVE</span>
+                                <span style="background: rgba(255,255,255,0.1); color: #94a3b8; padding: 0.35rem 0.8rem; border-radius: 20px; font-size: 0.7rem;">147 Regs</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Stats Row -->
+                        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-bottom: 1.5rem;">
+                            <div style="background: rgba(16,185,129,0.1); border: 1px solid rgba(16,185,129,0.3); border-radius: 12px; padding: 1rem; text-align: center;">
+                                <div style="font-size: 1.5rem; font-weight: 800; color: #10b981; font-family: 'JetBrains Mono', monospace;">99%</div>
+                                <div style="color: #64748b; font-size: 0.7rem; margin-top: 0.25rem;">Automation</div>
+                            </div>
+                            <div style="background: rgba(6,182,212,0.1); border: 1px solid rgba(6,182,212,0.3); border-radius: 12px; padding: 1rem; text-align: center;">
+                                <div style="font-size: 1.5rem; font-weight: 800; color: #06b6d4; font-family: 'JetBrains Mono', monospace;">&lt;5m</div>
+                                <div style="color: #64748b; font-size: 0.7rem; margin-top: 0.25rem;">Gen Time</div>
+                            </div>
+                            <div style="background: rgba(139,92,246,0.1); border: 1px solid rgba(139,92,246,0.3); border-radius: 12px; padding: 1rem; text-align: center;">
+                                <div style="font-size: 1.5rem; font-weight: 800; color: #8b5cf6; font-family: 'JetBrains Mono', monospace;">50K+</div>
+                                <div style="color: #64748b; font-size: 0.7rem; margin-top: 0.25rem;">Protocols</div>
+                            </div>
+                            <div style="background: rgba(59,130,246,0.1); border: 1px solid rgba(59,130,246,0.3); border-radius: 12px; padding: 1rem; text-align: center;">
+                                <div style="font-size: 1.5rem; font-weight: 800; color: #3b82f6; font-family: 'JetBrains Mono', monospace;">FDA/EMA</div>
+                                <div style="color: #64748b; font-size: 0.7rem; margin-top: 0.25rem;">Compliant</div>
+                            </div>
+                        </div>
+                        
+                        <!-- Document List Simulation -->
+                        <div style="background: rgba(0,0,0,0.3); border-radius: 12px; overflow: hidden;">
+                            <div style="display: grid; grid-template-columns: 2fr 1fr 1fr 120px; gap: 0.5rem; padding: 0.75rem 1rem; background: rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.1); font-size: 0.75rem; color: #64748b; font-weight: 600; text-transform: uppercase;">
+                                <span>Document Name</span>
+                                <span>Status</span>
+                                <span>Type</span>
+                                <span>Action</span>
+                            </div>
+                            <div style="padding: 0.75rem 1rem; border-bottom: 1px solid rgba(255,255,255,0.05); display: grid; grid-template-columns: 2fr 1fr 1fr 120px; gap: 0.5rem; align-items: center; font-size: 0.85rem;">
+                                <span style="color: #e2e8f0;">📋 Protocol_V2025_001.docx</span>
+                                <span style="color: #10b981; font-weight: 600;">✓ Complete</span>
+                                <span style="color: #94a3b8;">Clinical</span>
+                                <button style="background: linear-gradient(135deg, #10b981, #059669); color: white; border: none; padding: 0.35rem 0.75rem; border-radius: 8px; font-size: 0.7rem; font-weight: 600; cursor: pointer;">Download</button>
+                            </div>
+                            <div style="padding: 0.75rem 1rem; border-bottom: 1px solid rgba(255,255,255,0.05); display: grid; grid-template-columns: 2fr 1fr 1fr 120px; gap: 0.5rem; align-items: center; font-size: 0.85rem;">
+                                <span style="color: #e2e8f0;">📝 CRF_PatientData_v3.pdf</span>
+                                <span style="color: #06b6d4; font-weight: 600;">⏳ Processing</span>
+                                <span style="color: #94a3b8;">CRF</span>
+                                <button style="background: rgba(255,255,255,0.1); color: #94a3b8; border: 1px solid rgba(255,255,255,0.2); padding: 0.35rem 0.75rem; border-radius: 8px; font-size: 0.7rem; cursor: pointer;">View</button>
+                            </div>
+                            <div style="padding: 0.75rem 1rem; display: grid; grid-template-columns: 2fr 1fr 1fr 120px; gap: 0.5rem; align-items: center; font-size: 0.85rem;">
+                                <span style="color: #e2e8f0;">✍️ Consent_Form_EN.docx</span>
+                                <span style="color: #8b5cf6; font-weight: 600;">🔄 Generating</span>
+                                <span style="color: #94a3b8;">Consent</span>
+                                <button style="background: rgba(255,255,255,0.1); color: #94a3b8; border: 1px solid rgba(255,255,255,0.2); padding: 0.35rem 0.75rem; border-radius: 8px; font-size: 0.7rem; cursor: pointer;">Wait</button>
+                            </div>
+                        </div>
+                    </div>
                     
                     <!-- Live Badge -->
                     <div style="display: inline-flex; align-items: center; gap: 0.5rem; margin-top: 1.5rem; background: linear-gradient(135deg, #10b981, #059669); color: white; padding: 0.6rem 1.5rem; border-radius: 50px; font-weight: 600; font-size: 0.9rem; box-shadow: 0 8px 30px rgba(16,185,129,0.4);">
                         <span style="width: 10px; height: 10px; background: white; border-radius: 50%; animation: pulse 1.5s infinite;"></span>
-                        Live Dashboard Preview — Real-time AI Processing
+                        Live Dashboard — AI Document Generation Active
                     </div>
                 </div>
 
