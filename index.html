@@ -1,11 +1,1084 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="refresh" content="0;url=https://github.com/testdemoqwenai2025-creator/TrialGPTBot-Enterprise">
-    <title>Redirecting to TrialGPTBot Repository</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TrialGPTBot Enterprise v2.0 | AI-Powered Clinical Trial & Data Governance Platform</title>
+    <meta name="description" content="Revolutionary AI platform for clinical trial management, data governance, and regulatory compliance. FDA, EMA, HIPAA, GDPR compliant.">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="TrialGPTBot Enterprise v2.0">
+    <meta property="og:description" content="AI-Powered Clinical Trial & Data Governance Platform">
+    <meta property="og:type" content="website">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-primary: #0a0a0f;
+            --bg-secondary: #12121a;
+            --bg-card: rgba(18, 18, 26, 0.8);
+            --text-primary: #ffffff;
+            --text-secondary: #94a3b8;
+            --accent-cyan: #06b6d4;
+            --accent-blue: #3b82f6;
+            --accent-purple: #8b5cf6;
+            --accent-emerald: #10b981;
+            --border-color: rgba(148, 163, 184, 0.1);
+            --glow-cyan: rgba(6, 182, 212, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Animated Background */
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .grid-bg {
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            top: -50%;
+            left: -50%;
+            background-image: 
+                linear-gradient(rgba(6, 182, 212, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(6, 182, 212, 0.03) 1px, transparent 1px);
+            background-size: 60px 60px;
+            animation: gridMove 20s linear infinite;
+            transform: perspective(500px) rotateX(60deg);
+        }
+
+        @keyframes gridMove {
+            0% { transform: perspective(500px) rotateX(60deg) translateY(0); }
+            100% { transform: perspective(500px) rotateX(60deg) translateY(60px); }
+        }
+
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.4;
+            animation: float 15s ease-in-out infinite;
+        }
+
+        .orb-1 {
+            width: 400px;
+            height: 400px;
+            background: var(--accent-cyan);
+            top: -100px;
+            right: -100px;
+            animation-delay: 0s;
+        }
+
+        .orb-2 {
+            width: 300px;
+            height: 300px;
+            background: var(--accent-purple);
+            bottom: -50px;
+            left: -50px;
+            animation-delay: -5s;
+        }
+
+        .orb-3 {
+            width: 250px;
+            height: 250px;
+            background: var(--accent-blue);
+            top: 40%;
+            left: 30%;
+            animation-delay: -10s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(30px, -30px) scale(1.05); }
+            66% { transform: translate(-20px, 20px) scale(0.95); }
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 1rem 2rem;
+            backdrop-filter: blur(20px);
+            background: rgba(10, 10, 15, 0.8);
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.02em;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-cyan);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 8rem 2rem 4rem;
+            position: relative;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: rgba(6, 182, 212, 0.1);
+            border: 1px solid rgba(6, 182, 212, 0.3);
+            border-radius: 9999px;
+            font-size: 0.85rem;
+            color: var(--accent-cyan);
+            margin-bottom: 2rem;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .badge-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--accent-emerald);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.2); }
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.03em;
+            animation: fadeInUp 0.8s ease-out 0.1s both;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue), var(--accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            background-size: 200% 200%;
+            animation: gradientShift 5s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .subtitle {
+            font-size: clamp(1.1rem, 2.5vw, 1.35rem);
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto 3rem;
+            line-height: 1.7;
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .cta-group {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            animation: fadeInUp 0.8s ease-out 0.3s both;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
+            color: white;
+            box-shadow: 0 0 30px var(--glow-cyan);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 50px var(--glow-cyan);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--accent-cyan);
+        }
+
+        /* Stats Bar */
+        .stats-bar {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 2rem;
+            padding: 3rem 2rem;
+            max-width: 900px;
+            margin: 4rem auto 0;
+            animation: fadeInUp 0.8s ease-out 0.4s both;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-emerald));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-top: 0.25rem;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 6rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-tag {
+            display: inline-block;
+            padding: 0.4rem 1rem;
+            background: rgba(139, 92, 246, 0.1);
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            border-radius: 9999px;
+            font-size: 0.8rem;
+            color: var(--accent-purple);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+        }
+
+        h2 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            margin-bottom: 1rem;
+        }
+
+        .section-desc {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Feature Cards */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .feature-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent-cyan), var(--accent-purple));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(6, 182, 212, 0.3);
+        }
+
+        .feature-card:hover::before {
+            opacity: 1;
+        }
+
+        .feature-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, rgba(6, 182, 212, 0.2), rgba(139, 92, 246, 0.2));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+        }
+
+        .feature-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Tech Stack */
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1rem;
+        }
+
+        .tech-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.25rem 1.5rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .tech-item:hover {
+            border-color: var(--accent-cyan);
+            background: rgba(6, 182, 212, 0.05);
+        }
+
+        .tech-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: white;
+        }
+
+        .tech-info h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.2rem;
+        }
+
+        .tech-info p {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        /* Vision Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--accent-cyan), var(--accent-purple), var(--accent-emerald));
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-bottom: 3rem;
+            padding-left: 2rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2rem;
+            top: 0.5rem;
+            width: 14px;
+            height: 14px;
+            background: var(--bg-primary);
+            border: 3px solid var(--accent-cyan);
+            border-radius: 50%;
+        }
+
+        .timeline-year {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            color: var(--accent-cyan);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-item h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-item p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* Scenarios */
+        .scenarios-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .scenario-card {
+            background: linear-gradient(135deg, var(--bg-card), rgba(139, 92, 246, 0.05));
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .scenario-card::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(6, 182, 212, 0.1) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .scenario-type {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            border-radius: 6px;
+            font-size: 0.75rem;
+            color: var(--accent-emerald);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 1rem;
+        }
+
+        .scenario-card h3 {
+            font-size: 1.35rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .scenario-details {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .scenario-details li {
+            padding: 0.5rem 0;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+        }
+
+        .scenario-details li::before {
+            content: '→';
+            color: var(--accent-cyan);
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            text-align: center;
+            padding: 8rem 2rem;
+            position: relative;
+        }
+
+        .cta-box {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 4rem;
+            background: linear-gradient(135deg, rgba(6, 182, 212, 0.1), rgba(139, 92, 246, 0.1));
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-box::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(6, 182, 212, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 50%, rgba(139, 92, 246, 0.15) 0%, transparent 50%);
+        }
+
+        .cta-box > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-section h2 {
+            font-size: clamp(2rem, 5vw, 2.75rem);
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--border-color);
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-cyan);
+        }
+
+        .copyright {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero {
+                padding: 7rem 1.5rem 3rem;
+            }
+
+            section {
+                padding: 4rem 1.5rem;
+            }
+
+            .stats-bar {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+            }
+
+            .scenarios-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-box {
+                padding: 2.5rem 1.5rem;
+            }
+        }
+
+        code {
+            font-family: 'JetBrains Mono', monospace;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.9em;
+            color: var(--accent-cyan);
+        }
+    </style>
 </head>
 <body>
-    <p>Redirecting to <a href="https://github.com/testdemoqwenai2025-creator/TrialGPTBot-Enterprise">TrialGPTBot Enterprise on GitHub</a></p>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">TrialGPTBot</div>
+        <ul class="nav-links">
+            <li><a href="#features">Features</a></li>
+            <li><a href="#technology">Technology</a></li>
+            <li><a href="#vision">Vision 2045</a></li>
+            <li><a href="#scenarios">Use Cases</a></li>
+            <li><a href="https://github.com/testdemoqwenai2025-creator/TrialGPTBot-Enterprise">GitHub →</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-bg">
+            <div class="grid-bg"></div>
+            <div class="orb orb-1"></div>
+            <div class="orb orb-2"></div>
+            <div class="orb orb-3"></div>
+        </div>
+
+        <div class="badge">
+            <span class="badge-dot"></span>
+            Enterprise v2.0 — Now Available
+        </div>
+
+        <h1>
+            The Future of<br>
+            <span class="gradient-text">Clinical Trials</span><br>
+            Starts Here
+        </h1>
+
+        <p class="subtitle">
+            AI-powered clinical trial management and data governance platform. 
+            Automate compliance, streamline operations, and accelerate drug development 
+            with enterprise-grade intelligence.
+        </p>
+
+        <div class="cta-group">
+            <a href="https://github.com/testdemoqwenai2025-creator/TrialGPTBot-Enterprise" class="btn btn-primary">
+                ⚡ View on GitHub
+            </a>
+            <a href="#features" class="btn btn-secondary">
+                Explore Features ↓
+            </a>
+        </div>
+
+        <div class="stats-bar">
+            <div class="stat-item">
+                <div class="stat-value">147+</div>
+                <div class="stat-label">Regulations Mapped</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">99%</div>
+                <div class="stat-label">Task Automation</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">4</div>
+                <div class="stat-label">Compliance Frameworks</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">2045</div>
+                <div class="stat-label">Vision Horizon</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features">
+        <div class="section-header">
+            <span class="section-tag">Core Capabilities</span>
+            <h2>Enterprise-Grade Features</h2>
+            <p class="section-desc">
+                Comprehensive toolkit for modern clinical trial management and regulatory compliance
+            </p>
+        </div>
+
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🤖</div>
+                <h3>AI Automation Engine</h3>
+                <p>Auto-complete 99% of tasks including auditing, form filling, and portal updates with intelligent boolean confirmation workflows.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🛡️</div>
+                <h3>Multi-Framework Compliance</h3>
+                <p>Built-in support for GDPR, HIPAA, PIPEDA, and PHIPA with 147+ regulations mapped and continuously updated.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">📊</div>
+                <h3>Data Governance Hub</h3>
+                <p>Centralized data management with real-time monitoring, audit trails, and automated compliance reporting.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🔗</div>
+                <h3>Portal Synchronization</h3>
+                <p>Seamless integration with FDA, EMA, and regulatory portals for automatic submission and status tracking.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">👥</div>
+                <h3>Role-Based Access Control</h3>
+                <p>Granular permissions for ADMIN, DPO, COMPLIANCE_OFFICER, and USER roles with JWT authentication.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">⚡</div>
+                <h3>Real-Time Intelligence</h3>
+                <p>WebSocket-powered live updates, notifications, and collaborative features across all modules.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technology Section -->
+    <section id="technology">
+        <div class="section-header">
+            <span class="section-tag">Tech Stack</span>
+            <h2>Built for Scale & Performance</h2>
+            <p class="section-desc">
+                Modern architecture designed to evolve with technology for the next decade
+            </p>
+        </div>
+
+        <div class="tech-grid">
+            <div class="tech-item">
+                <div class="tech-icon">N</div>
+                <div class="tech-info">
+                    <h4>Next.js 16</h4>
+                    <p>React framework with App Router</p>
+                </div>
+            </div>
+            <div class="tech-item">
+                <div class="tech-icon">R</div>
+                <div class="tech-info">
+                    <h4>React 19</h4>
+                    <p>Latest UI library with hooks</p>
+                </div>
+            </div>
+            <div class="tech-item">
+                <div class="tech-icon">TS</div>
+                <div class="tech-info">
+                    <h4>TypeScript 5</h4>
+                    <p>Type-safe development</p>
+                </div>
+            </div>
+            <div class="tech-item">
+                <div class="tech-icon">TW</div>
+                <div class="tech-info">
+                    <h4>Tailwind CSS 4</h4>
+                    <p>Utility-first styling</p>
+                </div>
+            </div>
+            <div class="tech-item">
+                <div class="tech-icon">⚛️</div>
+                <div class="tech-info">
+                    <h4>shadcn/ui</h4>
+                    <p>Accessible component library</p>
+                </div>
+            </div>
+            <div class="tech-item">
+                <div class="tech-icon">🎭</div>
+                <div class="tech-info">
+                    <h4>Framer Motion</h4>
+                    <p>Production-grade animations</p>
+                </div>
+            </div>
+            <div class="tech-item">
+                <div class="tech-icon">🐍</div>
+                <div class="tech-info">
+                    <h4>FastAPI (Python)</h4>
+                    <p>AI Engine backend service</p>
+                </div>
+            </div>
+            <div class="tech-item">
+                <div class="tech-icon">🗄️</div>
+                <div class="tech-info">
+                    <h4>Prisma ORM</h4>
+                    <p>Type-safe database layer</p>
+                </div>
+            </div>
+            <div class="tech-item">
+                <div class="tech-icon">📡</div>
+                <div class="tech-info">
+                    <h4>WebSocket</h4>
+                    <p>Real-time synchronization</p>
+                </div>
+            </div>
+            <div class="tech-item">
+                <div class="tech-icon">🔄</div>
+                <div class="tech-info">
+                    <h4>Zustand</h4>
+                    <p>Lightweight state management</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vision 2045 Section -->
+    <section id="vision">
+        <div class="section-header">
+            <span class="section-tag">Strategic Roadmap</span>
+            <h2>Vision 2045</h2>
+            <p class="section-desc">
+                A decade-long evolution plan aligned with emerging technologies
+            </p>
+        </div>
+
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-year">Phase 1: 2025-2026</div>
+                <h3>Foundation & Core Intelligence</h3>
+                <p>Deploy AI automation engine, complete regulatory framework integration, establish portal synchronization with FDA/EMA, launch role-based access control system.</p>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-year">Phase 2: 2027-2028</div>
+                <h3>Multimodal AI & Predictive Analytics</h3>
+                <p>Integrate multimodal data processing (imaging, genomic, EHR), deploy predictive trial outcome models, implement federated learning across institutions.</p>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-year">Phase 3: 2029-2032</div>
+                <h3>Global Expansion & Blockchain</h3>
+                <p>Launch blockchain-based consent ledger, expand to APAC/LATAM markets, integrate quantum-resistant cryptography, achieve full CTMS interoperability.</p>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-year">Phase 4: 2033-2040</div>
+                <h3>Quantum-Ready Architecture</h3>
+                <p>Transition to quantum-accelerated drug discovery, deploy autonomous trial orchestration, achieve full regulatory automation with zero human intervention.</p>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-year">Phase 5: 2041-2045</div>
+                <h3>Universal Health Intelligence</h3>
+                <p>Become the global standard for clinical trial infrastructure, enable personalized medicine at planetary scale, pioneer human-AI collaboration in healthcare.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Use Cases / Scenarios Section -->
+    <section id="scenarios">
+        <div class="section-header">
+            <span class="section-tag">Real-World Applications</span>
+            <h2>Client & Investor Scenarios</h2>
+            <p class="section-desc">
+                How TrialGPTBot transforms challenges into opportunities
+            </p>
+        </div>
+
+        <div class="scenarios-grid">
+            <div class="scenario-card">
+                <span class="scenario-type">Pharma Enterprise</span>
+                <h3>Global Pharma Corp - Multi-Trial Orchestration</h3>
+                <ul class="scenario-details">
+                    <li>Managing 47 concurrent trials across 23 countries</li>
+                    <li>Real-time GDPR/HIPAA compliance monitoring</li>
+                    <li>Automated FDA/EMA submission preparation</li>
+                    <li>99% reduction in manual data entry overhead</li>
+                </ul>
+            </div>
+
+            <div class="scenario-card">
+                <span class="scenario-type">CRO Partner</span>
+                <h3>CRO Excellence - Client Delivery Optimization</h3>
+                <ul class="scenario-details">
+                    <li>Serving 12 pharma clients simultaneously</li>
+                    <li>White-labeled compliance dashboards per client</li>
+                    <li>Automated audit trail generation</li>
+                    <li>Portal sync with 8 different regulatory bodies</li>
+                </ul>
+            </div>
+
+            <div class="scenario-card">
+                <span class="scenario-type">Academic Research</span>
+                <h3>Medical Center - Research Acceleration</h3>
+                <ul class="scenario-details">
+                    <li>IRB approval workflow automation</li>
+                    <li>Patient consent management with blockchain</li>
+                    <li>Grant compliance reporting (NIH, EU funding)</li>
+                    <li>Data sharing governance across collaborators</li>
+                </ul>
+            </div>
+
+            <div class="scenario-card">
+                <span class="scenario-type">VC Investment</span>
+                <h3>Growth Equity - Platform Scalability Thesis</h3>
+                <ul class="scenario-details">
+                    <li>$50M Series B for global expansion</li>
+                    <li>TAM: $12B clinical trial software market</li>
+                    <li>Path to profitability via SaaS + API revenue</li>
+                    <li>Exit potential: Strategic acquisition by Oracle/Epic</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-box">
+            <h2>Ready to Transform Clinical Trials?</h2>
+            <p>
+                Join the future of healthcare innovation. Access the complete source code,
+                documentation, and contribute to the next generation of clinical trial technology.
+            </p>
+            <div class="cta-group">
+                <a href="https://github.com/testdemoqwenai2025-creator/TrialGPTBot-Enterprise" class="btn btn-primary">
+                    🚀 Get Started on GitHub
+                </a>
+                <a href="#features" class="btn btn-secondary">
+                    Learn More ↑
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-links">
+            <a href="https://github.com/testdemoqwenai2025-creator/TrialGPTBot-Enterprise">Repository</a>
+            <a href="https://github.com/testdemoqwenai2025-creator/TrialGPTBot-Enterprise/blob/main/package.json">Dependencies</a>
+            <a href="https://github.com/testdemoqwenai2025-creator/TrialGPTBot-Enterprise/blob/main/src/components/landing/exceptional-landing.tsx">Landing Page Source</a>
+            <a href="https://github.com/testdemoqwenai2025-creator/TrialGPTBot-Enterprise/blob/main/README.md">Documentation</a>
+        </div>
+        <p class="copyright">
+            © 2025 TrialGPTBot Enterprise v2.0 | AI-Powered Clinical Trial & Data Governance Platform
+        </p>
+    </footer>
+
+    <script>
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all cards and items
+        document.querySelectorAll('.feature-card, .tech-item, .scenario-card, .timeline-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+
+        // Parallax effect for orbs
+        document.addEventListener('mousemove', (e) => {
+            const orbs = document.querySelectorAll('.orb');
+            const x = e.clientX / window.innerWidth;
+            const y = e.clientY / window.innerHeight;
+
+            orbs.forEach((orb, index) => {
+                const speed = (index + 1) * 20;
+                orb.style.transform = `translate(${x * speed}px, ${y * speed}px)`;
+            });
+        });
+    </script>
 </body>
 </html>
