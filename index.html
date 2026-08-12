@@ -29,7 +29,7 @@
             --accent-emerald: #10b981;
             --border-color: rgba(148, 163, 184, 0.1);
             --glow-cyan: rgba(6, 182, 212, 0.3);
-            --ribbon-bg: #ffffff;
+            --ribbon-bg: linear-gradient(135deg, rgba(6, 182, 212, 0.15) 0%, rgba(139, 92, 246, 0.15) 50%, rgba(16, 185, 129, 0.15) 100%);
         }
 
         * {
@@ -708,20 +708,18 @@
             position: fixed;
             top: 0;
             left: 0;
-            width: 100vw;
-            max-width: 100vw;
+            right: 0;
             z-index: 9999;
-            background: #ffffff !important;
-            border-bottom: 1px solid #e5e7eb;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.12), 0 1px 3px rgba(0, 0, 0, 0.08);
-            padding: 0.7rem 2rem;
+            background: var(--ribbon-bg);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(6, 182, 212, 0.2);
+            padding: 0.6rem 1.5rem;
             display: flex;
             justify-content: center;
             align-items: center;
             gap: 1rem;
             font-size: 0.85rem;
             animation: ribbonSlideDown 0.5s ease-out;
-            box-sizing: border-box;
         }
 
         @keyframes ribbonSlideDown {
@@ -750,26 +748,18 @@
             align-items: center;
             gap: 0.5rem;
             font-weight: 700;
-            color: #065f46;
+            color: var(--text-primary);
             text-decoration: none;
             padding-right: 1.5rem;
-            border-right: 1px solid #e5e7eb;
-            transition: all 0.3s ease;
-            border-radius: 8px;
-        }
-
-        .ribbon-brand:hover {
-            background: #f0fdf4;
-            transform: scale(1.02);
+            border-right: 1px solid rgba(148, 163, 184, 0.2);
         }
 
         .ribbon-logo {
-            width: 32px;
-            height: 32px;
-            background: linear-gradient(135deg, #10b981, #059669, #047857);
+            width: 28px;
+            height: 28px;
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
             border-radius: 8px;
             display: flex;
-            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
             align-items: center;
             justify-content: center;
             font-size: 14px;
@@ -782,10 +772,10 @@
             align-items: center;
             gap: 0.3rem;
             padding: 0.25rem 0.7rem;
-            background: #f0fdf4;
-            border: 1px solid #bbf7d0;
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(16, 185, 129, 0.1));
+            border: 1px solid rgba(16, 185, 129, 0.4);
             border-radius: 20px;
-            color: #059669;
+            color: var(--accent-emerald);
             font-size: 0.7rem;
             font-weight: 600;
             text-transform: uppercase;
@@ -812,7 +802,7 @@
             gap: 0.35rem;
             padding: 0.4rem 0.9rem;
             border-radius: 8px;
-            color: #374151;
+            color: var(--text-secondary);
             text-decoration: none;
             font-size: 0.8rem;
             font-weight: 500;
@@ -821,8 +811,8 @@
         }
 
         .ribbon-link:hover {
-            background: #f3f4f6;
-            color: #111827;
+            background: rgba(255, 255, 255, 0.08);
+            color: var(--text-primary);
         }
 
         .ribbon-link.primary {
@@ -972,371 +962,327 @@
 </head>
 <body>
     <!-- ============================================
-         WHITE APPLICATION RIBBON - Clean Professional Header
+         APPLICATION RIBBON - Fixed Top Banner
          ============================================ -->
     <div class="app-ribbon">
         <div class="ribbon-content">
-            <!-- Brand - Links to Document Generator Hub -->
-            <a href="#document-generator-hub" class="ribbon-brand" style="color: #065f46 !important; text-decoration: none; display: flex; align-items: center; gap: 0.6rem; font-weight: 800; padding: 0.5rem 1rem; border-radius: 12px; transition: all 0.3s ease; border-right: 1px solid #e5e7eb;" onmouseover="this.style.background='#f0fdf4'" onmouseout="this.style.background='transparent'">
-                <div class="ribbon-logo" style="width: 36px; height: 36px; background: linear-gradient(135deg, #10b981, #059669, #047857); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-weight: 900; color: white; box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);">T</div>
-                <span style="background: linear-gradient(135deg, #059669, #047857); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-size: 1.15rem;">TrialGPTBot</span>
-                <span style="background: linear-gradient(135deg, #10b981, #059669); color: white; font-size: 0.55rem; padding: 0.2rem 0.5rem; border-radius: 20px; font-weight: 700;">✨ AI</span>
+            <!-- Brand -->
+            <a href="https://github.com/testdemoqwenai2025-creator/TrialGPTBot-Enterprise" class="ribbon-brand">
+                <div class="ribbon-logo">T</div>
+                <span class="ribbon-brand-text">TrialGPTBot</span>
             </a>
 
             <!-- Status Badge -->
-            <div style="display: inline-flex; align-items: center; gap: 0.35rem; background: linear-gradient(135deg, #f0fdf4, #dcfce7); border: 1px solid #bbf7d0; padding: 0.35rem 0.8rem; border-radius: 20px; font-size: 0.7rem; color: #059669; font-weight: 600;">
-                <span style="width: 6px; height: 6px; background: #10b981; border-radius: 50%; animation: pulse 2s infinite;"></span>
+            <div class="ribbon-badge">
+                <span class="ribbon-status-dot"></span>
                 Enterprise v2.0 Live
             </div>
 
             <!-- Navigation Links -->
-            <nav style="display: flex; align-items: center; gap: 0.4rem;">
-                <a href="#document-generator-hub" style="display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.5rem 1rem; text-decoration: none; color: #374151; font-size: 0.82rem; font-weight: 600; border-radius: 8px; background: linear-gradient(135deg, #10b981, #059669); color: white; transition: all 0.25s ease;" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(16,185,129,0.4)'" onmouseout="this.style.transform='none'; this.style.boxShadow='none'">
-                    🚀 <span>Document Generator</span>
+            <nav class="ribbon-nav">
+                <a href="https://github.com/testdemoqwenai2025-creator/TrialGPTBot-Enterprise" class="ribbon-link primary">
+                    🚀 <span>Launch App</span>
                 </a>
                 
-                <a href="#features" style="display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.45rem 0.9rem; text-decoration: none; color: #374151; font-size: 0.82rem; font-weight: 500; border-radius: 8px; transition: all 0.25s ease;" onmouseover="this.style.background='#f3f4f6'" onmouseout="this.style.background='transparent'">
+                <a href="#features" class="ribbon-link accent">
                     ⚡ <span>Features</span>
                 </a>
                 
-                <a href="#technology" style="display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.45rem 0.9rem; text-decoration: none; color: #374151; font-size: 0.82rem; font-weight: 500; border-radius: 8px; transition: all 0.25s ease;" onmouseover="this.style.background='#f3f4f6'" onmouseout="this.style.background='transparent'">
+                <a href="#technology" class="ribbon-link">
                     🔧 <span>Tech Stack</span>
                 </a>
                 
-                <a href="#vision" style="display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.45rem 0.9rem; text-decoration: none; color: #374151; font-size: 0.82rem; font-weight: 500; border-radius: 8px; transition: all 0.25s ease;" onmouseover="this.style.background='#f3f4f6'" onmouseout="this.style.background='transparent'">
+                <a href="#vision" class="ribbon-link">
                     🎯 <span>Vision 2045</span>
                 </a>
                 
-                <a href="#scenarios" style="display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.45rem 0.9rem; text-decoration: none; color: #059669; font-size: 0.82rem; font-weight: 500; border-radius: 8px; background: #f0fdf4; border: 1px solid #bbf7d0; transition: all 0.25s ease;" onmouseover="this.style.background='#dcfce7'" onmouseout="this.style.background='#f0fdf4'">
+                <a href="#scenarios" class="ribbon-link success">
                     💼 <span>Use Cases</span>
                 </a>
             </nav>
 
             <!-- Divider -->
-            <div style="width: 1px; height: 30px; background: #e5e7eb;"></div>
+            <div class="ribbon-divider"></div>
 
             <!-- Quick Stats -->
-            <div style="display: flex; align-items: center; gap: 1rem; border-left: 1px solid #e5e7eb; padding-left: 1rem;">
-                <div style="display: flex; flex-direction: column; align-items: center; line-height: 1.2;">
-                    <span style="font-size: 0.9rem; font-weight: 700; color: #059669; font-family: 'JetBrains Mono', monospace;">147+</span>
-                    <span style="font-size: 0.65rem; color: #6b7280; text-transform: uppercase;">Regulations</span>
+            <div class="ribbon-stats">
+                <div class="ribbon-stat">
+                    <span class="ribbon-stat-value">147+</span>
+                    <span class="ribbon-stat-label">Regulations</span>
                 </div>
-                <div style="display: flex; flex-direction: column; align-items: center; line-height: 1.2;">
-                    <span style="font-size: 0.9rem; font-weight: 700; color: #059669; font-family: 'JetBrains Mono', monospace;">99%</span>
-                    <span style="font-size: 0.65rem; color: #6b7280; text-transform: uppercase;">Automated</span>
+                <div class="ribbon-stat">
+                    <span class="ribbon-stat-value">99%</span>
+                    <span class="ribbon-stat-label">Automated</span>
                 </div>
-                <div style="display: flex; flex-direction: column; align-items: center; line-height: 1.2;">
-                    <span style="font-size: 0.9rem; font-weight: 700; color: #059669; font-family: 'JetBrains Mono', monospace;">AI</span>
-                    <span style="font-size: 0.65rem; color: #6b7280; text-transform: uppercase;">Powered</span>
+                <div class="ribbon-stat">
+                    <span class="ribbon-stat-value">4</span>
+                    <span class="ribbon-stat-label">Frameworks</span>
                 </div>
             </div>
-
-            <!-- Login Button -->
-            <button onclick="alert('Login functionality coming soon!')" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.6rem 1.4rem; background: linear-gradient(135deg, #10b981, #059669); color: white; border: none; border-radius: 10px; font-size: 0.85rem; font-weight: 700; cursor: pointer; box-shadow: 0 4px 15px rgba(16, 185, 129, 0.35); transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 8px 25px rgba(16,185,129,0.5)'" onmouseout="this.style.transform='none'; this.style.boxShadow='0 4px 15px rgba(16,185,129,0.35)'">
-                🔐 Login
-            </button>
         </div>
     </div>
 
-    <!-- ============================================
-         DOCUMENT GENERATOR HUB - Main Content
-         ============================================ -->
-    <section id="document-generator-hub" style="background: linear-gradient(180deg, #0a0a0f 0%, #0f172a 50%, #0a0a0f 100%); padding: 90px 20px 80px; margin-top: 60px; position: relative; overflow: hidden;">
-        <!-- Animated Background Elements -->
-        <div style="position: absolute; top: 10%; left: -10%; width: 500px; height: 500px; background: radial-gradient(circle, rgba(16,185,129,0.15) 0%, transparent 70%); border-radius: 50%; filter: blur(60px); animation: float 15s ease-in-out infinite;"></div>
-        <div style="position: absolute; bottom: 10%; right: -10%; width: 600px; height: 600px; background: radial-gradient(circle, rgba(6,182,212,0.1) 0%, transparent 70%); border-radius: 50%; filter: blur(80px); animation: float 20s ease-in-out infinite reverse;"></div>
-        
-        <!-- Section Header -->
-        <div style="text-align: center; max-width: 900px; margin: 0 auto 60px; position: relative; z-index: 2;">
-            <div style="display: inline-flex; align-items: center; gap: 0.5rem; background: linear-gradient(135deg, rgba(16,185,129,0.2), rgba(6,182,212,0.1)); border: 1px solid rgba(16,185,129,0.3); padding: 0.5rem 1.5rem; border-radius: 50px; font-size: 0.85rem; color: #10b981; font-weight: 600; margin-bottom: 1.5rem;">
-                <span style="width: 8px; height: 8px; background: #10b981; border-radius: 50%; animation: pulse 2s infinite;"></span>
-                Next-Generation AI Platform
-            </div>
-            
-            <h2 style="font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 900; color: white; line-height: 1.2; margin-bottom: 1.5rem;">
-                <span style="background: linear-gradient(135deg, #10b981, #06b6d4, #3b82f6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Document Generator</span> Hub
-            </h2>
-            
-            <p style="font-size: 1.15rem; color: #94a3b8; max-width: 700px; margin: 0 auto; line-height: 1.8;">
-                Experience the future of clinical trial documentation. Our AI-powered platform generates 
-                FDA/EMA-compliant documents in seconds, not weeks. Navigate through our suite of 
-                intelligent tools designed for decades of innovation.
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">TrialGPTBot</div>
+        <ul class="nav-links">
+            <li><a href="#features">Features</a></li>
+            <li><a href="#technology">Technology</a></li>
+            <li><a href="#vision">Vision 2045</a></li>
+            <li><a href="#scenarios">Use Cases</a></li>
+            <li><a href="https://github.com/testdemoqwenai2025-creator/TrialGPTBot-Enterprise">GitHub →</a></li>
+        </ul>
+    </nav>
+
+    <!-- Features Section -->
+    <section id="features">
+        <div class="section-header">
+            <span class="section-tag">Core Capabilities</span>
+            <h2>Enterprise-Grade Features</h2>
+            <p class="section-desc">
+                Comprehensive toolkit for modern clinical trial management and regulatory compliance
             </p>
         </div>
 
-        <!-- Main Dashboard Preview -->
-        <div style="max-width: 1200px; margin: 0 auto 60px; position: relative; z-index: 2;">
-            <div style="background: linear-gradient(135deg, rgba(16,185,129,0.05), rgba(6,182,212,0.03)); border: 1px solid rgba(16,185,129,0.2); border-radius: 24px; padding: 2rem; box-shadow: 0 30px 80px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.05);">
-                
-                <!-- Dashboard Preview - Interactive UI -->
-                <div style="text-align: center; margin-bottom: 2rem;">
-                    <!-- Simulated Dashboard Interface -->
-                    <div style="background: linear-gradient(135deg, #0f172a, #1e293b); border-radius: 20px; padding: 2rem; box-shadow: 0 25px 80px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.1), 0 0 0 1px rgba(16,185,129,0.2); position: relative; overflow: hidden;">
-                        
-                        <!-- Dashboard Header -->
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid rgba(255,255,255,0.1);">
-                            <div style="display: flex; align-items: center; gap: 0.75rem;">
-                                <div style="width: 36px; height: 36px; background: linear-gradient(135deg, #10b981, #059669); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-weight: 900; color: white; font-size: 14px;">T</div>
-                                <div style="text-align: left;">
-                                    <div style="color: white; font-weight: 700; font-size: 0.95rem;">TrialGPTBot</div>
-                                    <div style="color: #10b981; font-size: 0.7rem; font-weight: 600;">Document Generator v2.0</div>
-                                </div>
-                            </div>
-                            <div style="display: flex; gap: 0.5rem;">
-                                <span style="background: rgba(16,185,129,0.2); color: #10b981; padding: 0.35rem 0.8rem; border-radius: 20px; font-size: 0.7rem; font-weight: 600;">● LIVE</span>
-                                <span style="background: rgba(255,255,255,0.1); color: #94a3b8; padding: 0.35rem 0.8rem; border-radius: 20px; font-size: 0.7rem;">147 Regs</span>
-                            </div>
-                        </div>
-                        
-                        <!-- Stats Row -->
-                        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-bottom: 1.5rem;">
-                            <div style="background: rgba(16,185,129,0.1); border: 1px solid rgba(16,185,129,0.3); border-radius: 12px; padding: 1rem; text-align: center;">
-                                <div style="font-size: 1.5rem; font-weight: 800; color: #10b981; font-family: 'JetBrains Mono', monospace;">99%</div>
-                                <div style="color: #64748b; font-size: 0.7rem; margin-top: 0.25rem;">Automation</div>
-                            </div>
-                            <div style="background: rgba(6,182,212,0.1); border: 1px solid rgba(6,182,212,0.3); border-radius: 12px; padding: 1rem; text-align: center;">
-                                <div style="font-size: 1.5rem; font-weight: 800; color: #06b6d4; font-family: 'JetBrains Mono', monospace;">&lt;5m</div>
-                                <div style="color: #64748b; font-size: 0.7rem; margin-top: 0.25rem;">Gen Time</div>
-                            </div>
-                            <div style="background: rgba(139,92,246,0.1); border: 1px solid rgba(139,92,246,0.3); border-radius: 12px; padding: 1rem; text-align: center;">
-                                <div style="font-size: 1.5rem; font-weight: 800; color: #8b5cf6; font-family: 'JetBrains Mono', monospace;">50K+</div>
-                                <div style="color: #64748b; font-size: 0.7rem; margin-top: 0.25rem;">Protocols</div>
-                            </div>
-                            <div style="background: rgba(59,130,246,0.1); border: 1px solid rgba(59,130,246,0.3); border-radius: 12px; padding: 1rem; text-align: center;">
-                                <div style="font-size: 1.5rem; font-weight: 800; color: #3b82f6; font-family: 'JetBrains Mono', monospace;">FDA/EMA</div>
-                                <div style="color: #64748b; font-size: 0.7rem; margin-top: 0.25rem;">Compliant</div>
-                            </div>
-                        </div>
-                        
-                        <!-- Document List Simulation -->
-                        <div style="background: rgba(0,0,0,0.3); border-radius: 12px; overflow: hidden;">
-                            <div style="display: grid; grid-template-columns: 2fr 1fr 1fr 120px; gap: 0.5rem; padding: 0.75rem 1rem; background: rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.1); font-size: 0.75rem; color: #64748b; font-weight: 600; text-transform: uppercase;">
-                                <span>Document Name</span>
-                                <span>Status</span>
-                                <span>Type</span>
-                                <span>Action</span>
-                            </div>
-                            <div style="padding: 0.75rem 1rem; border-bottom: 1px solid rgba(255,255,255,0.05); display: grid; grid-template-columns: 2fr 1fr 1fr 120px; gap: 0.5rem; align-items: center; font-size: 0.85rem;">
-                                <span style="color: #e2e8f0;">📋 Protocol_V2025_001.docx</span>
-                                <span style="color: #10b981; font-weight: 600;">✓ Complete</span>
-                                <span style="color: #94a3b8;">Clinical</span>
-                                <button style="background: linear-gradient(135deg, #10b981, #059669); color: white; border: none; padding: 0.35rem 0.75rem; border-radius: 8px; font-size: 0.7rem; font-weight: 600; cursor: pointer;">Download</button>
-                            </div>
-                            <div style="padding: 0.75rem 1rem; border-bottom: 1px solid rgba(255,255,255,0.05); display: grid; grid-template-columns: 2fr 1fr 1fr 120px; gap: 0.5rem; align-items: center; font-size: 0.85rem;">
-                                <span style="color: #e2e8f0;">📝 CRF_PatientData_v3.pdf</span>
-                                <span style="color: #06b6d4; font-weight: 600;">⏳ Processing</span>
-                                <span style="color: #94a3b8;">CRF</span>
-                                <button style="background: rgba(255,255,255,0.1); color: #94a3b8; border: 1px solid rgba(255,255,255,0.2); padding: 0.35rem 0.75rem; border-radius: 8px; font-size: 0.7rem; cursor: pointer;">View</button>
-                            </div>
-                            <div style="padding: 0.75rem 1rem; display: grid; grid-template-columns: 2fr 1fr 1fr 120px; gap: 0.5rem; align-items: center; font-size: 0.85rem;">
-                                <span style="color: #e2e8f0;">✍️ Consent_Form_EN.docx</span>
-                                <span style="color: #8b5cf6; font-weight: 600;">🔄 Generating</span>
-                                <span style="color: #94a3b8;">Consent</span>
-                                <button style="background: rgba(255,255,255,0.1); color: #94a3b8; border: 1px solid rgba(255,255,255,0.2); padding: 0.35rem 0.75rem; border-radius: 8px; font-size: 0.7rem; cursor: pointer;">Wait</button>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Live Badge -->
-                    <div style="display: inline-flex; align-items: center; gap: 0.5rem; margin-top: 1.5rem; background: linear-gradient(135deg, #10b981, #059669); color: white; padding: 0.6rem 1.5rem; border-radius: 50px; font-weight: 600; font-size: 0.9rem; box-shadow: 0 8px 30px rgba(16,185,129,0.4);">
-                        <span style="width: 10px; height: 10px; background: white; border-radius: 50%; animation: pulse 1.5s infinite;"></span>
-                        Live Dashboard — AI Document Generation Active
-                    </div>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🤖</div>
+                <h3>AI Automation Engine</h3>
+                <p>Auto-complete 99% of tasks including auditing, form filling, and portal updates with intelligent boolean confirmation workflows.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🛡️</div>
+                <h3>Multi-Framework Compliance</h3>
+                <p>Built-in support for GDPR, HIPAA, PIPEDA, and PHIPA with 147+ regulations mapped and continuously updated.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">📊</div>
+                <h3>Data Governance Hub</h3>
+                <p>Centralized data management with real-time monitoring, audit trails, and automated compliance reporting.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🔗</div>
+                <h3>Portal Synchronization</h3>
+                <p>Seamless integration with FDA, EMA, and regulatory portals for automatic submission and status tracking.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">👥</div>
+                <h3>Role-Based Access Control</h3>
+                <p>Granular permissions for ADMIN, DPO, COMPLIANCE_OFFICER, and USER roles with JWT authentication.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">⚡</div>
+                <h3>Real-Time Intelligence</h3>
+                <p>WebSocket-powered live updates, notifications, and collaborative features across all modules.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technology Section -->
+    <section id="technology">
+        <div class="section-header">
+            <span class="section-tag">Tech Stack</span>
+            <h2>Built for Scale & Performance</h2>
+            <p class="section-desc">
+                Modern architecture designed to evolve with technology for the next decade
+            </p>
+        </div>
+
+        <div class="tech-grid">
+            <div class="tech-item">
+                <div class="tech-icon">N</div>
+                <div class="tech-info">
+                    <h4>Next.js 16</h4>
+                    <p>React framework with App Router</p>
                 </div>
-
-                <!-- Navigation Tabs for Document Types -->
-                <div style="display: flex; flex-wrap: wrap; gap: 0.75rem; justify-content: center;" id="doc-tabs">
-                    <button onclick="showDocType('protocol')" class="doc-tab active" id="tab-protocol" style="padding: 0.85rem 1.5rem; background: linear-gradient(135deg, #10b981, #059669); color: white; border: none; border-radius: 12px; font-weight: 600; font-size: 0.9rem; cursor: pointer; transition: all 0.3s ease; display: flex; align-items: center; gap: 0.5rem; box-shadow: 0 4px 20px rgba(16,185,129,0.3);">
-                        📋 Clinical Protocol
-                    </button>
-                    <button onclick="showDocType('crf')" class="doc-tab" id="tab-crf" style="padding: 0.85rem 1.5rem; background: rgba(255,255,255,0.05); color: #e2e8f0; border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; font-weight: 600; font-size: 0.9rem; cursor: pointer; transition: all 0.3s ease; display: flex; align-items: center; gap: 0.5rem;">
-                        📝 Case Report Form (CRF)
-                    </button>
-                    <button onclick="showDocType('consent')" class="doc-tab" id="tab-consent" style="padding: 0.85rem 1.5rem; background: rgba(255,255,255,0.05); color: #e2e8f0; border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; font-weight: 600; font-size: 0.9rem; cursor: pointer; transition: all 0.3s ease; display: flex; align-items: center; gap: 0.5rem;">
-                        ✍️ Informed Consent
-                    </button>
-                    <button onclick="showDocType('sap')" class="doc-tab" id="tab-sap" style="padding: 0.85rem 1.5rem; background: rgba(255,255,255,0.05); color: #e2e8f0; border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; font-weight: 600; font-size: 0.9rem; cursor: pointer; transition: all 0.3s ease; display: flex; align-items: center; gap: 0.5rem;">
-                        📊 Statistical Analysis Plan
-                    </button>
-                    <button onclick="showDocType('regulatory')" class="doc-tab" id="tab-regulatory" style="padding: 0.85rem 1.5rem; background: rgba(255,255,255,0.05); color: #e2e8f0; border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; font-weight: 600; font-size: 0.9rem; cursor: pointer; transition: all 0.3s ease; display: flex; align-items: center; gap: 0.5rem;">
-                        🏛️ Regulatory Submission
-                    </button>
-                    <button onclick="showDocType('audit')" class="doc-tab" id="tab-audit" style="padding: 0.85rem 1.5rem; background: rgba(255,255,255,0.05); color: #e2e8f0; border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; font-weight: 600; font-size: 0.9rem; cursor: pointer; transition: all 0.3s ease; display: flex; align-items: center; gap: 0.5rem;">
-                        🔍 Audit Trail & Compliance
-                    </button>
+            </div>
+            <div class="tech-item">
+                <div class="tech-icon">R</div>
+                <div class="tech-info">
+                    <h4>React 19</h4>
+                    <p>Latest UI library with hooks</p>
                 </div>
-
-                <!-- Content Area for Each Document Type -->
-                <div id="doc-content-area" style="margin-top: 2rem;">
-                    <!-- Protocol Content (Default) -->
-                    <div id="content-protocol" class="doc-content">
-                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
-                            <div style="background: rgba(0,0,0,0.3); border: 1px solid rgba(16,185,129,0.2); border-radius: 16px; padding: 1.5rem;">
-                                <h4 style="color: #10b981; font-size: 1.1rem; margin-bottom: 0.75rem;">⚡ AI-Powered Generation</h4>
-                                <p style="color: #94a3b8; font-size: 0.95rem; line-height: 1.7;">Generate complete FDA/EMA-compliant clinical trial protocols in under 5 minutes. Our AI analyzes 50,000+ historical protocols to ensure optimal structure and regulatory alignment.</p>
-                            </div>
-                            <div style="background: rgba(0,0,0,0.3); border: 1px solid rgba(6,182,212,0.2); border-radius: 16px; padding: 1.5rem;">
-                                <h4 style="color: #06b6d4; font-size: 1.1rem; margin-bottom: 0.75rem;">🎯 Smart Objectives</h4>
-                                <p style="color: #94a3b8; font-size: 0.95rem; line-height: 1.7;">Automatically generate primary, secondary, and exploratory endpoints with statistical power calculations built-in.</p>
-                            </div>
-                            <div style="background: rgba(0,0,0,0.3); border: 1px solid rgba(139,92,246,0.2); border-radius: 16px; padding: 1.5rem;">
-                                <h4 style="color: #8b5cf6; font-size: 1.1rem; margin-bottom: 0.75rem;">🔄 Real-Time Collaboration</h4>
-                                <p style="color: #94a3b8; font-size: 0.95rem; line-height: 1.7;">Multi-stakeholder editing with version control, audit trails, and automated compliance checking at every save.</p>
-                            </div>
-                        </div>
-                        <div style="text-align: center; margin-top: 2rem;">
-                            <button onclick="alert('Protocol Generator launching soon!')" style="padding: 1rem 2.5rem; background: linear-gradient(135deg, #10b981, #059669); color: white; border: none; border-radius: 14px; font-weight: 700; font-size: 1rem; cursor: pointer; box-shadow: 0 8px 30px rgba(16,185,129,0.4); transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 12px 40px rgba(16,185,129,0.5)'" onmouseout="this.style.transform='none'; this.style.boxShadow='0 8px 30px rgba(16,185,129,0.4)'">
-                                🚀 Launch Protocol Generator →
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- Other content areas (hidden by default) -->
-                    <div id="content-crf" class="doc-content" style="display:none;">
-                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
-                            <div style="background: rgba(0,0,0,0.3); border: 1px solid rgba(16,185,129,0.2); border-radius: 16px; padding: 1.5rem;">
-                                <h4 style="color: #10b981; font-size: 1.1rem; margin-bottom: 0.75rem;">📋 CDISC-Aligned Forms</h4>
-                                <p style="color: #94a3b8; font-size: 0.95rem; line-height: 1.7;">Design electronic Case Report Forms with full CDISC SDTM/ADaM compliance. Pre-built templates for 200+ indication types.</p>
-                            </div>
-                            <div style="background: rgba(0,0,0,0.3); border: 1px solid rgba(6,182,212,0.2); border-radius: 16px; padding: 1.5rem;">
-                                <h4 style="color: #06b6d4; font-size: 1.1rem; margin-bottom: 0.75rem;">✅ Adaptive Logic</h4>
-                                <p style="color: #94a3b8; font-size: 0.95rem; line-height: 1.7;">Smart form logic that shows/hides fields based on previous responses, skip patterns, and conditional validation rules.</p>
-                            </div>
-                            <div style="background: rgba(0,0,0,0.3); border: 1px solid rgba(139,92,246,0.2); border-radius: 16px; padding: 1.5rem;">
-                                <h4 style="color: #8b5cf6; font-size: 1.1rem; margin-bottom: 0.75rem;">🔗 EDC Integration</h4>
-                                <p style="color: #94a3b8; font-size: 0.95rem; line-height: 1.7;">One-click export to Veeva Vault, Medidata Rave, Oracle Clinical, and other major EDC platforms.</p>
-                            </div>
-                        </div>
-                        <div style="text-align: center; margin-top: 2rem;">
-                            <button onclick="alert('CRF Builder launching soon!')" style="padding: 1rem 2.5rem; background: linear-gradient(135deg, #10b981, #059669); color: white; border: none; border-radius: 14px; font-weight: 700; font-size: 1rem; cursor: pointer; box-shadow: 0 8px 30px rgba(16,185,129,0.4);">
-                                🚀 Launch CRF Builder →
-                            </button>
-                        </div>
-                    </div>
-
-                    <div id="content-consent" class="doc-content" style="display:none;">
-                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
-                            <div style="background: rgba(0,0,0,0.3); border: 1px solid rgba(16,185,129,0.2); border-radius: 16px; padding: 1.5rem;">
-                                <h4 style="color: #10b981; font-size: 1.1rem; margin-bottom: 0.75rem;">📖 Readability Optimization</h4>
-                                <p style="color: #94a3b8; font-size: 0.95rem; line-height: 1.7;">AI-powered language simplification ensuring consent forms are understandable at 8th-grade reading level while maintaining legal precision.</p>
-                            </div>
-                            <div style="background: rgba(0,0,0,0.3); border: 1px solid rgba(6,182,212,0.2); border-radius: 16px; padding: 1.5rem;">
-                                <h4 style="color: #06b6d4; font-size: 1.1rem; margin-bottom: 0.75rem;">🌍 Multi-Language Support</h4>
-                                <p style="color: #94a3b8; font-size: 0.95rem; line-height: 1.7;">Instant translation into 50+ languages with cultural adaptation and local regulatory requirement integration.</p>
-                            </div>
-                            <div style="background: rgba(0,0,0,0.3); border: 1px solid rgba(139,92,246,0.2); border-radius: 16px; padding: 1.5rem;">
-                                <h4 style="color: #8b5cf6; font-size: 1.1rem; margin-bottom: 0.75rem;">📱 Digital Signatures</h4>
-                                <p style="color: #94a3b8; font-size: 0.95rem; line-height: 1.7;">Integrated e-signature workflow with 21 CFR Part 11 compliance, biometric verification, and timestamped audit trails.</p>
-                            </div>
-                        </div>
-                        <div style="text-align: center; margin-top: 2rem;">
-                            <button onclick="alert('Consent Generator launching soon!')" style="padding: 1rem 2.5rem; background: linear-gradient(135deg, #10b981, #059669); color: white; border: none; border-radius: 14px; font-weight: 700; font-size: 1rem; cursor: pointer; box-shadow: 0 8px 30px rgba(16,185,129,0.4);">
-                                🚀 Launch Consent Generator →
-                            </button>
-                        </div>
-                    </div>
-
-                    <div id="content-sap" class="doc-content" style="display:none;">
-                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
-                            <div style="background: rgba(0,0,0,0.3); border: 1px solid rgba(16,185,129,0.2); border-radius: 16px; padding: 1.5rem;">
-                                <h4 style="color: #10b981; font-size: 1.1rem; margin-bottom: 0.75rem;">📈 Power Calculations</h4>
-                                <p style="color: #94a3b8; font-size: 0.95rem; line-height: 1.7;">Automated sample size calculations with adaptive design scenarios, interim analysis planning, and multiplicity adjustments.</p>
-                            </div>
-                            <div style="background: rgba(0,0,0,0.3); border: 1px solid rgba(6,182,212,0.2); border-radius: 16px; padding: 1.5rem;">
-                                <h4 style="color: #06b6d4; font-size: 1.1rem; margin-bottom: 0.75rem;">🎲 Endpoint Definitions</h4>
-                                <p style="color: #94a3b8; font-size: 0.95rem; line-height: 1.7;">Intelligent endpoint selection based on indication, regulatory precedent, and competitive landscape analysis.</p>
-                            </div>
-                            <div style="background: rgba(0,0,0,0.3); border: 1px solid rgba(139,92,246,0.2); border-radius: 16px; padding: 1.5rem;">
-                                <h4 style="color: #8b5cf6; font-size: 1.1rem; margin-bottom: 0.75rem;">🔄 Interim Analysis</h4>
-                                <p style="color: #94a3b8; font-size: 0.95rem; line-height: 1.7;">Pre-specified interim analysis plans with group sequential boundaries, futility stopping rules, and adaptive modifications.</p>
-                            </div>
-                        </div>
-                        <div style="text-align: center; margin-top: 2rem;">
-                            <button onclick="alert('SAP Generator launching soon!')" style="padding: 1rem 2.5rem; background: linear-gradient(135deg, #10b981, #059669); color: white; border: none; border-radius: 14px; font-weight: 700; font-size: 1rem; cursor: pointer; box-shadow: 0 8px 30px rgba(16,185,129,0.4);">
-                                🚀 Launch SAP Generator →
-                            </button>
-                        </div>
-                    </div>
-
-                    <div id="content-regulatory" class="doc-content" style="display:none;">
-                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
-                            <div style="background: rgba(0,0,0,0.3); border: 1px solid rgba(16,185,129,0.2); border-radius: 16px; padding: 1.5rem;">
-                                <h4 style="color: #10b981; font-size: 1.1rem; margin-bottom: 0.75rem;">📦 eCTD Ready</h4>
-                                <p style="color: #94a3b8; font-size: 0.95rem; line-height: 1.7;">Generate submission-ready documents in eCTD format for FDA, EMA, PMDA, Health Canada, and 40+ other agencies.</p>
-                            </div>
-                            <div style="background: rgba(0,0,0,0.3); border: 1px solid rgba(6,182,212,0.2); border-radius: 16px; padding: 1.5rem;">
-                                <h4 style="color: #06b6d4; font-size: 1.1rem; margin-bottom: 0.75rem;">🔍 Validation Engine</h4>
-                                <p style="color: #94a3b8; font-size: 0.95rem; line-height: 1.7;">Real-time validation against agency-specific requirements, identifying potential deficiencies before submission.</p>
-                            </div>
-                            <div style="background: rgba(0,0,0,0.3); border: 1px solid rgba(139,92,246,0.2); border-radius: 16px; padding: 1.5rem;">
-                                <h4 style="color: #8b5cf6; font-size: 1.1rem; margin-bottom: 0.75rem;">📋 Module Assembly</h4>
-                                <p style="color: #94a3b8; font-size: 0.95rem; line-height: 1.7;">Automatic assembly of complete submission packages with proper sequencing, hyperlinks, and cross-references.</p>
-                            </div>
-                        </div>
-                        <div style="text-align: center; margin-top: 2rem;">
-                            <button onclick="alert('Regulatory Submission launching soon!')" style="padding: 1rem 2.5rem; background: linear-gradient(135deg, #10b981, #059669); color: white; border: none; border-radius: 14px; font-weight: 700; font-size: 1rem; cursor: pointer; box-shadow: 0 8px 30px rgba(16,185,129,0.4);">
-                                🚀 Launch Regulatory Submission →
-                            </button>
-                        </div>
-                    </div>
-
-                    <div id="content-audit" class="doc-content" style="display:none;">
-                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
-                            <div style="background: rgba(0,0,0,0.3); border: 1px solid rgba(16,185,129,0.2); border-radius: 16px; padding: 1.5rem;">
-                                <h4 style="color: #10b981; font-size: 1.1rem; margin-bottom: 0.75rem;">🔒 21 CFR Part 11</h4>
-                                <p style="color: #94a3b8; font-size: 0.95rem; line-height: 1.7;">Complete audit trail system compliant with 21 CFR Part 11 electronic records requirements, including electronic signatures.</p>
-                            </div>
-                            <div style="background: rgba(0,0,0,0.3); border: 1px solid rgba(6,182,212,0.2); border-radius: 16px; padding: 1.5rem;">
-                                <h4 style="color: #06b6d4; font-size: 1.1rem; margin-bottom: 0.75rem;">🕐 Data Lineage</h4>
-                                <p style="color: #94a3b8; font-size: 0.95rem; line-height: 1.7;">Full data lineage tracking from source to report, with tamper-evident logging and blockchain-based verification options.</p>
-                            </div>
-                            <div style="background: rgba(0,0,0,0.3); border: 1px solid rgba(139,92,246,0.2); border-radius: 16px; padding: 1.5rem;">
-                                <h4 style="color: #8b5cf6; font-size: 1.1rem; margin-bottom: 0.75rem;">📊 Compliance Reports</h4>
-                                <p style="color: #94a3b8; font-size: 0.95rem; line-height: 1.7;">Generate inspection-ready compliance reports with anomaly detection, trend analysis, and risk-based monitoring insights.</p>
-                            </div>
-                        </div>
-                        <div style="text-align: center; margin-top: 2rem;">
-                            <button onclick="alert('Audit Trail Generator launching soon!')" style="padding: 1rem 2.5rem; background: linear-gradient(135deg, #10b981, #059669); color: white; border: none; border-radius: 14px; font-weight: 700; font-size: 1rem; cursor: pointer; box-shadow: 0 8px 30px rgba(16,185,129,0.4);">
-                                🚀 Launch Audit Trail Generator →
-                            </button>
-                        </div>
-                    </div>
+            </div>
+            <div class="tech-item">
+                <div class="tech-icon">TS</div>
+                <div class="tech-info">
+                    <h4>TypeScript 5</h4>
+                    <p>Type-safe development</p>
+                </div>
+            </div>
+            <div class="tech-item">
+                <div class="tech-icon">TW</div>
+                <div class="tech-info">
+                    <h4>Tailwind CSS 4</h4>
+                    <p>Utility-first styling</p>
+                </div>
+            </div>
+            <div class="tech-item">
+                <div class="tech-icon">⚛️</div>
+                <div class="tech-info">
+                    <h4>shadcn/ui</h4>
+                    <p>Accessible component library</p>
+                </div>
+            </div>
+            <div class="tech-item">
+                <div class="tech-icon">🎭</div>
+                <div class="tech-info">
+                    <h4>Framer Motion</h4>
+                    <p>Production-grade animations</p>
+                </div>
+            </div>
+            <div class="tech-item">
+                <div class="tech-icon">🐍</div>
+                <div class="tech-info">
+                    <h4>FastAPI (Python)</h4>
+                    <p>AI Engine backend service</p>
+                </div>
+            </div>
+            <div class="tech-item">
+                <div class="tech-icon">🗄️</div>
+                <div class="tech-info">
+                    <h4>Prisma ORM</h4>
+                    <p>Type-safe database layer</p>
+                </div>
+            </div>
+            <div class="tech-item">
+                <div class="tech-icon">📡</div>
+                <div class="tech-info">
+                    <h4>WebSocket</h4>
+                    <p>Real-time synchronization</p>
+                </div>
+            </div>
+            <div class="tech-item">
+                <div class="tech-icon">🔄</div>
+                <div class="tech-info">
+                    <h4>Zustand</h4>
+                    <p>Lightweight state management</p>
                 </div>
             </div>
         </div>
+    </section>
 
-        <!-- Vision Statement -->
-        <div style="max-width: 900px; margin: 80px auto 0; text-align: center; position: relative; z-index: 2;">
-            <div style="background: linear-gradient(135deg, rgba(16,185,129,0.08), rgba(6,182,212,0.05)); border: 1px solid rgba(16,185,129,0.15); border-radius: 24px; padding: 3rem;">
-                <h3 style="font-size: 1.75rem; color: white; margin-bottom: 1rem; font-weight: 800;">
-                    🌟 Built for the Next Decade of Clinical Innovation
-                </h3>
-                <p style="color: #94a3b8; font-size: 1.05rem; line-height: 1.8; max-width: 750px; margin: 0 auto;">
-                    TrialGPTBot isn't just a tool—it's a vision for how clinical trials should operate. 
-                    We're building an intelligent platform that learns, adapts, and evolves with regulatory landscapes, 
-                    therapeutic advances, and technological breakthroughs. This is healthcare's future, available today.
-                </p>
-                <div style="display: flex; justify-content: center; gap: 2rem; margin-top: 2rem; flex-wrap: wrap;">
-                    <div style="text-align: center;">
-                        <div style="font-size: 2rem; font-weight: 900; color: #10b981; font-family: 'JetBrains Mono', monospace;">2030+</div>
-                        <div style="color: #64748b; font-size: 0.85rem;">Vision Horizon</div>
-                    </div>
-                    <div style="text-align: center;">
-                        <div style="font-size: 2rem; font-weight: 900; color: #06b6d4; font-family: 'JetBrains Mono', monospace;">∞</div>
-                        <div style="color: #64748b; font-size: 0.85rem;">Scalability</div>
-                    </div>
-                    <div style="text-align: center;">
-                        <div style="font-size: 2rem; font-weight: 900; color: #8b5cf6; font-family: 'JetBrains Mono', monospace;">AI</div>
-                        <div style="color: #64748b; font-size: 0.85rem;">First Design</div>
-                    </div>
-                </div>
-            </div>
+    <!-- Vision 2045 Section -->
+    <section id="vision">
+        <div class="section-header">
+            <span class="section-tag">Strategic Roadmap</span>
+            <h2>Vision 2045</h2>
+            <p class="section-desc">
+                A decade-long evolution plan aligned with emerging technologies
+            </p>
         </div>
 
-        <!-- Floating Action Navigation -->
-        <div style="position: fixed; bottom: 2rem; right: 2rem; z-index: 9998; display: flex; flex-direction: column; gap: 0.75rem;" id="floating-nav">
-            <a href="#document-generator-hub" style="width: 56px; height: 56px; background: linear-gradient(135deg, #10b981, #059669); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; box-shadow: 0 8px 30px rgba(16,185,129,0.4); text-decoration: none; transition: all 0.3s ease;" title="Document Generator">📄</a>
-            <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" style="width: 48px; height: 48px; background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.2); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.25rem; cursor: pointer; transition: all 0.3s ease;" title="Back to Top">↑</button>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-year">Phase 1: 2025-2026</div>
+                <h3>Foundation & Core Intelligence</h3>
+                <p>Deploy AI automation engine, complete regulatory framework integration, establish portal synchronization with FDA/EMA, launch role-based access control system.</p>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-year">Phase 2: 2027-2028</div>
+                <h3>Multimodal AI & Predictive Analytics</h3>
+                <p>Integrate multimodal data processing (imaging, genomic, EHR), deploy predictive trial outcome models, implement federated learning across institutions.</p>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-year">Phase 3: 2029-2032</div>
+                <h3>Global Expansion & Blockchain</h3>
+                <p>Launch blockchain-based consent ledger, expand to APAC/LATAM markets, integrate quantum-resistant cryptography, achieve full CTMS interoperability.</p>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-year">Phase 4: 2033-2040</div>
+                <h3>Quantum-Ready Architecture</h3>
+                <p>Transition to quantum-accelerated drug discovery, deploy autonomous trial orchestration, achieve full regulatory automation with zero human intervention.</p>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-year">Phase 5: 2041-2045</div>
+                <h3>Universal Health Intelligence</h3>
+                <p>Become the global standard for clinical trial infrastructure, enable personalized medicine at planetary scale, pioneer human-AI collaboration in healthcare.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Use Cases / Scenarios Section -->
+    <section id="scenarios">
+        <div class="section-header">
+            <span class="section-tag">Real-World Applications</span>
+            <h2>Client & Investor Scenarios</h2>
+            <p class="section-desc">
+                How TrialGPTBot transforms challenges into opportunities
+            </p>
+        </div>
+
+        <div class="scenarios-grid">
+            <div class="scenario-card">
+                <span class="scenario-type">Pharma Enterprise</span>
+                <h3>Global Pharma Corp - Multi-Trial Orchestration</h3>
+                <ul class="scenario-details">
+                    <li>Managing 47 concurrent trials across 23 countries</li>
+                    <li>Real-time GDPR/HIPAA compliance monitoring</li>
+                    <li>Automated FDA/EMA submission preparation</li>
+                    <li>99% reduction in manual data entry overhead</li>
+                </ul>
+            </div>
+
+            <div class="scenario-card">
+                <span class="scenario-type">CRO Partner</span>
+                <h3>CRO Excellence - Client Delivery Optimization</h3>
+                <ul class="scenario-details">
+                    <li>Serving 12 pharma clients simultaneously</li>
+                    <li>White-labeled compliance dashboards per client</li>
+                    <li>Automated audit trail generation</li>
+                    <li>Portal sync with 8 different regulatory bodies</li>
+                </ul>
+            </div>
+
+            <div class="scenario-card">
+                <span class="scenario-type">Academic Research</span>
+                <h3>Medical Center - Research Acceleration</h3>
+                <ul class="scenario-details">
+                    <li>IRB approval workflow automation</li>
+                    <li>Patient consent management with blockchain</li>
+                    <li>Grant compliance reporting (NIH, EU funding)</li>
+                    <li>Data sharing governance across collaborators</li>
+                </ul>
+            </div>
+
+            <div class="scenario-card">
+                <span class="scenario-type">VC Investment</span>
+                <h3>Growth Equity - Platform Scalability Thesis</h3>
+                <ul class="scenario-details">
+                    <li>$50M Series B for global expansion</li>
+                    <li>TAM: $12B clinical trial software market</li>
+                    <li>Path to profitability via SaaS + API revenue</li>
+                    <li>Exit potential: Strategic acquisition by Oracle/Epic</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-box">
+            <h2>Ready to Transform Clinical Trials?</h2>
+            <p>
+                Join the future of healthcare innovation. Access the complete source code,
+                documentation, and contribute to the next generation of clinical trial technology.
+            </p>
+            <div class="cta-group">
+                <a href="https://github.com/testdemoqwenai2025-creator/TrialGPTBot-Enterprise" class="btn btn-primary">
+                    🚀 Get Started on GitHub
+                </a>
+                <a href="#features" class="btn btn-secondary">
+                    Learn More ↑
+                </a>
+            </div>
         </div>
     </section>
 
@@ -1344,8 +1290,9 @@
     <footer>
         <div class="footer-links">
             <a href="https://github.com/testdemoqwenai2025-creator/TrialGPTBot-Enterprise">Repository</a>
+            <a href="https://github.com/testdemoqwenai2025-creator/TrialGPTBot-Enterprise/blob/main/package.json">Dependencies</a>
+            <a href="https://github.com/testdemoqwenai2025-creator/TrialGPTBot-Enterprise/blob/main/src/components/landing/exceptional-landing.tsx">Landing Page Source</a>
             <a href="https://github.com/testdemoqwenai2025-creator/TrialGPTBot-Enterprise/blob/main/README.md">Documentation</a>
-            <a href="https://github.com/testdemoqwenai2025-creator/TrialGPTBot-Enterprise/issues">Support</a>
         </div>
         <p class="copyright">
             © 2025 TrialGPTBot Enterprise v2.0 | AI-Powered Clinical Trial & Data Governance Platform
@@ -1398,56 +1345,6 @@
                 orb.style.transform = `translate(${x * speed}px, ${y * speed}px)`;
             });
         });
-    </script>
-
-
-
-    <script>
-    // Document Type Tab Switching
-    function showDocType(type) {
-        // Hide all content areas
-        document.querySelectorAll('.doc-content').forEach(content => {
-            content.style.display = 'none';
-        });
-        
-        // Reset all tabs
-        document.querySelectorAll('.doc-tab').forEach(tab => {
-            tab.style.background = 'rgba(255,255,255,0.05)';
-            tab.style.color = '#e2e8f0';
-            tab.style.border = '1px solid rgba(255,255,255,0.1)';
-            tab.style.boxShadow = 'none';
-        });
-        
-        // Show selected content
-        const selectedContent = document.getElementById('content-' + type);
-        if (selectedContent) {
-            selectedContent.style.display = 'block';
-            // Add fade-in animation
-            selectedContent.style.animation = 'fadeIn 0.5s ease';
-        }
-        
-        // Highlight active tab
-        const activeTab = document.getElementById('tab-' + type);
-        if (activeTab) {
-            activeTab.style.background = 'linear-gradient(135deg, #10b981, #059669)';
-            activeTab.style.color = 'white';
-            activeTab.style.border = 'none';
-            activeTab.style.boxShadow = '0 4px 20px rgba(16,185,129,0.3)';
-        }
-    }
-
-    // Add fadeIn keyframe if not exists
-    if (!document.getElementById('dynamic-styles')) {
-        const style = document.createElement('style');
-        style.id = 'dynamic-styles';
-        style.textContent = `
-            @keyframes fadeIn {
-                from { opacity: 0; transform: translateY(10px); }
-                to { opacity: 1; transform: translateY(0); }
-            }
-        `;
-        document.head.appendChild(style);
-    }
     </script>
 </body>
 </html>
