@@ -50,7 +50,7 @@
         }
 
         /* ============================================
-           APPLICATION RIBBON - LARGER & PROMINENT
+           APPLICATION RIBBON - EXTRA LARGE & PROMINENT
            ============================================ */
         .app-ribbon {
             position: fixed;
@@ -60,16 +60,17 @@
             max-width: 100vw;
             z-index: 9999;
             background: #ffffff !important;
-            border-bottom: 2px solid #e5e7eb;
-            box-shadow: 0 6px 40px rgba(0, 0, 0, 0.15), 0 2px 8px rgba(0, 0, 0, 0.08);
-            padding: 1rem 2.5rem;
+            border-bottom: 3px solid #10b981;
+            box-shadow: 0 8px 50px rgba(0, 0, 0, 0.18), 0 4px 12px rgba(0, 0, 0, 0.1), 0 0 30px rgba(16, 185, 129, 0.15);
+            padding: 1.35rem 3rem;
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 1.5rem;
-            font-size: 0.95rem;
+            gap: 2rem;
+            font-size: 1.05rem;
             animation: ribbonSlideDown 0.5s ease-out;
             box-sizing: border-box;
+            min-height: 85px;
         }
 
         @keyframes ribbonSlideDown {
@@ -112,15 +113,15 @@
         }
 
         .ribbon-logo {
-            width: 48px;
-            height: 48px;
+            width: 56px;
+            height: 56px;
             background: linear-gradient(135deg, #10b981, #059669, #047857);
-            border-radius: 12px;
+            border-radius: 14px;
             display: flex;
-            box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
+            box-shadow: 0 8px 25px rgba(16, 185, 129, 0.5);
             align-items: center;
             justify-content: center;
-            font-size: 22px;
+            font-size: 26px;
             font-weight: 900;
             color: white;
         }
@@ -130,7 +131,7 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            font-size: 1.5rem;
+            font-size: 1.75rem;
             letter-spacing: -0.02em;
         }
 
@@ -706,6 +707,315 @@
             display: block;
             animation: fadeIn 0.4s ease;
         }
+
+        /* ============================================
+           RIGHT-SIDE SCREENSHOT MENU
+           ============================================ */
+        .right-menu {
+            position: fixed;
+            top: 100px;
+            right: 0;
+            width: 320px;
+            max-height: calc(100vh - 120px);
+            background: linear-gradient(180deg, rgba(18, 18, 26, 0.98), rgba(10, 10, 15, 0.98));
+            border: 1px solid var(--border-color);
+            border-right: none;
+            border-radius: 20px 0 0 20px;
+            z-index: 9997;
+            overflow-y: auto;
+            overflow-x: hidden;
+            box-shadow: -10px 0 40px rgba(0, 0, 0, 0.5), 0 0 60px rgba(6, 182, 212, 0.1);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+            transform: translateX(0);
+        }
+
+        .right-menu.collapsed {
+            transform: translateX(280px);
+        }
+
+        .right-menu::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .right-menu::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .right-menu::-webkit-scrollbar-thumb {
+            background: var(--accent-cyan);
+            border-radius: 3px;
+        }
+
+        .right-menu-header {
+            position: sticky;
+            top: 0;
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(6, 182, 212, 0.1));
+            padding: 1.25rem 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 10;
+        }
+
+        .right-menu-header h3 {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--accent-emerald);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .menu-toggle-btn {
+            position: fixed;
+            top: 50%;
+            right: 320px;
+            transform: translateY(-50%);
+            width: 36px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--accent-emerald), #059669);
+            border: none;
+            border-radius: 12px 0 0 12px;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            z-index: 9998;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: -4px 0 20px rgba(16, 185, 129, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .menu-toggle-btn:hover {
+            background: linear-gradient(135deg, #059669, #047857);
+            box-shadow: -6px 0 30px rgba(16, 185, 129, 0.6);
+        }
+
+        .menu-toggle-btn.collapsed {
+            right: 0;
+        }
+
+        .screenshot-list {
+            padding: 1rem;
+            list-style: none;
+        }
+
+        .screenshot-item {
+            margin-bottom: 0.75rem;
+            border-radius: 14px;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid transparent;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .screenshot-item:hover {
+            background: rgba(16, 185, 129, 0.08);
+            border-color: rgba(16, 185, 129, 0.3);
+            transform: translateX(-4px);
+            box-shadow: 4px 8px 24px rgba(0, 0, 0, 0.3);
+        }
+
+        .screenshot-item.active {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(6, 182, 212, 0.08));
+            border-color: var(--accent-emerald);
+        }
+
+        .screenshot-thumb {
+            width: 100%;
+            height: 140px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .screenshot-item:hover .screenshot-thumb {
+            transform: scale(1.05);
+        }
+
+        .screenshot-info {
+            padding: 0.85rem 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .screenshot-name {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            line-height: 1.3;
+        }
+
+        .screenshot-badge {
+            font-size: 0.65rem;
+            padding: 0.25rem 0.6rem;
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
+            color: white;
+            border-radius: 20px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+        }
+
+        /* Lightbox Overlay */
+        .lightbox-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.92);
+            z-index: 99999;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(10px);
+            animation: lightboxFadeIn 0.3s ease;
+        }
+
+        @keyframes lightboxFadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .lightbox-overlay.active {
+            display: flex;
+        }
+
+        .lightbox-content {
+            max-width: 90vw;
+            max-height: 85vh;
+            position: relative;
+            animation: lightboxZoomIn 0.3s ease;
+        }
+
+        @keyframes lightboxZoomIn {
+            from { transform: scale(0.9); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .lightbox-content img {
+            max-width: 100%;
+            max-height: 85vh;
+            border-radius: 16px;
+            box-shadow: 0 20px 80px rgba(0, 0, 0, 0.6);
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: -45px;
+            right: 0;
+            width: 40px;
+            height: 40px;
+            background: var(--accent-emerald);
+            border: none;
+            border-radius: 50%;
+            color: white;
+            font-size: 1.3rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .lightbox-close:hover {
+            background: #059669;
+            transform: rotate(90deg);
+        }
+
+        .lightbox-title {
+            position: absolute;
+            bottom: -40px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 48px;
+            height: 48px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .lightbox-nav:hover {
+            background: var(--accent-emerald);
+            border-color: var(--accent-emerald);
+        }
+
+        .lightbox-prev { left: -70px; }
+        .lightbox-next { right: -70px; }
+
+        /* Adjust main content when menu is present */
+        body.with-right-menu main {
+            margin-right: 340px;
+        }
+
+        @media (max-width: 1400px) {
+            .right-menu {
+                width: 280px;
+            }
+            .menu-toggle-btn {
+                right: 280px;
+            }
+            .menu-toggle-btn.collapsed {
+                right: 0;
+            }
+            body.with-right-menu main {
+                margin-right: 300px;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .right-menu {
+                width: 260px;
+            }
+            .menu-toggle-btn {
+                right: 260px;
+            }
+            body.with-right-menu main {
+                margin-right: 280px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .right-menu {
+                width: 240px;
+                max-height: calc(100vh - 80px);
+                top: 80px;
+            }
+            .menu-toggle-btn {
+                right: 240px;
+                height: 60px;
+            }
+            .screenshot-thumb {
+                height: 110px;
+            }
+            body.with-right-menu main {
+                margin-right: 250px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -770,6 +1080,30 @@
             <li><a href="#compliance" onclick="showSection('compliance')">Compliance Hub</a></li>
         </ul>
     </nav>
+
+    <!-- RIGHT-SIDE SCREENSHOT MENU -->
+    <button class="menu-toggle-btn" id="menuToggleBtn" onclick="toggleRightMenu()" title="Toggle Screenshot Menu">☰</button>
+    
+    <aside class="right-menu" id="rightMenu">
+        <div class="right-menu-header">
+            <h3>🖼️ App Screenshots</h3>
+            <span style="font-size: 0.7rem; color: var(--text-secondary); background: rgba(255,255,255,0.1); padding: 0.3rem 0.7rem; border-radius: 20px;">10 Views</span>
+        </div>
+        <ul class="screenshot-list" id="screenshotList">
+            <!-- Screenshots will be populated by JavaScript -->
+        </ul>
+    </aside>
+
+    <!-- LIGHTBOX OVERLAY -->
+    <div class="lightbox-overlay" id="lightboxOverlay" onclick="closeLightbox(event)">
+        <div class="lightbox-content" onclick="event.stopPropagation()">
+            <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+            <img id="lightboxImage" src="" alt="Screenshot Preview">
+            <p class="lightbox-title" id="lightboxTitle"></p>
+            <button class="lightbox-nav lightbox-prev" onclick="navigateLightbox(-1)">‹</button>
+            <button class="lightbox-nav lightbox-next" onclick="navigateLightbox(1)">›</button>
+        </div>
+    </div>
 
     <!-- Main Application Content -->
     <main>
@@ -2272,9 +2606,200 @@ Guidance on emerging topics:
             alert('Risk Assessment Report Generation initiated.\n\nThe report would include:\n- Complete risk matrix\n- Mitigation recommendations\n- Compliance gaps\n- Action items');
         }
 
+        // =============================================
+        // RIGHT-SIDE SCREENSHOT MENU FUNCTIONS
+        // =============================================
+        const screenshots = [
+            {
+                id: 1,
+                name: 'Homepage',
+                file: 'trialgptbot-homepage.png',
+                badge: 'Main',
+                description: 'TrialGPTBot Enterprise main landing page'
+            },
+            {
+                id: 2,
+                name: 'Enhanced Dashboard',
+                file: 'trialgptbot-enhanced-dashboard.png',
+                badge: 'Dashboard',
+                description: 'Full dashboard with analytics and metrics'
+            },
+            {
+                id: 3,
+                name: 'Dashboard Scrolled',
+                file: 'trialgptbot-dashboard-scrolled.png',
+                badge: 'View',
+                description: 'Dashboard scroll view with additional panels'
+            },
+            {
+                id: 4,
+                name: 'Document Generator',
+                file: 'trialgptbot-document-generator.png',
+                badge: 'Core',
+                description: 'AI-powered document generation interface'
+            },
+            {
+                id: 5,
+                name: 'Audit Trail',
+                file: 'trialgptbot-audit-trail.png',
+                badge: 'Security',
+                description: 'Complete audit trail and activity logging'
+            },
+            {
+                id: 6,
+                name: 'Chat Response',
+                file: 'trialgptbot-chat-response.png',
+                badge: 'AI',
+                description: 'AI assistant chat interface with responses'
+            },
+            {
+                id: 7,
+                name: 'Compliance Library',
+                file: 'trialgptbot-compliance-library.png',
+                badge: 'Library',
+                description: 'Regulatory compliance document library'
+            },
+            {
+                id: 8,
+                name: 'Risk Matrix',
+                file: 'trialgptbot-risk-matrix.png',
+                badge: 'Analysis',
+                description: 'Risk assessment matrix visualization'
+            },
+            {
+                id: 9,
+                name: 'Risk Full View',
+                file: 'trialgptbot-risk-full.png',
+                badge: 'Detailed',
+                description: 'Complete risk analysis dashboard'
+            },
+            {
+                id: 10,
+                name: 'Documents & Risk',
+                file: 'trialgptbot-documents-risk.png',
+                badge: 'Report',
+                description: 'Documents combined with risk overview'
+            }
+        ];
+
+        const BASE_URL = 'https://raw.githubusercontent.com/testdemoqwenai2025-creator/TrialGPTBot-Enterprise/main/download/';
+        let currentLightboxIndex = 0;
+        let isMenuOpen = true;
+
+        function initScreenshotMenu() {
+            const list = document.getElementById('screenshotList');
+            if (!list) return;
+
+            list.innerHTML = screenshots.map((shot, index) => `
+                <li class="screenshot-item" data-index="${index}" onclick="openLightbox(${index})">
+                    <img src="${BASE_URL}${shot.file}" 
+                         alt="${shot.name}" 
+                         class="screenshot-thumb"
+                         loading="lazy"
+                         onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 300 150%22><rect fill=%22%231a1a2e%22 width=%22300%22 height=%22150%22/><text fill=%22%23666%22 x=%2250%%22 y=%2250%%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-family=%22sans-serif%22>Image Loading...</text></svg>'">
+                    <div class="screenshot-info">
+                        <span class="screenshot-name">${shot.name}</span>
+                        <span class="screenshot-badge">${shot.badge}</span>
+                    </div>
+                </li>
+            `).join('');
+
+            // Add body class for margin adjustment
+            document.body.classList.add('with-right-menu');
+            
+            console.log(`✅ Screenshot menu initialized with ${screenshots.length} images`);
+        }
+
+        function toggleRightMenu() {
+            const menu = document.getElementById('rightMenu');
+            const btn = document.getElementById('menuToggleBtn');
+            
+            isMenuOpen = !isMenuOpen;
+            
+            if (isMenuOpen) {
+                menu.classList.remove('collapsed');
+                btn.classList.remove('collapsed');
+                btn.innerHTML = '☰';
+                document.body.classList.add('with-right-menu');
+            } else {
+                menu.classList.add('collapsed');
+                btn.classList.add('collapsed');
+                btn.innerHTML = '▶';
+                document.body.classList.remove('with-right-menu');
+            }
+        }
+
+        function openLightbox(index) {
+            currentLightboxIndex = index;
+            const overlay = document.getElementById('lightboxOverlay');
+            const img = document.getElementById('lightboxImage');
+            const title = document.getElementById('lightboxTitle');
+            const shot = screenshots[index];
+            
+            if (!overlay || !img || !title) return;
+            
+            img.src = `${BASE_URL}${shot.file}`;
+            title.textContent = `${shot.name} - ${shot.description}`;
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            
+            // Update active state in list
+            document.querySelectorAll('.screenshot-item').forEach((item, i) => {
+                item.classList.toggle('active', i === index);
+            });
+        }
+
+        function closeLightbox(event) {
+            if (event && event.target !== event.currentTarget && !event.target.classList.contains('lightbox-close')) return;
+            
+            const overlay = document.getElementById('lightboxOverlay');
+            if (overlay) {
+                overlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        }
+
+        function navigateLightbox(direction) {
+            currentLightboxIndex += direction;
+            
+            if (currentLightboxIndex < 0) currentLightboxIndex = screenshots.length - 1;
+            if (currentLightboxIndex >= screenshots.length) currentLightboxIndex = 0;
+            
+            openLightbox(currentLightboxIndex);
+        }
+
+        // Keyboard navigation for lightbox
+        document.addEventListener('keydown', (e) => {
+            const overlay = document.getElementById('lightboxOverlay');
+            if (!overlay || !overlay.classList.contains('active')) return;
+            
+            switch(e.key) {
+                case 'Escape':
+                    closeLightbox();
+                    break;
+                case 'ArrowLeft':
+                    navigateLightbox(-1);
+                    break;
+                case 'ArrowRight':
+                    navigateLightbox(1);
+                    break;
+            }
+        });
+
+        // Initialize screenshot menu on load
+        document.addEventListener('DOMContentLoaded', () => {
+            initScreenshotMenu();
+        });
+
+        // Also initialize immediately in case DOMContentLoaded already fired
+        if (document.readyState === 'complete' || document.readyState === 'interactive') {
+            setTimeout(initScreenshotMenu, 100);
+        }
+
         // Initialize
         console.log('TrialGPTBot Enterprise v2.0 initialized successfully.');
         console.log('All modules loaded and operational.');
+        console.log(`📸 Right-side screenshot menu ready with ${screenshots.length} application views`);
     </script>
 </body>
 </html>
